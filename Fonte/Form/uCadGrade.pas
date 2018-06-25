@@ -38,7 +38,7 @@ implementation
 
 procedure TfrmCadGrade.BitBtnCancelarClick(Sender: TObject);
 begin
-  dmCadGrade.FDQueryPrincipal.CancelUpdates;
+  dmCadGrade.QryPrincipal.CancelUpdates;
 
   inherited;
 end;
@@ -50,8 +50,8 @@ begin
     try
       with dmCadGrade do
       Begin
-        FDQueryPrincipal.Delete;
-        FDQueryPrincipal.ApplyUpdates(0);
+        QryPrincipal.Delete;
+        QryPrincipal.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
     Except on E: Exception do
@@ -76,7 +76,7 @@ begin
   try
     begin
       dsCadastro.DataSet.Post;
-      JvCalcEditCodigo.Text := dmCadGrade.FDQueryPrincipal.FieldByName('CODIGO_GRADE').AsString;
+      JvCalcEditCodigo.Text := dmCadGrade.QryPrincipal.FieldByName('CODIGO_GRADE').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -103,8 +103,8 @@ begin
 
   with dmCadGrade do
   begin
-    FDQueryPrincipal.Close;
-    FDQueryPrincipal.Open;
+    QryPrincipal.Close;
+    QryPrincipal.Open;
   end;
 
 

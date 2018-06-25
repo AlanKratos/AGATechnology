@@ -108,7 +108,7 @@ begin
     try
       with dmCadCliente do
       Begin
-        FDQueryPrincipal.Delete;
+        QryPrincipal.Delete;
         FDSchemaAdapterCliente.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -206,7 +206,7 @@ begin
     with dmCadCliente do
     begin
       FDSchemaAdapterCliente.ApplyUpdates(0);
-      JvCalcEditCodigo.Text := FDQueryPrincipal.FieldByName('CODIGO_PESSOA').AsString;
+      JvCalcEditCodigo.Text := QryPrincipal.FieldByName('CODIGO_PESSOA').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -269,14 +269,14 @@ begin
 
   with dmCadCliente do
   begin
-    FDQueryPrincipal.Close;
-    FDQueryPrincipal.Open;
-    FDQueryEndereco.Close;
-    FDQueryEndereco.Open;
-    FDQueryTelefone.Close;
-    FDQueryTelefone.Open;
-    FDQueryEmail.Close;
-    FDQueryEmail.Open;
+    QryPrincipal.Close;
+    QryPrincipal.Open;
+    QryEndereco.Close;
+    QryEndereco.Open;
+    QryTelefone.Close;
+    QryTelefone.Open;
+    QryEmail.Close;
+    QryEmail.Open;
   end;
 
   if dbrpTipoPessoa.ItemIndex = 1 then
@@ -304,8 +304,8 @@ begin
   inherited;
   with dmCadCliente do
   Begin
-    FDQueryEndereco.FieldByName('CIDADE_PESSOA_ENDERECO').OnValidate := Validate_Cidade;
-    FDQueryPrincipal.FieldByName('GRUPO_PESSOA').OnValidate := Validate_Grupo;
+    QryEndereco.FieldByName('CIDADE_PESSOA_ENDERECO').OnValidate := Validate_Cidade;
+    QryPrincipal.FieldByName('GRUPO_PESSOA').OnValidate := Validate_Grupo;
   End;
 end;
 
@@ -319,10 +319,10 @@ procedure TfrmCadCliente.LimparCache(Sender: TObject);
 begin
   with dmCadCliente do
   Begin
-    FDQueryPrincipal.CommitUpdates();
-    FDQueryEmail.CommitUpdates();
-    FDQueryEndereco.CommitUpdates();
-    FDQueryTelefone.CommitUpdates();
+    QryPrincipal.CommitUpdates();
+    QryEmail.CommitUpdates();
+    QryEndereco.CommitUpdates();
+    QryTelefone.CommitUpdates();
   End;
 end;
 

@@ -2,10 +2,10 @@ inherited dmCadProduto: TdmCadProduto
   OldCreateOrder = True
   Height = 443
   Width = 454
-  inherited FDQueryPrincipal: TFDQuery
-    AfterInsert = FDQueryPrincipalAfterInsert
-    BeforePost = FDQueryPrincipalBeforePost
-    OnNewRecord = FDQueryPrincipalNewRecord
+  inherited QryPrincipal: TFDQuery
+    AfterInsert = QryPrincipalAfterInsert
+    BeforePost = QryPrincipalBeforePost
+    OnNewRecord = QryPrincipalNewRecord
     CachedUpdates = True
     SchemaAdapter = FDSchemaAdapterProduto
     SQL.Strings = (
@@ -168,11 +168,11 @@ inherited dmCadProduto: TdmCadProduto
       Size = 11
     end
   end
-  object FDQueryItemDetalhe: TFDQuery
-    BeforeInsert = FDQueryItemDetalheBeforeInsert
-    BeforeEdit = FDQueryItemDetalheBeforeEdit
-    BeforePost = FDQueryItemDetalheBeforePost
-    OnNewRecord = FDQueryItemDetalheNewRecord
+  object QryItemDetalhe: TFDQuery
+    BeforeInsert = QryItemDetalheBeforeInsert
+    BeforeEdit = QryItemDetalheBeforeEdit
+    BeforePost = QryItemDetalheBeforePost
+    OnNewRecord = QryItemDetalheNewRecord
     CachedUpdates = True
     IndexFieldNames = 'COD_ITEM_DETALHE'
     MasterSource = dsMaster
@@ -208,49 +208,49 @@ inherited dmCadProduto: TdmCadProduto
         ParamType = ptInput
         Value = Null
       end>
-    object FDQueryItemDetalheCODIGO_ITEM_DETALHE: TIntegerField
+    object QryItemDetalheCODIGO_ITEM_DETALHE: TIntegerField
       FieldName = 'CODIGO_ITEM_DETALHE'
       Origin = 'CODIGO_ITEM_DETALHE'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object FDQueryItemDetalheCOR_ITEM_DETALHE: TIntegerField
+    object QryItemDetalheCOR_ITEM_DETALHE: TIntegerField
       FieldName = 'COR_ITEM_DETALHE'
       Origin = 'COR_ITEM_DETALHE'
       Required = True
     end
-    object FDQueryItemDetalheGRADE_ITEM_DETALHE: TIntegerField
+    object QryItemDetalheGRADE_ITEM_DETALHE: TIntegerField
       FieldName = 'GRADE_ITEM_DETALHE'
       Origin = 'GRADE_ITEM_DETALHE'
       Required = True
     end
-    object FDQueryItemDetalheTECIDO_ITEM_DETALHE: TIntegerField
+    object QryItemDetalheTECIDO_ITEM_DETALHE: TIntegerField
       FieldName = 'TECIDO_ITEM_DETALHE'
       Origin = 'TECIDO_ITEM_DETALHE'
     end
-    object FDQueryItemDetalheSTATUS_ITEM_DETALHE: TIntegerField
+    object QryItemDetalheSTATUS_ITEM_DETALHE: TIntegerField
       FieldName = 'STATUS_ITEM_DETALHE'
       Origin = 'STATUS_ITEM_DETALHE'
       Required = True
     end
-    object FDQueryItemDetalheCODIGOBARRAS_ITEM_DETALHE: TStringField
+    object QryItemDetalheCODIGOBARRAS_ITEM_DETALHE: TStringField
       FieldName = 'CODIGOBARRAS_ITEM_DETALHE'
       Origin = 'CODIGOBARRAS_ITEM_DETALHE'
       Size = 13
     end
-    object FDQueryItemDetalheCOD_ITEM_DETALHE: TIntegerField
+    object QryItemDetalheCOD_ITEM_DETALHE: TIntegerField
       FieldName = 'COD_ITEM_DETALHE'
       Origin = 'COD_ITEM_DETALHE'
       Required = True
     end
-    object FDQueryItemDetalheDESCRICAO_COR: TStringField
+    object QryItemDetalheDESCRICAO_COR: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_COR'
       Origin = 'DESCRICAO_COR'
       ProviderFlags = []
       Size = 40
     end
-    object FDQueryItemDetalheDESCRICAO_GRADE: TStringField
+    object QryItemDetalheDESCRICAO_GRADE: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_GRADE'
       Origin = 'DESCRICAO_GRADE'
@@ -263,11 +263,10 @@ inherited dmCadProduto: TdmCadProduto
     Top = 72
   end
   object dsMaster: TDataSource
-    DataSet = FDQueryPrincipal
     Left = 184
     Top = 8
   end
-  object FDQueryUnidade: TFDQuery
+  object QryUnidade: TFDQuery
     CachedUpdates = True
     Connection = dmConexao.FDConexao
     SQL.Strings = (
@@ -278,25 +277,25 @@ inherited dmCadProduto: TdmCadProduto
     Left = 40
     Top = 136
   end
-  object FDQueryValidaGrupo: TFDQuery
+  object QryValidaGrupo: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 168
     Top = 160
   end
-  object FDQueryValidaSubGrupo: TFDQuery
+  object QryValidaSubGrupo: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 168
     Top = 216
   end
-  object FDQueryValida_Ncm: TFDQuery
+  object QryValida_Ncm: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 168
     Top = 280
   end
-  object FDQueryItemCor: TFDQuery
-    BeforeInsert = FDQueryItemCorBeforeInsert
-    BeforeEdit = FDQueryItemCorBeforeEdit
-    BeforePost = FDQueryItemCorBeforePost
+  object QryItemCor: TFDQuery
+    BeforeInsert = QryItemCorBeforeInsert
+    BeforeEdit = QryItemCorBeforeEdit
+    BeforePost = QryItemCorBeforePost
     CachedUpdates = True
     IndexFieldNames = 'ITEM_ITEM_COR'
     MasterSource = dsMaster
@@ -306,10 +305,10 @@ inherited dmCadProduto: TdmCadProduto
     Left = 40
     Top = 328
   end
-  object FDQueryItemGrade: TFDQuery
-    BeforeInsert = FDQueryItemGradeBeforeInsert
-    BeforeEdit = FDQueryItemGradeBeforeEdit
-    BeforePost = FDQueryItemGradeBeforePost
+  object QryItemGrade: TFDQuery
+    BeforeInsert = QryItemGradeBeforeInsert
+    BeforeEdit = QryItemGradeBeforeEdit
+    BeforePost = QryItemGradeBeforePost
     CachedUpdates = True
     IndexFieldNames = 'ITEM_ITEM_GRADE'
     MasterSource = dsMaster
@@ -321,29 +320,29 @@ inherited dmCadProduto: TdmCadProduto
     Left = 40
     Top = 384
   end
-  object FDQueryCor: TFDQuery
+  object QryCor: TFDQuery
     CachedUpdates = True
     Connection = dmConexao.FDConexao
     Left = 40
     Top = 200
   end
-  object FDQueryGrade: TFDQuery
+  object QryGrade: TFDQuery
     CachedUpdates = True
     Connection = dmConexao.FDConexao
     Left = 40
     Top = 264
   end
   object dsDetalhe: TDataSource
-    DataSet = FDQueryItemDetalhe
+    DataSet = QryItemDetalhe
     Left = 296
     Top = 24
   end
-  object FDQueryValidaCor: TFDQuery
+  object QryValidaCor: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 288
     Top = 224
   end
-  object FDQueryValidaGrade: TFDQuery
+  object QryValidaGrade: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 288
     Top = 288

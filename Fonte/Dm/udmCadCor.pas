@@ -11,8 +11,8 @@ uses
 type
   TdmCadCor = class(TdmCadPai)
     procedure FDQueryPrincipalAfterInsert(DataSet: TDataSet);
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryPrincipalBeforePost(DataSet: TDataSet);
+    procedure QryPrincipalNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -31,13 +31,13 @@ implementation
 procedure TdmCadCor.FDQueryPrincipalAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  with FDQueryPrincipal do
+  with QryPrincipal do
   Begin
     FieldByName('STATUS_COR').Value := 1;
   End;
 end;
 
-procedure TdmCadCor.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadCor.QryPrincipalBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -46,10 +46,10 @@ begin
       dmConexao.ProximoCodigo('COR')
 end;
 
-procedure TdmCadCor.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadCor.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
 end.

@@ -1,13 +1,13 @@
 inherited dmDocSaida: TdmDocSaida
+  OldCreateOrder = True
   Height = 224
   Width = 263
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     BeforePost = FDQueryPrincipalBeforePost
     OnNewRecord = FDQueryPrincipalNewRecord
     CachedUpdates = True
     SchemaAdapter = FDSchemaAdapterDocSaida
     FetchOptions.AssignedValues = [evDetailCascade]
-    FetchOptions.DetailCascade = True
     SQL.Strings = (
       'select '
       '    DOCUMENTO_SAIDA.CODIGO_DOC_SAIDA,'
@@ -21,7 +21,6 @@ inherited dmDocSaida: TdmDocSaida
         'NTE_DOC_SAIDA)'
       'where DOCUMENTO_SAIDA.CODIGO_DOC_SAIDA = :CODIGO')
     Left = 48
-    Top = 24
     ParamData = <
       item
         Name = 'CODIGO'
@@ -59,11 +58,11 @@ inherited dmDocSaida: TdmDocSaida
       Size = 100
     end
   end
-  object FDQueryItens: TFDQuery
-    BeforeInsert = FDQueryItensBeforeInsert
-    BeforeEdit = FDQueryItensBeforeEdit
-    BeforePost = FDQueryItensBeforePost
-    OnNewRecord = FDQueryItensNewRecord
+  object QryItens: TFDQuery
+    BeforeInsert = QryItensBeforeInsert
+    BeforeEdit = QryItensBeforeEdit
+    BeforePost = QryItensBeforePost
+    OnNewRecord = QryItensNewRecord
     CachedUpdates = True
     MasterSource = dsMaster
     MasterFields = 'CODIGO_DOC_SAIDA'
@@ -93,7 +92,6 @@ inherited dmDocSaida: TdmDocSaida
       end>
   end
   object dsMaster: TDataSource
-    DataSet = FDQueryPrincipal
     Left = 168
     Top = 112
   end

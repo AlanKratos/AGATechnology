@@ -275,7 +275,6 @@ inherited frmCadConta: TfrmCadConta
     end
   end
   inherited dsCadastro: TDataSource
-    DataSet = dmCadConta.FDQueryPrincipal
     Left = 256
   end
   inherited JvEnterAsTab1: TJvEnterAsTab

@@ -2,7 +2,7 @@ inherited dmCadVenda: TdmCadVenda
   OldCreateOrder = True
   Height = 404
   Width = 357
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     BeforePost = FDQueryPrincipalBeforePost
     AfterPost = nil
     OnNewRecord = FDQueryPrincipalNewRecord
@@ -81,12 +81,12 @@ inherited dmCadVenda: TdmCadVenda
     Left = 152
     Top = 24
   end
-  object FDQueryVendaItem: TFDQuery
-    BeforeInsert = FDQueryVendaItemBeforeInsert
-    BeforeEdit = FDQueryVendaItemBeforeEdit
-    BeforePost = FDQueryVendaItemBeforePost
-    AfterDelete = FDQueryVendaItemAfterDelete
-    OnNewRecord = FDQueryVendaItemNewRecord
+  object QryVendaItem: TFDQuery
+    BeforeInsert = QryVendaItemBeforeInsert
+    BeforeEdit = QryVendaItemBeforeEdit
+    BeforePost = QryVendaItemBeforePost
+    AfterDelete = QryVendaItemAfterDelete
+    OnNewRecord = QryVendaItemNewRecord
     CachedUpdates = True
     IndexFieldNames = 'DOCUMENTO_DOC_ITEM'
     MasterSource = dsMaster
@@ -124,28 +124,28 @@ inherited dmCadVenda: TdmCadVenda
         ParamType = ptInput
         Value = Null
       end>
-    object FDQueryVendaItemCODIGO_DOC_ITEM: TIntegerField
+    object QryVendaItemCODIGO_DOC_ITEM: TIntegerField
       FieldName = 'CODIGO_DOC_ITEM'
       Origin = 'CODIGO_DOC_ITEM'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object FDQueryVendaItemDOCUMENTO_DOC_ITEM: TIntegerField
+    object QryVendaItemDOCUMENTO_DOC_ITEM: TIntegerField
       FieldName = 'DOCUMENTO_DOC_ITEM'
       Origin = 'DOCUMENTO_DOC_ITEM'
       Required = True
     end
-    object FDQueryVendaItemITEM_DOC_ITEM: TIntegerField
+    object QryVendaItemITEM_DOC_ITEM: TIntegerField
       FieldName = 'ITEM_DOC_ITEM'
       Origin = 'ITEM_DOC_ITEM'
       Required = True
     end
-    object FDQueryVendaItemQTD_DOC_ITEM: TIntegerField
+    object QryVendaItemQTD_DOC_ITEM: TIntegerField
       FieldName = 'QTD_DOC_ITEM'
       Origin = 'QTD_DOC_ITEM'
       Required = True
     end
-    object FDQueryVendaItemVALOR_DOC_ITEM: TBCDField
+    object QryVendaItemVALOR_DOC_ITEM: TBCDField
       FieldName = 'VALOR_DOC_ITEM'
       Origin = 'VALOR_DOC_ITEM'
       Required = True
@@ -153,29 +153,29 @@ inherited dmCadVenda: TdmCadVenda
       Precision = 18
       Size = 2
     end
-    object FDQueryVendaItemDESCRICAO_ITEM: TStringField
+    object QryVendaItemDESCRICAO_ITEM: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_ITEM'
       Origin = 'DESCRICAO_ITEM'
       ProviderFlags = []
       Size = 100
     end
-    object FDQueryVendaItemCOR_DOC_ITEM: TIntegerField
+    object QryVendaItemCOR_DOC_ITEM: TIntegerField
       FieldName = 'COR_DOC_ITEM'
       Origin = 'COR_DOC_ITEM'
     end
-    object FDQueryVendaItemGRADE_DOC_ITEM: TIntegerField
+    object QryVendaItemGRADE_DOC_ITEM: TIntegerField
       FieldName = 'GRADE_DOC_ITEM'
       Origin = 'GRADE_DOC_ITEM'
     end
-    object FDQueryVendaItemDESCRICAO_COR: TStringField
+    object QryVendaItemDESCRICAO_COR: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_COR'
       Origin = 'DESCRICAO_COR'
       ProviderFlags = []
       Size = 40
     end
-    object FDQueryVendaItemDESCRICAO_GRADE: TStringField
+    object QryVendaItemDESCRICAO_GRADE: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_GRADE'
       Origin = 'DESCRICAO_GRADE'
@@ -184,26 +184,25 @@ inherited dmCadVenda: TdmCadVenda
     end
   end
   object dsMaster: TDataSource
-    DataSet = FDQueryPrincipal
     Left = 152
     Top = 88
   end
-  object FDQueryValidaCliente: TFDQuery
+  object QryValidaCliente: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 152
     Top = 200
   end
-  object FDQueryValidaItem: TFDQuery
+  object QryValidaItem: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 160
     Top = 144
   end
-  object FDQueryValidaPreco: TFDQuery
+  object QryValidaPreco: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 168
     Top = 328
   end
-  object FDQueryTabelaPreco: TFDQuery
+  object QryTabelaPreco: TFDQuery
     Connection = dmConexao.FDConexao
     SQL.Strings = (
       'select '
@@ -215,21 +214,21 @@ inherited dmCadVenda: TdmCadVenda
     Left = 40
     Top = 208
   end
-  object FDQueryValidaCor: TFDQuery
+  object QryValidaCor: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 40
     Top = 272
   end
-  object FDQueryValidaGrade: TFDQuery
+  object QryValidaGrade: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 40
     Top = 328
   end
-  object FDQueryPrazo: TFDQuery
-    BeforeInsert = FDQueryPrazoBeforeInsert
-    BeforeEdit = FDQueryPrazoBeforeEdit
-    BeforePost = FDQueryPrazoBeforePost
-    OnNewRecord = FDQueryPrazoNewRecord
+  object QryPrazo: TFDQuery
+    BeforeInsert = QryPrazoBeforeInsert
+    BeforeEdit = QryPrazoBeforeEdit
+    BeforePost = QryPrazoBeforePost
+    OnNewRecord = QryPrazoNewRecord
     CachedUpdates = True
     IndexFieldNames = 'DOCUMENTO_DOC_PRAZO'
     MasterSource = dsMaster

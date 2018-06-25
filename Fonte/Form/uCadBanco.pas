@@ -52,7 +52,7 @@ begin
     try
       with dmCadBanco do
       Begin
-        FDQueryPrincipal.Delete;
+        QryPrincipal.Delete;
         FDSchemaAdapterBanco.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -75,7 +75,7 @@ procedure TfrmCadBanco.BitBtnSalvarClick(Sender: TObject);
 begin
   try
     dsCadastro.DataSet.Post;
-    JvCalcEditCodigo.Text := dmCadBanco.FDQueryPrincipal.FieldByName('CODIGO_BANCO').AsString;
+    JvCalcEditCodigo.Text := dmCadBanco.QryPrincipal.FieldByName('CODIGO_BANCO').AsString;
   Except on E: Exception do
     ShowMessage(E.Message);
   end;
@@ -101,8 +101,8 @@ begin
 
   with dmCadBanco do
   begin
-    FDQueryPrincipal.Close;
-    FDQueryPrincipal.Open;
+    QryPrincipal.Close;
+    QryPrincipal.Open;
   end;
 
 end;
@@ -113,7 +113,7 @@ begin
   if (Application.MessageBox('Deseja realmente excluir a imagem?', 'Confirmação', MB_ICONQUESTION + MB_YESNO) = IDYES) then
   try
     Begin
-      dmCadBanco.FDQueryPrincipal.Edit;
+      dmCadBanco.QryPrincipal.Edit;
       dsCadastro.DataSet.Edit;
       JvDBImageLogo.Picture:= nil;
     End;
@@ -130,7 +130,7 @@ begin
   if OpenPictureDialog1.Execute then
   try
     Begin
-      dmCadBanco.FDQueryPrincipal.Edit;
+      dmCadBanco.QryPrincipal.Edit;
       dsCadastro.DataSet.Edit;
       JvDBImageLogo.Picture.LoadFromFile(OpenPictureDialog1.FileName);
     End;

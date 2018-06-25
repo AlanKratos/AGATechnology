@@ -69,7 +69,7 @@ begin
     try
       with dmCadTabelaPreco do
       Begin
-        FDQueryPrincipal.Delete;
+        QryPrincipal.Delete;
         FDSchemaAdapterTabelaPreco.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -113,7 +113,7 @@ begin
     with dmCadTabelaPreco do
     begin
       FDSchemaAdapterTabelaPreco.ApplyUpdates(0);
-      JvCalcEditCodigo.Text := FDQueryPrincipal.FieldByName('CODIGO_TABELA').AsString;
+      JvCalcEditCodigo.Text := QryPrincipal.FieldByName('CODIGO_TABELA').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -157,7 +157,7 @@ procedure TfrmCadTabelaPreco.dbgItensCanEditCell(Grid: TJvDBGrid; Field: TField;
   var AllowEdit: Boolean);
 begin
   inherited;
-//  dmCadTabelaPreco.FDQueryPrincipal.Edit;
+//  dmCadTabelaPreco.QryPrincipal.Edit;
 //  dmCadTabelaPreco.FDQueryTabela_Detalhe.Edit; Deixei desabilitado para obrigar excluir o item
 end;
 
@@ -189,7 +189,7 @@ begin
       frmConsultaItem.ShowModal;
       if frmConsultaItem.FDQueryConsulta.FieldByName('CODIGO_ITEM').AsInteger > 0 then
       Begin
-        dmCadTabelaPreco.FDQueryTabela_Detalhe.FieldByName('ITEM_TAB_DET').AsInteger :=
+        dmCadTabelaPreco.QryTabela_Detalhe.FieldByName('ITEM_TAB_DET').AsInteger :=
             frmConsultaItem.FDQueryConsulta.FieldByName('CODIGO_ITEM').AsInteger;;
       End;
       FreeAndNil(frmConsultaItem);
@@ -201,7 +201,7 @@ begin
       frmConsultaCor.ShowModal;
       if frmConsultaCor.FDQueryConsulta.FieldByName('CODIGO_COR').AsInteger > 0 then
       Begin
-        dmCadTabelaPreco.FDQueryTabela_Detalhe.FieldByName('COR_TAB_DET').AsInteger :=
+        dmCadTabelaPreco.QryTabela_Detalhe.FieldByName('COR_TAB_DET').AsInteger :=
             frmConsultaCor.FDQueryConsulta.FieldByName('CODIGO_COR').AsInteger;;
       End;
       FreeAndNil(frmConsultaCor);
@@ -213,7 +213,7 @@ begin
       frmConsultaGrade.ShowModal;
       if frmConsultaGrade.FDQueryConsulta.FieldByName('CODIGO_GRADE').AsInteger > 0 then
       Begin
-        dmCadTabelaPreco.FDQueryTabela_Detalhe.FieldByName('GRADE_TAB_DET').AsInteger :=
+        dmCadTabelaPreco.QryTabela_Detalhe.FieldByName('GRADE_TAB_DET').AsInteger :=
             frmConsultaGrade.FDQueryConsulta.FieldByName('CODIGO_GRADE').AsInteger;;
       End;
       FreeAndNil(frmConsultaGrade);
@@ -249,10 +249,10 @@ begin
 
   with dmCadTabelaPreco do
   begin
-    FDQueryPrincipal.Close;
-    FDQueryPrincipal.Open;
-    FDQueryTabela_Detalhe.Close;
-    FDQueryTabela_Detalhe.Open;
+    QryPrincipal.Close;
+    QryPrincipal.Open;
+    QryTabela_Detalhe.Close;
+    QryTabela_Detalhe.Open;
   end;
 
   with dmCadTabelaPreco do
@@ -264,7 +264,7 @@ end;
 procedure TfrmCadTabelaPreco.FormPaint(Sender: TObject);
 begin
   inherited;
-  JvCalcEditCodigo.AsInteger := fdmCadPai.FDQueryPrincipal.FieldByName(campochave).AsInteger
+  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger
 end;
 
 procedure TfrmCadTabelaPreco.FormShow(Sender: TObject);
@@ -272,9 +272,9 @@ begin
   inherited;
   with dmCadTabelaPreco do
   Begin
-    FDQueryTabela_Detalhe.FieldByName('ITEM_TAB_DET').OnValidate := Validate_Item;
-    FDQueryTabela_Detalhe.FieldByName('COR_TAB_DET').OnValidate := Validate_Cor;
-    FDQueryTabela_Detalhe.FieldByName('GRADE_TAB_DET').OnValidate := Validate_Grade;
+    QryTabela_Detalhe.FieldByName('ITEM_TAB_DET').OnValidate := Validate_Item;
+    QryTabela_Detalhe.FieldByName('COR_TAB_DET').OnValidate := Validate_Cor;
+    QryTabela_Detalhe.FieldByName('GRADE_TAB_DET').OnValidate := Validate_Grade;
   End;
 end;
 
@@ -282,8 +282,8 @@ procedure TfrmCadTabelaPreco.LimparCache(Sender: TObject);
 begin
   with dmCadTabelaPreco do
   Begin
-    FDQueryPrincipal.CommitUpdates();
-    FDQueryTabela_Detalhe.CommitUpdates();
+    QryPrincipal.CommitUpdates();
+    QryTabela_Detalhe.CommitUpdates();
   End;
 end;
 
@@ -298,10 +298,6 @@ begin
 //       Options    := [dgEditing, dgTitles, dgColLines, dgTabs, dgConfirmDelete, dgCancelOnExit];
     DataSource := dsItens;
     //Adiciona as Colunas na grid
-//    Columns.Add;
-//    Columns.Items[0].FieldName     := 'Pesquisar';
-//    Columns.Items[0].Title.Caption := 'Pesquisar';
-//    Columns.Items[0].ButtonStyle := cbsEllipsis;
     Columns.Add;
     Columns.Items[0].FieldName     := 'ITEM_TAB_DET';
     Columns.Items[0].Title.Caption := 'Cod. Item';

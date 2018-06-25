@@ -58,9 +58,6 @@ inherited frmMovReceber: TfrmMovReceber
         end>
     end
   end
-  inherited dsGrade: TDataSource
-    DataSet = dmCadFinanceiro.FDQueryDuplicata
-  end
   inherited FDQueryDuplicata: TFDQuery
     SQL.Strings = (
       'select '

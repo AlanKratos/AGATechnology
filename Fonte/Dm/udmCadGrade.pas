@@ -10,7 +10,7 @@ uses
 
 type
   TdmCadGrade = class(TdmCadPai)
-    FDQueryGradeDetalhe: TFDQuery;
+    QryGradeDetalhe: TFDQuery;
     procedure FDQueryPrincipalAfterInsert(DataSet: TDataSet);
     procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
     procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
@@ -32,7 +32,7 @@ implementation
 procedure TdmCadGrade.FDQueryPrincipalAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  with FDQueryPrincipal do
+  with QryPrincipal do
   Begin
     FieldByName('STATUS_GRADE').Value := 1;
   End;
@@ -50,7 +50,7 @@ end;
 procedure TdmCadGrade.FDQueryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
 end.

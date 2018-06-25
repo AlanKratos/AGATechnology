@@ -10,53 +10,53 @@ uses
 
 type
   TdmCadEmpresa = class(TdmCadPai)
-    FDQueryValidaCidade: TFDQuery;
-    FDQueryValidaUf: TFDQuery;
+    QryValidaCidade: TFDQuery;
+    QryValidaUf: TFDQuery;
     FDQueryPrincipalCODIGO_EMPRESA: TIntegerField;
-    FDQueryPrincipalRAZAOSOCIAL_EMPRESA: TStringField;
-    FDQueryPrincipalNOMEFANTASIA_EMPRESA: TStringField;
-    FDQueryPrincipalALIQAPROVEITAMENTOICMS_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQCOFINS_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQCST_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQIR_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQISSQN_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQJUROSBOLETA_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQJUROSBORDERO_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQJUROSCHEQUE_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQPIS_EMPRESA: TCurrencyField;
-    FDQueryPrincipalALIQSIMPLES_EMPRESA: TCurrencyField;
-    FDQueryPrincipalCONTACAIXA_EMPRESA: TIntegerField;
-    FDQueryPrincipalSUBSTITUICAO_EMPRESA: TStringField;
-    FDQueryPrincipalCRT_EMPRESA: TIntegerField;
-    FDQueryPrincipalCSOSN_EMPRESA: TIntegerField;
-    FDQueryPrincipalDATAINCLUSAO_EMPRESA: TSQLTimeStampField;
-    FDQueryPrincipalTIPOATIVIDADE_EMPRESA: TIntegerField;
-    FDQueryPrincipalDATAINICIOCONTINGENCIA_EMPRESA: TSQLTimeStampField;
-    FDQueryPrincipalMOTIVOCONTINGENCIA_EMPRESA: TStringField;
-    FDQueryPrincipalDATAFIMCONTINGENCIA_EMPRESA: TSQLTimeStampField;
-    FDQueryPrincipalLOGO_EMPRESA: TBlobField;
-    FDQueryPrincipalEMPRESAMATRIZ_EMPRESA: TIntegerField;
-    FDQueryPrincipalNATUREZAPESSOAJURIDICA_EMPRESA: TIntegerField;
-    FDQueryPrincipalOBSERVACAO_EMPRESA: TStringField;
-    FDQueryPrincipalSLOGAN_EMPRESA: TStringField;
-    FDQueryPrincipalENDERECO_EMPRESA: TStringField;
-    FDQueryPrincipalNUMERO_EMPRESA: TStringField;
-    FDQueryPrincipalCOMPLEMENTO_EMPRESA: TStringField;
-    FDQueryPrincipalCIDADE_EMPRESA: TIntegerField;
-    FDQueryPrincipalCSTPIS_EMPRESA: TIntegerField;
-    FDQueryPrincipalCSTCOFINS_EMPRESA: TIntegerField;
-    FDQueryPrincipalDESCRICAO_CIDADE: TStringField;
-    FDQueryPrincipalDESCRICAO_UF: TStringField;
-    FDQueryPrincipalSTATUS_EMPRESA: TIntegerField;
-    strngfldFDQueryPrincipalBAIRRO_EMPRESA: TStringField;
-    intgrfldFDQueryPrincipalUF_CIDADE: TIntegerField;
+    QryPrincipalRAZAOSOCIAL_EMPRESA: TStringField;
+    QryPrincipalNOMEFANTASIA_EMPRESA: TStringField;
+    QryPrincipalALIQAPROVEITAMENTOICMS_EMPRESA: TCurrencyField;
+    QryPrincipalALIQCOFINS_EMPRESA: TCurrencyField;
+    QryPrincipalALIQCST_EMPRESA: TCurrencyField;
+    QryPrincipalALIQIR_EMPRESA: TCurrencyField;
+    QryPrincipalALIQISSQN_EMPRESA: TCurrencyField;
+    QryPrincipalALIQJUROSBOLETA_EMPRESA: TCurrencyField;
+    QryPrincipalALIQJUROSBORDERO_EMPRESA: TCurrencyField;
+    QryPrincipalALIQJUROSCHEQUE_EMPRESA: TCurrencyField;
+    QryPrincipalALIQPIS_EMPRESA: TCurrencyField;
+    QryPrincipalALIQSIMPLES_EMPRESA: TCurrencyField;
+    QryPrincipalCONTACAIXA_EMPRESA: TIntegerField;
+    QryPrincipalSUBSTITUICAO_EMPRESA: TStringField;
+    QryPrincipalCRT_EMPRESA: TIntegerField;
+    QryPrincipalCSOSN_EMPRESA: TIntegerField;
+    QryPrincipalDATAINCLUSAO_EMPRESA: TSQLTimeStampField;
+    QryPrincipalTIPOATIVIDADE_EMPRESA: TIntegerField;
+    QryPrincipalDATAINICIOCONTINGENCIA_EMPRESA: TSQLTimeStampField;
+    QryPrincipalMOTIVOCONTINGENCIA_EMPRESA: TStringField;
+    QryPrincipalDATAFIMCONTINGENCIA_EMPRESA: TSQLTimeStampField;
+    QryPrincipalLOGO_EMPRESA: TBlobField;
+    QryPrincipalEMPRESAMATRIZ_EMPRESA: TIntegerField;
+    QryPrincipalNATUREZAPESSOAJURIDICA_EMPRESA: TIntegerField;
+    QryPrincipalOBSERVACAO_EMPRESA: TStringField;
+    QryPrincipalSLOGAN_EMPRESA: TStringField;
+    QryPrincipalENDERECO_EMPRESA: TStringField;
+    QryPrincipalNUMERO_EMPRESA: TStringField;
+    QryPrincipalCOMPLEMENTO_EMPRESA: TStringField;
+    QryPrincipalCIDADE_EMPRESA: TIntegerField;
+    QryPrincipalCSTPIS_EMPRESA: TIntegerField;
+    QryPrincipalCSTCOFINS_EMPRESA: TIntegerField;
+    QryPrincipalDESCRICAO_CIDADE: TStringField;
+    QryPrincipalDESCRICAO_UF: TStringField;
+    QryPrincipalSTATUS_EMPRESA: TIntegerField;
+    strngfldQryPrincipalBAIRRO_EMPRESA: TStringField;
+    intgrfldQryPrincipalUF_CIDADE: TIntegerField;
     FDSchemaAdapterEmpresa: TFDSchemaAdapter;
-    strngfldFDQueryPrincipalCNPJ_EMPRESA: TStringField;
-    strngfldFDQueryPrincipalIE_EMPRESA: TStringField;
+    strngfldQryPrincipalCNPJ_EMPRESA: TStringField;
+    strngfldQryPrincipalIE_EMPRESA: TStringField;
     procedure Validate_Cidade(Sender: TField);
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
-    procedure FDQueryPrincipalAfterInsert(DataSet: TDataSet);
+    procedure QryPrincipalBeforePost(DataSet: TDataSet);
+    procedure QryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryPrincipalAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -74,16 +74,16 @@ implementation
 
 { TdmCadEmpresa }
 
-procedure TdmCadEmpresa.FDQueryPrincipalAfterInsert(DataSet: TDataSet);
+procedure TdmCadEmpresa.QryPrincipalAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  with FDQueryPrincipal do
+  with QryPrincipal do
   Begin
     FieldByName('STATUS_EMPRESA').Value := 1;
   End;
 end;
 
-procedure TdmCadEmpresa.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadEmpresa.QryPrincipalBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -92,47 +92,47 @@ begin
       dmConexao.ProximoCodigo('EMPRESA')
 end;
 
-procedure TdmCadEmpresa.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadEmpresa.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
 procedure TdmCadEmpresa.Validate_Cidade(Sender: TField);
 begin
-  FDQueryValidaCidade.Close();
-  FDQueryValidaCidade.SQL.Text := 'select DESCRICAO_CIDADE, UF_CIDADE from CIDADE' +
+  QryValidaCidade.Close();
+  QryValidaCidade.SQL.Text := 'select DESCRICAO_CIDADE, UF_CIDADE from CIDADE' +
   ' where CIDADE.CODIGO_CIDADE = '+ IntToStr(Sender.AsInteger);
   try
-    FDQueryValidaCidade.Open();
+    QryValidaCidade.Open();
   Except
     On E:Exception do
     ShowMessage('Erro cidade: ' + E.Message);
   end;
-  if FDQueryValidaCidade.IsEmpty then
+  if QryValidaCidade.IsEmpty then
   begin
     MessageDlg('Campo código da cidade precisa ser preenchido!!', mtError, [mbOK],0);
     Abort;
   end
   else
-  FDQueryPrincipal.FieldByName('DESCRICAO_CIDADE').AsString := FDQueryValidaCidade.FieldByName('DESCRICAO_CIDADE').AsString;
+  QryPrincipal.FieldByName('DESCRICAO_CIDADE').AsString := QryValidaCidade.FieldByName('DESCRICAO_CIDADE').AsString;
 
-  FDQueryValidaUf.Close();
-  FDQueryValidaUf.SQL.Text := 'select DESCRICAO_UF from UF' +
-  ' where UF.CODIGO_UF = '+ FDQueryValidaCidade.FieldByName('UF_CIDADE').AsString;
+  QryValidaUf.Close();
+  QryValidaUf.SQL.Text := 'select DESCRICAO_UF from UF' +
+  ' where UF.CODIGO_UF = '+ QryValidaCidade.FieldByName('UF_CIDADE').AsString;
   try
-    FDQueryValidaUf.Open();
+    QryValidaUf.Open();
   Except
     On E:Exception do
     ShowMessage('Erro UF: ' + E.Message);
   end;
-  if FDQueryValidaCidade.IsEmpty then
+  if QryValidaCidade.IsEmpty then
   begin
     MessageDlg('UF não preenchido no cadastro da cidade!', mtError, [mbOK],0);
     Abort;
   end
   else
-  FDQueryPrincipal.FieldByName('DESCRICAO_UF').AsString := FDQueryValidaUf.FieldByName('DESCRICAO_UF').AsString
+  QryPrincipal.FieldByName('DESCRICAO_UF').AsString := QryValidaUf.FieldByName('DESCRICAO_UF').AsString
 end;
 
 end.

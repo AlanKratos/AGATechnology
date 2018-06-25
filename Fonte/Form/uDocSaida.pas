@@ -54,7 +54,7 @@ begin
     try
       with dmDocSaida do
       Begin
-        FDQueryPrincipal.Delete;
+        QryPrincipal.Delete;
         FDSchemaAdapterDocSaida.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -77,7 +77,7 @@ begin
     with dmDocSaida do
     begin
       FDSchemaAdapterDocSaida.ApplyUpdates(0);
-      JvCalcEditCodigo.Text := FDQueryPrincipal.FieldByName('CODIGO_DOC_SAIDA').AsString;
+      JvCalcEditCodigo.Text := QryPrincipal.FieldByName('CODIGO_DOC_SAIDA').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -105,8 +105,8 @@ begin
 
   with dmDocSaida do
   begin
-    FDQueryPrincipal.Close;
-    FDQueryPrincipal.Open;
+    QryPrincipal.Close;
+    QryPrincipal.Open;
   end;
   pcDocSaida.ActivePageIndex := 0;
 
@@ -120,8 +120,8 @@ procedure TfrmDocSaida.LimparCache(Sender: TObject);
 begin
   with dmDocSaida do
   Begin
-    FDQueryPrincipal.CommitUpdates();
-    FDQueryItens.CommitUpdates();
+    QryPrincipal.CommitUpdates();
+    QryItens.CommitUpdates();
   End;
 end;
 

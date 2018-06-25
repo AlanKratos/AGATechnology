@@ -2,7 +2,7 @@ inherited dmCadEmpresa: TdmCadEmpresa
   OldCreateOrder = True
   Height = 203
   Width = 329
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     AfterInsert = FDQueryPrincipalAfterInsert
     BeforePost = FDQueryPrincipalBeforePost
     OnNewRecord = FDQueryPrincipalNewRecord
@@ -253,18 +253,18 @@ inherited dmCadEmpresa: TdmCadEmpresa
       Size = 18
     end
   end
-  object FDQueryValidaCidade: TFDQuery
+  object QryValidaCidade: TFDQuery
     Connection = dmConexao.FDConexao
-    Left = 48
-    Top = 80
+    Left = 168
+    Top = 72
   end
-  object FDQueryValidaUf: TFDQuery
+  object QryValidaUf: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 168
     Top = 16
   end
   object FDSchemaAdapterEmpresa: TFDSchemaAdapter
-    Left = 168
-    Top = 80
+    Left = 240
+    Top = 136
   end
 end

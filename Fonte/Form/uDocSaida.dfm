@@ -2,14 +2,9 @@ inherited frmDocSaida: TfrmDocSaida
   Caption = 'frmDocSaida'
   OnClose = FormClose
   OnCreate = FormCreate
-  ExplicitWidth = 681
-  ExplicitHeight = 393
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelLeft: TPanel
-    inherited BitBtnSalvar: TSpeedButton
-      OnClick = BitBtnSalvarClick
-    end
     inherited BitBtnExcluir: TSpeedButton
       OnClick = BitBtnExcluirClick
     end
@@ -117,16 +112,12 @@ inherited frmDocSaida: TfrmDocSaida
     end
   end
   inherited dsCadastro: TDataSource
-    DataSet = dmDocSaida.FDQueryPrincipal
     Left = 288
-    Top = 0
   end
   inherited JvEnterAsTab1: TJvEnterAsTab
     Left = 208
-    Top = 0
   end
   object dsItens: TDataSource
-    DataSet = dmDocSaida.FDQueryItens
     Left = 560
   end
 end

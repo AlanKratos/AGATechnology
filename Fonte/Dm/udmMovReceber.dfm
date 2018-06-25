@@ -2,7 +2,7 @@ inherited dmMovReceber: TdmMovReceber
   OldCreateOrder = True
   Height = 204
   Width = 275
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     BeforePost = FDQueryPrincipalBeforePost
     OnNewRecord = FDQueryPrincipalNewRecord
     SQL.Strings = (

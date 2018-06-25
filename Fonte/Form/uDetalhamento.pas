@@ -103,18 +103,18 @@ procedure TfrmDetalhamento.FormCreate(Sender: TObject);
 begin
   with dmCadProduto do
   Begin
-    if FDQueryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'S' then
+    if QryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'S' then
     Begin
     //DBGrid Cor
-      FDQueryCor.close;
-      FDQueryCor.SQL.Clear;
-      FDQueryCor.SQL.Add('select COR.CODIGO_COR, COR.DESCRICAO_COR, ' +
+      QryCor.close;
+      QryCor.SQL.Clear;
+      QryCor.SQL.Add('select COR.CODIGO_COR, COR.DESCRICAO_COR, ' +
           'COR.ABREVIACAO_COR, COR.STATUS_COR ' +
           'from COR ' +
           'where not exists(select ITEM_COR.CODIGO_ITEM_COR from ITEM_COR ' +
           'where ITEM_COR.COR_ITEM_COR = COR.CODIGO_COR ' +
-          'and ITEM_COR.ITEM_ITEM_COR = ' + FDQueryPrincipal.FieldByName('CODIGO_ITEM').AsString + ')');
-      FDQueryCor.open;
+          'and ITEM_COR.ITEM_ITEM_COR = ' + QryPrincipal.FieldByName('CODIGO_ITEM').AsString + ')');
+      QryCor.open;
       cdsCor.DisableControls;
       cdsCor.Close;
       cdsCor.FieldDefs.Clear;
@@ -125,25 +125,25 @@ begin
       cdsCor.EnableControls;
       cdsCor.FieldByName('NomeCor').DisplayLabel := 'Cor';
       //fdqDaTela.Data := FDQueryCor.Data; Otimizacao
-      FDQueryCor.First;
-      while not FDQueryCor.Eof do
+      QryCor.First;
+      while not QryCor.Eof do
       Begin
         cdsCor.Insert;
-        cdsCor.FieldByName('CodigoCor').AsInteger := FDQueryCor.FieldByName('CODIGO_COR').AsInteger;
-        cdsCor.FieldByName('NomeCor').AsString := FDQueryCor.FieldByName('DESCRICAO_COR').AsString;
+        cdsCor.FieldByName('CodigoCor').AsInteger := QryCor.FieldByName('CODIGO_COR').AsInteger;
+        cdsCor.FieldByName('NomeCor').AsString := QryCor.FieldByName('DESCRICAO_COR').AsString;
         cdsCor.Post;
-        FDQueryCor.Next;
+        QryCor.Next;
       End;
       dsCor.DataSet := cdsCor;
       //DBGrid ItemCor
-      FDQueryItemCor.Close;
-      FDQueryItemCor.SQL.Clear;
-      FDQueryItemCor.SQL.Add('select ITEM_COR.CODIGO_ITEM_COR, ITEM_COR.ITEM_ITEM_COR, ' +
+      QryItemCor.Close;
+      QryItemCor.SQL.Clear;
+      QryItemCor.SQL.Add('select ITEM_COR.CODIGO_ITEM_COR, ITEM_COR.ITEM_ITEM_COR, ' +
           'ITEM_COR.COR_ITEM_COR, COR.DESCRICAO_COR ' +
           'from ITEM_COR ' +
           'left join COR on (COR.CODIGO_COR = ITEM_COR.COR_ITEM_COR) ' +
-          'where ITEM_COR.ITEM_ITEM_COR = ' + FDQueryPrincipal.FieldByName('CODIGO_ITEM').AsString);
-      FDQueryItemCor.Open;
+          'where ITEM_COR.ITEM_ITEM_COR = ' + QryPrincipal.FieldByName('CODIGO_ITEM').AsString);
+      QryItemCor.Open;
 
       cdsItemCor.DisableControls;
       cdsItemCor.Close;
@@ -156,14 +156,14 @@ begin
       cdsItemCor.FieldByName('NomeItemCor').DisplayLabel := 'Cor Selecionada';
       //fdqDaTela.Data := FDQueryCor.Data; Otimizacao
 
-      FDQueryItemCor.First;
-      while not FDQueryItemCor.Eof do
+      QryItemCor.First;
+      while not QryItemCor.Eof do
       Begin
         cdsItemCor.Insert;
-        cdsItemCor.FieldByName('CodigoItemCor').AsInteger := FDQueryItemCor.FieldByName('COR_ITEM_COR').AsInteger;
-        cdsItemCor.FieldByName('NomeItemCor').AsString := FDQueryItemCor.FieldByName('DESCRICAO_COR').AsString;
+        cdsItemCor.FieldByName('CodigoItemCor').AsInteger := QryItemCor.FieldByName('COR_ITEM_COR').AsInteger;
+        cdsItemCor.FieldByName('NomeItemCor').AsString := QryItemCor.FieldByName('DESCRICAO_COR').AsString;
         cdsItemCor.Post;
-        FDQueryItemCor.Next;
+        QryItemCor.Next;
       End;
       dsItemCor.DataSet := cdsItemCor;
 
@@ -180,18 +180,18 @@ begin
       lCoresSelecionadas.Visible := False;
     End;
 
-    if FDQueryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'S'  then
+    if QryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'S'  then
     Begin
       //DBGrid Grade
-      FDQueryGrade.close;
-      FDQueryGrade.sql.Clear;
-      FDQueryGrade.sql.Add('select GRADE.CODIGO_GRADE, GRADE.DESCRICAO_GRADE, ' +
+      QryGrade.close;
+      QryGrade.sql.Clear;
+      QryGrade.sql.Add('select GRADE.CODIGO_GRADE, GRADE.DESCRICAO_GRADE, ' +
           'GRADE.STATUS_GRADE ' +
           'from GRADE ' +
           'where not exists(select ITEM_GRADE.CODIGO_ITEM_GRADE from ITEM_GRADE ' +
                  'where ITEM_GRADE.GRADE_ITEM_GRADE = GRADE.CODIGO_GRADE ' +
-                 'and ITEM_GRADE.ITEM_ITEM_GRADE = ' + FDQueryPrincipal.FieldByName('CODIGO_ITEM').AsString + ')');
-      FDQueryGrade.open;
+                 'and ITEM_GRADE.ITEM_ITEM_GRADE = ' + QryPrincipal.FieldByName('CODIGO_ITEM').AsString + ')');
+      QryGrade.open;
       cdsGrade.DisableControls;
       cdsGrade.Close;
       cdsGrade.FieldDefs.Clear;
@@ -201,26 +201,26 @@ begin
       cdsGrade.Open;
       cdsGrade.EnableControls;
       cdsGrade.FieldByName('NomeGrade').DisplayLabel := 'Grade';
-      FDQueryGrade.First;
-      while not FDQueryGrade.Eof do
+      QryGrade.First;
+      while not QryGrade.Eof do
       Begin
         cdsGrade.Insert;
-        cdsGrade.FieldByName('CodigoGrade').AsInteger := FDQueryGrade.FieldByName('CODIGO_GRADE').AsInteger;
-        cdsGrade.FieldByName('NomeGrade').AsString := FDQueryGrade.FieldByName('DESCRICAO_GRADE').AsString;
+        cdsGrade.FieldByName('CodigoGrade').AsInteger := QryGrade.FieldByName('CODIGO_GRADE').AsInteger;
+        cdsGrade.FieldByName('NomeGrade').AsString := QryGrade.FieldByName('DESCRICAO_GRADE').AsString;
         cdsGrade.Post;
-        FDQueryGrade.Next;
+        QryGrade.Next;
       End;
       dsGrade.DataSet := cdsGrade;
 
       //DBGrid ItemGrade
-      FDQueryItemGrade.Close;
-      FDQueryItemGrade.sql.Clear;
-      FDQueryItemGrade.sql.Add('select ITEM_GRADE.CODIGO_ITEM_GRADE, ITEM_GRADE.ITEM_ITEM_GRADE, ' +
+      QryItemGrade.Close;
+      QryItemGrade.sql.Clear;
+      QryItemGrade.sql.Add('select ITEM_GRADE.CODIGO_ITEM_GRADE, ITEM_GRADE.ITEM_ITEM_GRADE, ' +
           'ITEM_GRADE.GRADE_ITEM_GRADE, GRADE.DESCRICAO_GRADE ' +
           'from ITEM_GRADE ' +
           'left join GRADE on (GRADE.CODIGO_GRADE = ITEM_GRADE.GRADE_ITEM_GRADE) ' +
-          'where ITEM_GRADE.ITEM_ITEM_GRADE = ' + FDQueryPrincipal.FieldByName('CODIGO_ITEM').AsString);
-      FDQueryItemGrade.Open;
+          'where ITEM_GRADE.ITEM_ITEM_GRADE = ' + QryPrincipal.FieldByName('CODIGO_ITEM').AsString);
+      QryItemGrade.Open;
       cdsItemGrade.DisableControls;
       cdsItemGrade.Close;
       cdsItemGrade.FieldDefs.Clear;
@@ -230,14 +230,14 @@ begin
       cdsItemGrade.Open;
       cdsItemGrade.EnableControls;
       cdsItemGrade.FieldByName('NomeItemGrade').DisplayLabel := 'Grade Selecionada';
-      FDQueryItemGrade.First;
-      while not FDQueryItemGrade.Eof do
+      QryItemGrade.First;
+      while not QryItemGrade.Eof do
       Begin
         cdsItemGrade.Insert;
-        cdsItemGrade.FieldByName('CodigoItemGrade').AsInteger := FDQueryItemGrade.FieldByName('GRADE_ITEM_GRADE').AsInteger;
-        cdsItemGrade.FieldByName('NomeItemGrade').AsString := FDQueryItemGrade.FieldByName('DESCRICAO_GRADE').AsString;
+        cdsItemGrade.FieldByName('CodigoItemGrade').AsInteger := QryItemGrade.FieldByName('GRADE_ITEM_GRADE').AsInteger;
+        cdsItemGrade.FieldByName('NomeItemGrade').AsString := QryItemGrade.FieldByName('DESCRICAO_GRADE').AsString;
         cdsItemGrade.Post;
-        FDQueryItemGrade.Next;
+        QryItemGrade.Next;
       End;
       dsItemGrade.DataSet := cdsItemGrade;
 
@@ -282,30 +282,30 @@ begin
   //Item Detalhe
     with dmCadProduto do
     Begin
-      FDQueryItemDetalhe.Insert;
-      FDQueryItemDetalhe.FieldByName('COR_ITEM_DETALHE').AsInteger :=
+      QryItemDetalhe.Insert;
+      QryItemDetalhe.FieldByName('COR_ITEM_DETALHE').AsInteger :=
           cdsCombinacao.FieldByName('CodCorComb').AsInteger;
-      FDQueryItemDetalhe.FieldByName('DESCRICAO_COR').AsString :=
+      QryItemDetalhe.FieldByName('DESCRICAO_COR').AsString :=
           cdsCombinacao.FieldByName('NomeCorComb').AsString;
-      FDQueryItemDetalhe.FieldByName('GRADE_ITEM_DETALHE').AsInteger :=
+      QryItemDetalhe.FieldByName('GRADE_ITEM_DETALHE').AsInteger :=
           cdsCombinacao.FieldByName('CodGradeComb').AsInteger;
-      FDQueryItemDetalhe.FieldByName('DESCRICAO_GRADE').AsString :=
+      QryItemDetalhe.FieldByName('DESCRICAO_GRADE').AsString :=
           cdsCombinacao.FieldByName('NomeGradeComb').AsString;
-      FDQueryItemDetalhe.FieldByName('STATUS_ITEM_DETALHE').AsInteger := 1;
+      QryItemDetalhe.FieldByName('STATUS_ITEM_DETALHE').AsInteger := 1;
     End;
     cdsCombinacao.Next;
   End;
 
   //Item Cor
-  if (dmCadProduto.FDQueryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'S') then
+  if (dmCadProduto.QryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'S') then
   Begin
     cdsItemCor.First;
     while not cdsItemCor.Eof do
     Begin
-      dmCadProduto.FDQueryItemCor.First;
-      while not dmCadProduto.FDQueryItemCor.Eof do
+      dmCadProduto.QryItemCor.First;
+      while not dmCadProduto.QryItemCor.Eof do
       Begin
-        if (dmCadProduto.FDQueryItemCor.FieldByName('COR_ITEM_COR').AsInteger =
+        if (dmCadProduto.QryItemCor.FieldByName('COR_ITEM_COR').AsInteger =
                cdsItemCor.FieldByName('CodigoItemCor').AsInteger) then
         Begin
           LogicoCor := False;
@@ -315,14 +315,14 @@ begin
         Begin
           LogicoCor := True;
         End;
-        dmCadProduto.FDQueryItemCor.Next;
+        dmCadProduto.QryItemCor.Next;
       End;
       if LogicoCor then
       Begin
-        dmCadProduto.FDQueryItemCor.Insert;
-        dmCadProduto.FDQueryItemCor.FieldByName('ITEM_ITEM_COR').AsInteger :=
-                     dmCadProduto.FDQueryPrincipal.FieldByName('CODIGO_ITEM').AsInteger;
-        dmCadProduto.FDQueryItemCor.FieldByName('COR_ITEM_COR').AsInteger :=
+        dmCadProduto.QryItemCor.Insert;
+        dmCadProduto.QryItemCor.FieldByName('ITEM_ITEM_COR').AsInteger :=
+                     dmCadProduto.QryPrincipal.FieldByName('CODIGO_ITEM').AsInteger;
+        dmCadProduto.QryItemCor.FieldByName('COR_ITEM_COR').AsInteger :=
                      cdsItemCor.FieldByName('CodigoItemCor').AsInteger;
       End;
       cdsItemCor.Next;
@@ -330,15 +330,15 @@ begin
   End;
 
   //Item Grade
-  if (dmCadProduto.FDQueryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'S') then
+  if (dmCadProduto.QryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'S') then
   Begin
     cdsItemGrade.First;
     while not cdsItemGrade.Eof do
     Begin
-      dmCadProduto.FDQueryItemGrade.First;
-      while not dmCadProduto.FDQueryItemGrade.Eof do
+      dmCadProduto.QryItemGrade.First;
+      while not dmCadProduto.QryItemGrade.Eof do
       Begin
-        if (dmCadProduto.FDQueryItemGrade.FieldByName('GRADE_ITEM_GRADE').AsInteger =
+        if (dmCadProduto.QryItemGrade.FieldByName('GRADE_ITEM_GRADE').AsInteger =
                          cdsItemGrade.FieldByName('CodigoItemGrade').AsInteger) then
         Begin
           LogicoGrade := False;
@@ -348,14 +348,14 @@ begin
         Begin
           LogicoGrade := True;
         End;
-        dmCadProduto.FDQueryItemGrade.Next;
+        dmCadProduto.QryItemGrade.Next;
       End;
       if LogicoGrade then
       Begin
-        dmCadProduto.FDQueryItemGrade.Insert;
-        dmCadProduto.FDQueryItemGrade.FieldByName('ITEM_ITEM_GRADE').AsInteger :=
-                     dmCadProduto.FDQueryPrincipal.FieldByName('CODIGO_ITEM').AsInteger;
-        dmCadProduto.FDQueryItemGrade.FieldByName('GRADE_ITEM_GRADE').AsInteger :=
+        dmCadProduto.QryItemGrade.Insert;
+        dmCadProduto.QryItemGrade.FieldByName('ITEM_ITEM_GRADE').AsInteger :=
+                     dmCadProduto.QryPrincipal.FieldByName('CODIGO_ITEM').AsInteger;
+        dmCadProduto.QryItemGrade.FieldByName('GRADE_ITEM_GRADE').AsInteger :=
                      cdsItemGrade.FieldByName('CodigoItemGrade').AsInteger;
       End;
       cdsItemGrade.Next;
@@ -391,8 +391,8 @@ begin
   cdsCombinacao.FieldByName('NomeGradeComb').DisplayLabel := 'Grade';
 
   //Varrendo as dbgrid de ItemCor e ItemGrade
-  if (dmCadProduto.FDQueryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'S') and
-      (dmCadProduto.FDQueryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'S') then
+  if (dmCadProduto.QryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'S') and
+      (dmCadProduto.QryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'S') then
   Begin
     cdsItemCor.First;
     while not cdsItemCor.Eof do
@@ -400,14 +400,14 @@ begin
       cdsItemGrade.First;
       while not cdsItemGrade.Eof do
       Begin
-        dmCadProduto.FDQueryItemDetalhe.First;
-        if not(dmCadProduto.FDQueryItemDetalhe.IsEmpty) then
+        dmCadProduto.QryItemDetalhe.First;
+        if not(dmCadProduto.QryItemDetalhe.IsEmpty) then
         Begin
-          while not dmCadProduto.FDQueryItemDetalhe.Eof do
+          while not dmCadProduto.QryItemDetalhe.Eof do
           Begin
-            if (dmCadProduto.FDQueryItemDetalhe.FieldByName('COR_ITEM_DETALHE').AsInteger =
+            if (dmCadProduto.QryItemDetalhe.FieldByName('COR_ITEM_DETALHE').AsInteger =
                 cdsItemCor.FieldByName('CodigoItemCor').AsInteger) and
-               (dmCadProduto.FDQueryItemDetalhe.FieldByName('GRADE_ITEM_DETALHE').AsInteger =
+               (dmCadProduto.QryItemDetalhe.FieldByName('GRADE_ITEM_DETALHE').AsInteger =
                  cdsItemGrade.FieldByName('CodigoItemGrade').AsInteger) then
             Begin
             Logico := False;
@@ -417,7 +417,7 @@ begin
             Begin
               Logico := True;
             End;
-            dmCadProduto.FDQueryItemDetalhe.Next;
+            dmCadProduto.QryItemDetalhe.Next;
           End;
           if Logico then
           Begin
@@ -440,18 +440,18 @@ begin
     End;
   End;
 
-  if (dmCadProduto.FDQueryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'S') and
-      (dmCadProduto.FDQueryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'N') then
+  if (dmCadProduto.QryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'S') and
+      (dmCadProduto.QryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'N') then
   Begin
     cdsItemCor.First;
     while not cdsItemCor.Eof do
     Begin
-      dmCadProduto.FDQueryItemCor.First;
-      if not(dmCadProduto.FDQueryItemCor.IsEmpty) then
+      dmCadProduto.QryItemCor.First;
+      if not(dmCadProduto.QryItemCor.IsEmpty) then
       Begin
-        while not dmCadProduto.FDQueryItemCor.Eof do
+        while not dmCadProduto.QryItemCor.Eof do
         Begin
-          if (dmCadProduto.FDQueryItemCor.FieldByName('COR_ITEM_COR').AsInteger =
+          if (dmCadProduto.QryItemCor.FieldByName('COR_ITEM_COR').AsInteger =
                   cdsItemCor.FieldByName('CodigoItemCor').AsInteger) then
           else
           Begin
@@ -460,7 +460,7 @@ begin
                                 0,
                                 '');
           End;
-          dmCadProduto.FDQueryItemCor.Next;
+          dmCadProduto.QryItemCor.Next;
         End;
 //        cdsItemCor.Next;
       End
@@ -475,18 +475,18 @@ begin
     End;
   End;
 
-  if (dmCadProduto.FDQueryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'N') and
-      (dmCadProduto.FDQueryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'S') then
+  if (dmCadProduto.QryPrincipal.FieldByName('CONTROLACOR_ITEM').AsString = 'N') and
+      (dmCadProduto.QryPrincipal.FieldByName('CONTROLAGRADE_ITEM').AsString = 'S') then
   Begin
     cdsItemGrade.First;
     while not cdsItemGrade.Eof do
     Begin
-      dmCadProduto.FDQueryItemGrade.First;
-      if not(dmCadProduto.FDQueryItemGrade.IsEmpty) then
+      dmCadProduto.QryItemGrade.First;
+      if not(dmCadProduto.QryItemGrade.IsEmpty) then
       Begin
-        while not dmCadProduto.FDQueryItemGrade.Eof do
+        while not dmCadProduto.QryItemGrade.Eof do
         Begin
-          if (dmCadProduto.FDQueryItemGrade.FieldByName('GRADE_ITEM_GRADE').AsInteger =
+          if (dmCadProduto.QryItemGrade.FieldByName('GRADE_ITEM_GRADE').AsInteger =
                   cdsItemGrade.FieldByName('CodigoItemGrade').AsInteger) then
           else
           Begin
@@ -495,7 +495,7 @@ begin
                                 cdsItemGrade.FieldByName('CodigoItemGrade').AsInteger,
                                 cdsItemGrade.FieldByName('NomeItemGrade').AsString);
           End;
-          dmCadProduto.FDQueryItemGrade.Next;
+          dmCadProduto.QryItemGrade.Next;
         End;
       End
       Else

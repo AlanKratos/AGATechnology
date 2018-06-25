@@ -10,7 +10,7 @@ uses
 
 type
   TdmDocSaida = class(TdmCadPai)
-    FDQueryItens: TFDQuery;
+    QryItens: TFDQuery;
     dsMaster: TDataSource;
     FDSchemaAdapterDocSaida: TFDSchemaAdapter;
     FDQueryPrincipalCODIGO_DOC_SAIDA: TIntegerField;
@@ -20,10 +20,10 @@ type
     FDQueryPrincipalNOME_PESSOA: TStringField;
     procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
     procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
-    procedure FDQueryItensBeforeInsert(DataSet: TDataSet);
-    procedure FDQueryItensBeforeEdit(DataSet: TDataSet);
-    procedure FDQueryItensBeforePost(DataSet: TDataSet);
-    procedure FDQueryItensNewRecord(DataSet: TDataSet);
+    procedure QryItensBeforeInsert(DataSet: TDataSet);
+    procedure QryItensBeforeEdit(DataSet: TDataSet);
+    procedure QryItensBeforePost(DataSet: TDataSet);
+    procedure QryItensNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -39,7 +39,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TdmDocSaida.FDQueryItensBeforeEdit(DataSet: TDataSet);
+procedure TdmDocSaida.QryItensBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
 //  with FDQueryPrincipal do
@@ -49,15 +49,15 @@ begin
 //  End;
 end;
 
-procedure TdmDocSaida.FDQueryItensBeforeInsert(DataSet: TDataSet);
+procedure TdmDocSaida.QryItensBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-    if FDQueryPrincipal.State = dsInsert then
-    FDQueryPrincipal.Post;
-    FDQueryPrincipal.Edit;
+    if QryPrincipal.State = dsInsert then
+    QryPrincipal.Post;
+    QryPrincipal.Edit;
 end;
 
-procedure TdmDocSaida.FDQueryItensBeforePost(DataSet: TDataSet);
+procedure TdmDocSaida.QryItensBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -66,11 +66,11 @@ begin
       dmConexao.ProximoCodigo('DOCUMENTO_SAIDA_ITEM');
 end;
 
-procedure TdmDocSaida.FDQueryItensNewRecord(DataSet: TDataSet);
+procedure TdmDocSaida.QryItensNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('DOCUMENTO_DOC_SAIDA_ITEM').AsInteger :=
-    FDQueryPrincipal.FieldByName('DOCUMENTO_SAIDA').AsInteger;
+    QryPrincipal.FieldByName('DOCUMENTO_SAIDA').AsInteger;
 end;
 
 procedure TdmDocSaida.FDQueryPrincipalBeforePost(DataSet: TDataSet);
@@ -85,7 +85,7 @@ end;
 procedure TdmDocSaida.FDQueryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
 end.

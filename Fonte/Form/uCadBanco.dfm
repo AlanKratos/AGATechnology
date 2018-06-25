@@ -108,9 +108,6 @@ inherited frmCadBanco: TfrmCadBanco
       TabOrder = 3
     end
   end
-  inherited dsCadastro: TDataSource
-    DataSet = dmCadBanco.FDQueryPrincipal
-  end
   object OpenPictureDialog1: TOpenPictureDialog
     Filter = 
       'All (*.gif;*.cur;*.pcx;*.ani;*.png_old;*.gif;*.png;*.jpg;*.jpeg;' +

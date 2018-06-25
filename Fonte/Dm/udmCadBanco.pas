@@ -10,18 +10,18 @@ uses
 
 type
   TdmCadBanco = class(TdmCadPai)
-    FDQueryPrincipalCODIGO_BANCO: TIntegerField;
-    FDQueryPrincipalDESCRICAO_BANCO: TStringField;
-    FDQueryPrincipalCAMARACOMPENSACAO_BANCO: TIntegerField;
-    FDQueryPrincipalLOGO_BANCO: TBlobField;
-    FDQueryPrincipalSTATUS_BANCO: TIntegerField;
-    FDQueryPrincipalINCLUSAO_BANCO: TSQLTimeStampField;
-    FDQueryPrincipalALTERACAO_BANCO: TSQLTimeStampField;
-    FDQueryPrincipalUSUARIOINCLUSAO_BANCO: TStringField;
-    FDQueryPrincipalUSUARIOALTERACAO_BANCO: TStringField;
+    QryPrincipalCODIGO_BANCO: TIntegerField;
+    QryPrincipalDESCRICAO_BANCO: TStringField;
+    QryPrincipalCAMARACOMPENSACAO_BANCO: TIntegerField;
+    QryPrincipalLOGO_BANCO: TBlobField;
+    QryPrincipalSTATUS_BANCO: TIntegerField;
+    QryPrincipalINCLUSAO_BANCO: TSQLTimeStampField;
+    QryPrincipalALTERACAO_BANCO: TSQLTimeStampField;
+    QryPrincipalUSUARIOINCLUSAO_BANCO: TStringField;
+    QryPrincipalUSUARIOALTERACAO_BANCO: TStringField;
     FDSchemaAdapterBanco: TFDSchemaAdapter;
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryPrincipalBeforePost(DataSet: TDataSet);
+    procedure QryPrincipalNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -37,7 +37,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TdmCadBanco.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadBanco.QryPrincipalBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -47,10 +47,10 @@ begin
 
 end;
 
-procedure TdmCadBanco.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadBanco.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
 end.

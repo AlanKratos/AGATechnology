@@ -81,8 +81,8 @@ begin
 
   with dmDocEntrada do
   begin
-    FDQueryPrincipal.Close;
-    FDQueryPrincipal.Open;
+    QryPrincipal.Close;
+    QryPrincipal.Open;
   end;
 end;
 

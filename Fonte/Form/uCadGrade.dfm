@@ -2,8 +2,6 @@ inherited frmCadGrade: TfrmCadGrade
   Caption = 'Cadastro de Grade'
   OnClose = FormClose
   OnCreate = FormCreate
-  ExplicitWidth = 681
-  ExplicitHeight = 393
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelLeft: TPanel
@@ -33,8 +31,5 @@ inherited frmCadGrade: TfrmCadGrade
       DataSource = dsCadastro
       TabOrder = 0
     end
-  end
-  inherited dsCadastro: TDataSource
-    DataSet = dmCadGrade.FDQueryPrincipal
   end
 end

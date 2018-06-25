@@ -1,7 +1,8 @@
 inherited dmDocEntrada: TdmDocEntrada
+  OldCreateOrder = True
   Height = 252
   Width = 399
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     SQL.Strings = (
       'select '
       '    DOCUMENTO_ENTRADA_ITEM.VALOR_DOC_ENT_ITEM,'

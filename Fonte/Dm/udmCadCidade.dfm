@@ -2,9 +2,7 @@ inherited dmCadCidade: TdmCadCidade
   OldCreateOrder = True
   Height = 275
   Width = 454
-  inherited FDQueryPrincipal: TFDQuery
-    BeforePost = FDQueryPrincipalBeforePost
-    OnNewRecord = FDQueryPrincipalNewRecord
+  inherited QryPrincipal: TFDQuery
     CachedUpdates = True
     SchemaAdapter = FDSchemaAdapterCidade
     SQL.Strings = (
@@ -72,7 +70,7 @@ inherited dmCadCidade: TdmCadCidade
       ReadOnly = True
     end
   end
-  object FDQueryValidaUf: TFDQuery
+  object QryValidaUf: TFDQuery
     Connection = dmConexao.FDConexao
     FetchOptions.AssignedValues = [evDetailCascade]
     Left = 80
@@ -82,7 +80,7 @@ inherited dmCadCidade: TdmCadCidade
     Left = 208
     Top = 48
   end
-  object FDQueryValidaSIGLAUF: TFDQuery
+  object QryValidaSIGLAUF: TFDQuery
     Connection = dmConexao.FDConexao
     FetchOptions.AssignedValues = [evDetailCascade]
     Left = 208

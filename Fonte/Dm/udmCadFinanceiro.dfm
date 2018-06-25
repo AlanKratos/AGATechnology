@@ -2,7 +2,7 @@ inherited dmCadFinanceiro: TdmCadFinanceiro
   OldCreateOrder = True
   Height = 210
   Width = 288
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     BeforePost = FDQueryPrincipalBeforePost
     SQL.Strings = (
       'select '

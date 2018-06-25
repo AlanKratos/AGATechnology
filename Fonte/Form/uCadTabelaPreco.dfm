@@ -4,7 +4,6 @@ inherited frmCadTabelaPreco: TfrmCadTabelaPreco
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  ExplicitWidth = 681
   ExplicitHeight = 446
   PixelsPerInch = 96
   TextHeight = 13
@@ -33,6 +32,10 @@ inherited frmCadTabelaPreco: TfrmCadTabelaPreco
       TabOrder = 0
       object tsPrincipal: TTabSheet
         Caption = 'Principal'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label2: TLabel
           Left = 0
           Top = 3
@@ -79,6 +82,10 @@ inherited frmCadTabelaPreco: TfrmCadTabelaPreco
       object tsItem: TTabSheet
         Caption = 'Itens'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgItens: TJvDBGrid
           Left = 0
           Top = 84
@@ -107,14 +114,12 @@ inherited frmCadTabelaPreco: TfrmCadTabelaPreco
     end
   end
   inherited dsCadastro: TDataSource
-    DataSet = dmCadTabelaPreco.FDQueryPrincipal
     Left = 256
   end
   inherited JvEnterAsTab1: TJvEnterAsTab
     Left = 176
   end
   object dsItens: TDataSource
-    DataSet = dmCadTabelaPreco.FDQueryTabela_Detalhe
     Left = 560
   end
 end

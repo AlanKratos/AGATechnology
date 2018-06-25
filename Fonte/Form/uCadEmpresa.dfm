@@ -4,6 +4,8 @@ inherited frmCadEmpresa: TfrmCadEmpresa
   OnCreate = FormCreate
   OnPaint = nil
   OnShow = FormShow
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelLeft: TPanel
@@ -43,6 +45,10 @@ inherited frmCadEmpresa: TfrmCadEmpresa
       TabOrder = 0
       object tsPrincipal: TTabSheet
         Caption = 'Principal'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label4: TLabel
           Left = 1
           Top = 1
@@ -216,6 +222,10 @@ inherited frmCadEmpresa: TfrmCadEmpresa
       object tsEmpresa: TTabSheet
         Caption = 'Empresa'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object JvCaptionPanel1: TJvCaptionPanel
           Left = 0
           Top = 1
@@ -431,6 +441,10 @@ inherited frmCadEmpresa: TfrmCadEmpresa
       object tsLogomarca: TTabSheet
         Caption = 'Logomarca'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object sbExcluir: TSpeedButton
           Left = 3
           Top = 39
@@ -479,9 +493,6 @@ inherited frmCadEmpresa: TfrmCadEmpresa
       DataSource = dsCadastro
       TabOrder = 2
     end
-  end
-  inherited dsCadastro: TDataSource
-    DataSet = dmCadEmpresa.FDQueryPrincipal
   end
   object OpenPictureDialog1: TOpenPictureDialog
     Filter = 

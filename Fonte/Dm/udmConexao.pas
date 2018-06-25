@@ -15,7 +15,7 @@ type
     FDConexao: TFDConnection;
     FDPhysFBDriverLink: TFDPhysFBDriverLink;
     FDGUIxWaitCursor: TFDGUIxWaitCursor;
-    FDQueryProximoCodigo: TFDQuery;
+    QryProximoCodigo: TFDQuery;
     FDTransactionProximoCodigo: TFDTransaction;
   private
     { Private declarations }
@@ -37,7 +37,7 @@ implementation
 
 function TdmConexao.ProximoCodigo(ATabela: String): Int64;
 begin
-  with FDQueryProximoCodigo do
+  with QryProximoCodigo do
   begin
     if not Transaction.Active then
       Transaction.StartTransaction;

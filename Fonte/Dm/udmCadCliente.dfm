@@ -2,14 +2,14 @@ inherited dmCadCliente: TdmCadCliente
   OldCreateOrder = True
   Height = 355
   Width = 330
-  inherited FDQueryPrincipal: TFDQuery
-    AfterInsert = FDQueryPrincipalAfterInsert
-    BeforePost = FDQueryPrincipalBeforePost
+  inherited QryPrincipal: TFDQuery
+    AfterInsert = QryPrincipalAfterInsert
+    BeforePost = QryPrincipalBeforePost
     AfterPost = nil
-    OnNewRecord = FDQueryPrincipalNewRecord
+    OnNewRecord = QryPrincipalNewRecord
     CachedUpdates = True
     ConstraintsEnabled = True
-    OnReconcileError = FDQueryPrincipalReconcileError
+    OnReconcileError = QryPrincipalReconcileError
     SchemaAdapter = FDSchemaAdapterCliente
     FetchOptions.AssignedValues = [evDetailCascade]
     FetchOptions.DetailCascade = False
@@ -42,79 +42,79 @@ inherited dmCadCliente: TdmCadCliente
         ParamType = ptInput
         Value = Null
       end>
-    object FDQueryPrincipalCODIGO_PESSOA: TIntegerField
+    object QryPrincipalCODIGO_PESSOA: TIntegerField
       FieldName = 'CODIGO_PESSOA'
       Origin = 'CODIGO_PESSOA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object FDQueryPrincipalNOME_PESSOA: TStringField
+    object QryPrincipalNOME_PESSOA: TStringField
       FieldName = 'NOME_PESSOA'
       Origin = 'NOME_PESSOA'
       Size = 100
     end
-    object FDQueryPrincipalFANTASIA_PESSOA: TStringField
+    object QryPrincipalFANTASIA_PESSOA: TStringField
       FieldName = 'FANTASIA_PESSOA'
       Origin = 'FANTASIA_PESSOA'
       Size = 100
     end
-    object FDQueryPrincipalTIPO_PESSOA: TIntegerField
+    object QryPrincipalTIPO_PESSOA: TIntegerField
       FieldName = 'TIPO_PESSOA'
       Origin = 'TIPO_PESSOA'
       Required = True
     end
-    object FDQueryPrincipalOBSERVACAO_PESSOA: TStringField
+    object QryPrincipalOBSERVACAO_PESSOA: TStringField
       FieldName = 'OBSERVACAO_PESSOA'
       Origin = 'OBSERVACAO_PESSOA'
       Size = 500
     end
-    object FDQueryPrincipalSTATUS_PESSOA: TIntegerField
+    object QryPrincipalSTATUS_PESSOA: TIntegerField
       FieldName = 'STATUS_PESSOA'
       Origin = 'STATUS_PESSOA'
       Required = True
     end
-    object FDQueryPrincipalCLIENTE_PESSOA: TStringField
+    object QryPrincipalCLIENTE_PESSOA: TStringField
       FieldName = 'CLIENTE_PESSOA'
       Origin = 'CLIENTE_PESSOA'
       Required = True
       Size = 1
     end
-    object FDQueryPrincipalCNPJ_PESSOA: TStringField
+    object QryPrincipalCNPJ_PESSOA: TStringField
       FieldName = 'CNPJ_PESSOA'
       Origin = 'CNPJ_PESSOA'
       Size = 18
     end
-    object FDQueryPrincipalIE_PESSOA: TStringField
+    object QryPrincipalIE_PESSOA: TStringField
       FieldName = 'IE_PESSOA'
       Origin = 'IE_PESSOA'
       Size = 18
     end
-    object FDQueryPrincipalCPF_PESSOA: TStringField
+    object QryPrincipalCPF_PESSOA: TStringField
       FieldName = 'CPF_PESSOA'
       Origin = 'CPF_PESSOA'
       Size = 14
     end
-    object FDQueryPrincipalRG_PESSOA: TStringField
+    object QryPrincipalRG_PESSOA: TStringField
       FieldName = 'RG_PESSOA'
       Origin = 'RG_PESSOA'
     end
-    object FDQueryPrincipalFORNECEDOR_PESSOA: TStringField
+    object QryPrincipalFORNECEDOR_PESSOA: TStringField
       FieldName = 'FORNECEDOR_PESSOA'
       Origin = 'FORNECEDOR_PESSOA'
       Required = True
       Size = 1
     end
-    object FDQueryPrincipalFUNCIONARIO_PESSOA: TStringField
+    object QryPrincipalFUNCIONARIO_PESSOA: TStringField
       FieldName = 'FUNCIONARIO_PESSOA'
       Origin = 'FUNCIONARIO_PESSOA'
       Required = True
       Size = 1
     end
-    object FDQueryPrincipalGRUPO_PESSOA: TIntegerField
+    object QryPrincipalGRUPO_PESSOA: TIntegerField
       FieldName = 'GRUPO_PESSOA'
       Origin = 'GRUPO_PESSOA'
     end
-    object FDQueryPrincipalDESCRICAO_GRUPO: TStringField
+    object QryPrincipalDESCRICAO_GRUPO: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_GRUPO'
       Origin = 'DESCRICAO_GRUPO'
@@ -122,11 +122,11 @@ inherited dmCadCliente: TdmCadCliente
       Size = 40
     end
   end
-  object FDQueryEmail: TFDQuery
-    BeforeInsert = FDQueryEmailBeforeInsert
-    BeforeEdit = FDQueryEmailBeforeEdit
-    BeforePost = FDQueryEmailBeforePost
-    OnNewRecord = FDQueryEmailNewRecord
+  object QryEmail: TFDQuery
+    BeforeInsert = QryEmailBeforeInsert
+    BeforeEdit = QryEmailBeforeEdit
+    BeforePost = QryEmailBeforePost
+    OnNewRecord = QryEmailNewRecord
     CachedUpdates = True
     IndexFieldNames = 'COD_PESSOA_EMAIL'
     MasterSource = dsMaster
@@ -150,17 +150,17 @@ inherited dmCadCliente: TdmCadCliente
         Value = Null
       end>
   end
-  object FDQueryEndereco: TFDQuery
-    BeforeInsert = FDQueryEnderecoBeforeInsert
-    BeforeEdit = FDQueryEnderecoBeforeEdit
-    BeforePost = FDQueryEnderecoBeforePost
-    OnNewRecord = FDQueryEnderecoNewRecord
+  object QryEndereco: TFDQuery
+    BeforeInsert = QryEnderecoBeforeInsert
+    BeforeEdit = QryEnderecoBeforeEdit
+    BeforePost = QryEnderecoBeforePost
+    OnNewRecord = QryEnderecoNewRecord
     CachedUpdates = True
     IndexFieldNames = 'COD_PESSOA_ENDERECO'
     MasterSource = dsMaster
     MasterFields = 'CODIGO_PESSOA'
     DetailFields = 'COD_PESSOA_ENDERECO'
-    OnReconcileError = FDQueryEnderecoReconcileError
+    OnReconcileError = QryEnderecoReconcileError
     Connection = dmConexao.FDConexao
     SchemaAdapter = FDSchemaAdapterCliente
     FetchOptions.AssignedValues = [evCache, evDetailCascade]
@@ -194,65 +194,65 @@ inherited dmCadCliente: TdmCadCliente
         Size = 4
         Value = Null
       end>
-    object FDQueryEnderecoDESCRICAO_CIDADE: TStringField
+    object QryEnderecoDESCRICAO_CIDADE: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_CIDADE'
       Origin = 'DESCRICAO_CIDADE'
       ProviderFlags = []
       Size = 40
     end
-    object FDQueryEnderecoCODIGO_PESSOA_ENDERECO: TIntegerField
+    object QryEnderecoCODIGO_PESSOA_ENDERECO: TIntegerField
       FieldName = 'CODIGO_PESSOA_ENDERECO'
       Origin = 'CODIGO_PESSOA_ENDERECO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object FDQueryEnderecoCOD_PESSOA_ENDERECO: TIntegerField
+    object QryEnderecoCOD_PESSOA_ENDERECO: TIntegerField
       FieldName = 'COD_PESSOA_ENDERECO'
       Origin = 'COD_PESSOA_ENDERECO'
       Required = True
     end
-    object FDQueryEnderecoENDERECO_PESSOA_ENDERECO: TStringField
+    object QryEnderecoENDERECO_PESSOA_ENDERECO: TStringField
       FieldName = 'ENDERECO_PESSOA_ENDERECO'
       Origin = 'ENDERECO_PESSOA_ENDERECO'
       Required = True
       Size = 100
     end
-    object FDQueryEnderecoNUMERO_PESSOA_ENDERECO: TStringField
+    object QryEnderecoNUMERO_PESSOA_ENDERECO: TStringField
       FieldName = 'NUMERO_PESSOA_ENDERECO'
       Origin = 'NUMERO_PESSOA_ENDERECO'
       Size = 8
     end
-    object FDQueryEnderecoCOMPLEMENTO_PESSOA_ENDERECO: TStringField
+    object QryEnderecoCOMPLEMENTO_PESSOA_ENDERECO: TStringField
       FieldName = 'COMPLEMENTO_PESSOA_ENDERECO'
       Origin = 'COMPLEMENTO_PESSOA_ENDERECO'
       Size = 40
     end
-    object FDQueryEnderecoCODIGO_UF: TIntegerField
+    object QryEnderecoCODIGO_UF: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'CODIGO_UF'
       Origin = 'CODIGO_UF'
       ProviderFlags = []
       ReadOnly = True
     end
-    object FDQueryEnderecoDESCRICAO_UF: TStringField
+    object QryEnderecoDESCRICAO_UF: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_UF'
       Origin = 'DESCRICAO_UF'
       ProviderFlags = []
       Size = 40
     end
-    object FDQueryEnderecoBAIRRO_PESSOA_ENDERECO: TStringField
+    object QryEnderecoBAIRRO_PESSOA_ENDERECO: TStringField
       FieldName = 'BAIRRO_PESSOA_ENDERECO'
       Origin = 'BAIRRO_PESSOA_ENDERECO'
       Size = 40
     end
-    object FDQueryEnderecoCIDADE_PESSOA_ENDERECO: TIntegerField
+    object QryEnderecoCIDADE_PESSOA_ENDERECO: TIntegerField
       FieldName = 'CIDADE_PESSOA_ENDERECO'
       Origin = 'CIDADE_PESSOA_ENDERECO'
       Required = True
     end
-    object FDQueryEnderecoUF_CIDADE: TIntegerField
+    object QryEnderecoUF_CIDADE: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'UF_CIDADE'
       Origin = 'UF_CIDADE'
@@ -260,11 +260,11 @@ inherited dmCadCliente: TdmCadCliente
       ReadOnly = True
     end
   end
-  object FDQueryTelefone: TFDQuery
-    BeforeInsert = FDQueryTelefoneBeforeInsert
-    BeforeEdit = FDQueryTelefoneBeforeEdit
-    BeforePost = FDQueryTelefoneBeforePost
-    OnNewRecord = FDQueryTelefoneNewRecord
+  object QryTelefone: TFDQuery
+    BeforeInsert = QryTelefoneBeforeInsert
+    BeforeEdit = QryTelefoneBeforeEdit
+    BeforePost = QryTelefoneBeforePost
+    OnNewRecord = QryTelefoneNewRecord
     CachedUpdates = True
     IndexFieldNames = 'COD_PESSOA_TELEFONE'
     MasterSource = dsMaster
@@ -288,11 +288,11 @@ inherited dmCadCliente: TdmCadCliente
       end>
   end
   object dsMaster: TDataSource
-    DataSet = FDQueryPrincipal
+    DataSet = QryPrincipal
     Left = 152
     Top = 16
   end
-  object FDQueryValidaCidade: TFDQuery
+  object QryValidaCidade: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 208
     Top = 160
@@ -301,12 +301,12 @@ inherited dmCadCliente: TdmCadCliente
     Left = 152
     Top = 80
   end
-  object FDQueryValidaUf: TFDQuery
+  object QryValidaUf: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 200
     Top = 216
   end
-  object FDQueryValidaGrupo: TFDQuery
+  object QryValidaGrupo: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 40
     Top = 272

@@ -10,7 +10,7 @@ uses
 
 type
   TdmCadConta = class(TdmCadPai)
-    FDQueryValidaBanco: TFDQuery;
+    QryValidaBanco: TFDQuery;
     FDQueryPrincipalCODIGO_CONTA: TIntegerField;
     FDQueryPrincipalDESCRICAO_CONTA: TStringField;
     FDQueryPrincipalCLASSIFICACAO_CONTA: TIntegerField;
@@ -30,8 +30,8 @@ type
     FDQueryPrincipalDESCRICAO_BANCO: TStringField;
     intgrfldFDQueryPrincipalCAMARACOMPENSACAO_BANCO: TIntegerField;
     procedure Validate_Banco(Sender:TField);
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryPrincipalBeforePost(DataSet: TDataSet);
+    procedure QryPrincipalNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -46,7 +46,7 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
-procedure TdmCadConta.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadConta.QryPrincipalBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -55,31 +55,31 @@ begin
       dmConexao.ProximoCodigo('CONTA')
 end;
 
-procedure TdmCadConta.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadConta.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
 procedure TdmCadConta.Validate_Banco(Sender: TField);
 begin
-  FDQueryValidaBanco.Close();
-  FDQueryValidaBanco.SQL.Text := 'select DESCRICAO_BANCO, CAMARACOMPENSACAO_BANCO from BANCO' +
+  QryValidaBanco.Close();
+  QryValidaBanco.SQL.Text := 'select DESCRICAO_BANCO, CAMARACOMPENSACAO_BANCO from BANCO' +
   ' where BANCO.CODIGO_BANCO = '+ IntToStr(Sender.AsInteger);
   try
-    FDQueryValidaBanco.Open();
+    QryValidaBanco.Open();
   Except
     On E:Exception do
     ShowMessage('Erro conta: ' + E.Message);
   end;
-  if FDQueryValidaBanco.IsEmpty then
+  if QryValidaBanco.IsEmpty then
   begin
     MessageDlg('Favor preencher o banco com um cadastro válido!', mtError, [mbOK],0);
     Abort;
   end
   else
-  FDQueryPrincipal.FieldByName('DESCRICAO_BANCO').AsString := FDQueryValidaBanco.FieldByName('DESCRICAO_BANCO').AsString;
-  FDQueryPrincipal.FieldByName('CAMARACOMPENSACAO_BANCO').AsString := FDQueryValidaBanco.FieldByName('CAMARACOMPENSACAO_BANCO').AsString;
+  QryPrincipal.FieldByName('DESCRICAO_BANCO').AsString := QryValidaBanco.FieldByName('DESCRICAO_BANCO').AsString;
+  QryPrincipal.FieldByName('CAMARACOMPENSACAO_BANCO').AsString := QryValidaBanco.FieldByName('CAMARACOMPENSACAO_BANCO').AsString;
 end;
 
 end.

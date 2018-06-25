@@ -10,7 +10,7 @@ uses
 
 type
   TdmCadCidade = class(TdmCadPai)
-    FDQueryValidaUF: TFDQuery;
+    QryValidaUf: TFDQuery;
     FDQueryPrincipalCODIGO_CIDADE: TIntegerField;
     FDQueryPrincipalDESCRICAO_CIDADE: TStringField;
     FDQueryPrincipalCODMUNICIPIO_CIDADE: TIntegerField;
@@ -18,8 +18,8 @@ type
     FDQueryPrincipalSIGLA_UF: TStringField;
     FDSchemaAdapterCidade: TFDSchemaAdapter;
     FDQueryPrincipalCODIGO_UF: TIntegerField;
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryPrincipalBeforePost(DataSet: TDataSet);
+    procedure QryPrincipalNewRecord(DataSet: TDataSet);
     procedure Validate_UF(Sender:TField);
   private
     { Private declarations }
@@ -36,7 +36,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TdmCadCidade.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadCidade.QryPrincipalBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -45,32 +45,32 @@ begin
       dmConexao.ProximoCodigo('CIDADE')
 end;
 
-procedure TdmCadCidade.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadCidade.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
 
 procedure TdmCadCidade.Validate_Uf(Sender: TField);
 begin
-  FDQueryValidaUF.Close();
-  FDQueryValidaUF.SQL.Text := 'select SIGLA_UF, DESCRICAO_UF from UF' +
+  QryValidaUF.Close();
+  QryValidaUF.SQL.Text := 'select SIGLA_UF, DESCRICAO_UF from UF' +
   ' where UF.CODIGO_UF = '+ IntToStr(Sender.AsInteger);
   try
-    FDQueryValidaUf.Open();
+    QryValidaUf.Open();
   Except
     On E:Exception do
     ShowMessage('Erro UF: ' + E.Message);
   end;
-  if FDQueryValidaUF.IsEmpty then
+  if QryValidaUF.IsEmpty then
   begin
     MessageDlg('UF não preenchido no cadastro da cidade!', mtError, [mbOK],0);
     Abort;
   end
   else
-  FDQueryPrincipal.FieldByName('DESCRICAO_UF').AsString := FDQueryValidaUF.FieldByName('DESCRICAO_UF').AsString;
-  FDQueryPrincipal.FieldByName('SIGLA_UF').AsString := FDQueryValidaUF.FieldByName('SIGLA_UF').AsString;
+  QryPrincipal.FieldByName('DESCRICAO_UF').AsString := QryValidaUF.FieldByName('DESCRICAO_UF').AsString;
+  QryPrincipal.FieldByName('SIGLA_UF').AsString := QryValidaUF.FieldByName('SIGLA_UF').AsString;
   end;
 
 end.

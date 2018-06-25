@@ -106,7 +106,6 @@ inherited frmCadCidade: TfrmCadCidade
     end
   end
   inherited dsCadastro: TDataSource
-    DataSet = dmCadCidade.FDQueryPrincipal
     Left = 152
   end
   inherited JvEnterAsTab1: TJvEnterAsTab

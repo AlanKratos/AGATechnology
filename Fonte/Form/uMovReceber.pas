@@ -60,7 +60,7 @@ begin
   try
     with dmCadFinanceiro do
     begin
-      FDQueryPrincipal.ApplyUpdates(0);
+      QryPrincipal.ApplyUpdates(0);
     end;
   Except on E: Exception do
     ShowMessage(E.Message);

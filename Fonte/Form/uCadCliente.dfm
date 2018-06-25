@@ -520,25 +520,25 @@ inherited frmCadCliente: TfrmCadCliente
     end
   end
   inherited dsCadastro: TDataSource
-    DataSet = dmCadCliente.FDQueryPrincipal
+    DataSet = dmCadCliente.QryPrincipal
     Left = 352
   end
   inherited JvEnterAsTab1: TJvEnterAsTab
     Left = 160
   end
-  inherited FDQueryNavegar: TFDQuery
+  inherited QryNavegar: TFDQuery
     Left = 224
   end
   object dsTelefone: TDataSource
-    DataSet = dmCadCliente.FDQueryTelefone
+    DataSet = dmCadCliente.QryTelefone
     Left = 552
   end
   object dsEndereco: TDataSource
-    DataSet = dmCadCliente.FDQueryEndereco
+    DataSet = dmCadCliente.QryEndereco
     Left = 616
   end
   object dsEmail: TDataSource
-    DataSet = dmCadCliente.FDQueryEmail
+    DataSet = dmCadCliente.QryEmail
     Left = 288
   end
 end

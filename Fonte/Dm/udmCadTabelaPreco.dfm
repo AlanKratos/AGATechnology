@@ -2,7 +2,7 @@ inherited dmCadTabelaPreco: TdmCadTabelaPreco
   OldCreateOrder = True
   Height = 329
   Width = 269
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     BeforePost = FDQueryPrincipalBeforePost
     OnNewRecord = FDQueryPrincipalNewRecord
     CachedUpdates = True
@@ -62,18 +62,18 @@ inherited dmCadTabelaPreco: TdmCadTabelaPreco
       Size = 1
     end
   end
-  object FDQueryTabela_Detalhe: TFDQuery
-    BeforeInsert = FDQueryTabela_DetalheBeforeInsert
-    BeforeEdit = FDQueryTabela_DetalheBeforeEdit
-    BeforePost = FDQueryTabela_DetalheBeforePost
-    BeforeDelete = FDQueryTabela_DetalheBeforeDelete
-    OnNewRecord = FDQueryTabela_DetalheNewRecord
+  object QryTabela_Detalhe: TFDQuery
+    BeforeInsert = QryTabela_DetalheBeforeInsert
+    BeforeEdit = QryTabela_DetalheBeforeEdit
+    BeforePost = QryTabela_DetalheBeforePost
+    BeforeDelete = QryTabela_DetalheBeforeDelete
+    OnNewRecord = QryTabela_DetalheNewRecord
     CachedUpdates = True
     IndexFieldNames = 'TABELA_TAB_DET'
     MasterSource = dsMaster
     MasterFields = 'CODIGO_TABELA'
     DetailFields = 'TABELA_TAB_DET'
-    OnReconcileError = FDQueryTabela_DetalheReconcileError
+    OnReconcileError = QryTabela_DetalheReconcileError
     Connection = dmConexao.FDConexao
     SchemaAdapter = FDSchemaAdapterTabelaPreco
     FetchOptions.AssignedValues = [evDetailCascade]
@@ -110,54 +110,54 @@ inherited dmCadTabelaPreco: TdmCadTabelaPreco
         ParamType = ptInput
         Value = Null
       end>
-    object FDQueryTabela_DetalheCODIGO_TAB_DET: TIntegerField
+    object QryTabela_DetalheCODIGO_TAB_DET: TIntegerField
       FieldName = 'CODIGO_TAB_DET'
       Origin = 'CODIGO_TAB_DET'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object FDQueryTabela_DetalheTABELA_TAB_DET: TIntegerField
+    object QryTabela_DetalheTABELA_TAB_DET: TIntegerField
       FieldName = 'TABELA_TAB_DET'
       Origin = 'TABELA_TAB_DET'
       Required = True
     end
-    object FDQueryTabela_DetalheITEM_TAB_DET: TIntegerField
+    object QryTabela_DetalheITEM_TAB_DET: TIntegerField
       FieldName = 'ITEM_TAB_DET'
       Origin = 'ITEM_TAB_DET'
       Required = True
     end
-    object FDQueryTabela_DetalheCOR_TAB_DET: TIntegerField
+    object QryTabela_DetalheCOR_TAB_DET: TIntegerField
       FieldName = 'COR_TAB_DET'
       Origin = 'COR_TAB_DET'
       Required = True
     end
-    object FDQueryTabela_DetalheGRADE_TAB_DET: TIntegerField
+    object QryTabela_DetalheGRADE_TAB_DET: TIntegerField
       FieldName = 'GRADE_TAB_DET'
       Origin = 'GRADE_TAB_DET'
       Required = True
     end
-    object FDQueryTabela_DetalheVALOR_TAB_DET: TBCDField
+    object QryTabela_DetalheVALOR_TAB_DET: TBCDField
       FieldName = 'VALOR_TAB_DET'
       Origin = 'VALOR_TAB_DET'
       Required = True
       Precision = 18
       Size = 2
     end
-    object FDQueryTabela_DetalheDESCRICAO_ITEM: TStringField
+    object QryTabela_DetalheDESCRICAO_ITEM: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_ITEM'
       Origin = 'DESCRICAO_ITEM'
       ProviderFlags = []
       Size = 100
     end
-    object FDQueryTabela_DetalheDESCRICAO_COR: TStringField
+    object QryTabela_DetalheDESCRICAO_COR: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_COR'
       Origin = 'DESCRICAO_COR'
       ProviderFlags = []
       Size = 40
     end
-    object FDQueryTabela_DetalheDESCRICAO_GRADE: TStringField
+    object QryTabela_DetalheDESCRICAO_GRADE: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_GRADE'
       Origin = 'DESCRICAO_GRADE'
@@ -166,7 +166,6 @@ inherited dmCadTabelaPreco: TdmCadTabelaPreco
     end
   end
   object dsMaster: TDataSource
-    DataSet = FDQueryPrincipal
     Left = 128
     Top = 24
   end
@@ -174,17 +173,17 @@ inherited dmCadTabelaPreco: TdmCadTabelaPreco
     Left = 168
     Top = 112
   end
-  object FDQueryValidaItem: TFDQuery
+  object QryValidaItem: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 40
     Top = 160
   end
-  object FDQueryValidaCor: TFDQuery
+  object QryValidaCor: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 40
     Top = 216
   end
-  object FDQueryValidaGrade: TFDQuery
+  object QryValidaGrade: TFDQuery
     Connection = dmConexao.FDConexao
     Left = 40
     Top = 272

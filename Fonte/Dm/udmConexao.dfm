@@ -14,6 +14,7 @@ object dmConexao: TdmConexao
       'DriverID=FB')
     FetchOptions.AssignedValues = [evDetailCascade]
     FetchOptions.DetailCascade = True
+    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 24
@@ -27,7 +28,7 @@ object dmConexao: TdmConexao
     Left = 232
     Top = 24
   end
-  object FDQueryProximoCodigo: TFDQuery
+  object QryProximoCodigo: TFDQuery
     Connection = FDConexao
     Transaction = FDTransactionProximoCodigo
     UpdateTransaction = FDTransactionProximoCodigo

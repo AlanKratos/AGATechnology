@@ -12,9 +12,9 @@ uses
 type
   TdmCadVenda = class(TdmCadPai)
     FDSchemaAdapterVenda: TFDSchemaAdapter;
-    FDQueryVendaItem: TFDQuery;
+    QryVendaItem: TFDQuery;
     dsMaster: TDataSource;
-    FDQueryValidaCliente: TFDQuery;
+    QryValidaCliente: TFDQuery;
     FDQueryPrincipalCODIGO_PESSOA: TIntegerField;
     FDQueryPrincipalNOME_PESSOA: TStringField;
     FDQueryPrincipalDESCRICAO_TABELA: TStringField;
@@ -23,38 +23,38 @@ type
     FDQueryPrincipalTABELA_DOCUMENTO: TIntegerField;
     FDQueryPrincipalMODALIDADE_DOCUMENTO: TStringField;
     FDQueryPrincipalEMPRESA_DOCUMENTO: TIntegerField;
-    FDQueryValidaItem: TFDQuery;
-    FDQueryVendaItemCODIGO_DOC_ITEM: TIntegerField;
-    FDQueryVendaItemDOCUMENTO_DOC_ITEM: TIntegerField;
-    FDQueryVendaItemITEM_DOC_ITEM: TIntegerField;
-    FDQueryVendaItemQTD_DOC_ITEM: TIntegerField;
-    FDQueryVendaItemVALOR_DOC_ITEM: TBCDField;
-    FDQueryVendaItemDESCRICAO_ITEM: TStringField;
-    FDQueryValidaPreco: TFDQuery;
-    FDQueryTabelaPreco: TFDQuery;
-    FDQueryVendaItemCOR_DOC_ITEM: TIntegerField;
-    FDQueryVendaItemGRADE_DOC_ITEM: TIntegerField;
-    FDQueryVendaItemDESCRICAO_COR: TStringField;
-    FDQueryVendaItemDESCRICAO_GRADE: TStringField;
-    FDQueryValidaCor: TFDQuery;
-    FDQueryValidaGrade: TFDQuery;
-    FDQueryPrazo: TFDQuery;
+    QryValidaItem: TFDQuery;
+    QryVendaItemCODIGO_DOC_ITEM: TIntegerField;
+    QryVendaItemDOCUMENTO_DOC_ITEM: TIntegerField;
+    QryVendaItemITEM_DOC_ITEM: TIntegerField;
+    QryVendaItemQTD_DOC_ITEM: TIntegerField;
+    QryVendaItemVALOR_DOC_ITEM: TBCDField;
+    QryVendaItemDESCRICAO_ITEM: TStringField;
+    QryValidaPreco: TFDQuery;
+    QryTabelaPreco: TFDQuery;
+    QryVendaItemCOR_DOC_ITEM: TIntegerField;
+    QryVendaItemGRADE_DOC_ITEM: TIntegerField;
+    QryVendaItemDESCRICAO_COR: TStringField;
+    QryVendaItemDESCRICAO_GRADE: TStringField;
+    QryValidaCor: TFDQuery;
+    QryValidaGrade: TFDQuery;
+    QryPrazo: TFDQuery;
     procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryVendaItemBeforePost(DataSet: TDataSet);
+    procedure QryVendaItemBeforePost(DataSet: TDataSet);
     procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
-    procedure FDQueryVendaItemBeforeInsert(DataSet: TDataSet);
-    procedure FDQueryVendaItemNewRecord(DataSet: TDataSet);
+    procedure QryVendaItemBeforeInsert(DataSet: TDataSet);
+    procedure QryVendaItemNewRecord(DataSet: TDataSet);
     procedure Validate_Cliente(Sender: TField);
     procedure Validate_Item(Sender: TField);
     procedure Validate_Cor(Sender: TField);
     procedure Validate_Grade(Sender: TField);
-    procedure FDQueryVendaItemBeforeEdit(DataSet: TDataSet);
-    procedure FDQueryVendaItemAfterDelete(DataSet: TDataSet);
+    procedure QryVendaItemBeforeEdit(DataSet: TDataSet);
+    procedure QryVendaItemAfterDelete(DataSet: TDataSet);
     procedure Validate_Preco(Item, Cor, Grade: Integer);
-    procedure FDQueryPrazoBeforeEdit(DataSet: TDataSet);
-    procedure FDQueryPrazoBeforeInsert(DataSet: TDataSet);
-    procedure FDQueryPrazoBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrazoNewRecord(DataSet: TDataSet);
+    procedure QryPrazoBeforeEdit(DataSet: TDataSet);
+    procedure QryPrazoBeforeInsert(DataSet: TDataSet);
+    procedure QryPrazoBeforePost(DataSet: TDataSet);
+    procedure QryPrazoNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -70,24 +70,24 @@ implementation
 
 {$R *.dfm}
 
-procedure TdmCadVenda.FDQueryPrazoBeforeEdit(DataSet: TDataSet);
+procedure TdmCadVenda.QryPrazoBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  with FDQueryPrincipal do
+  with QryPrincipal do
   Begin
     Edit;
   End;
 end;
 
-procedure TdmCadVenda.FDQueryPrazoBeforeInsert(DataSet: TDataSet);
+procedure TdmCadVenda.QryPrazoBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if FDQueryPrincipal.State = dsInsert then
-    FDQueryPrincipal.Post;
-    FDQueryPrincipal.Edit;
+  if QryPrincipal.State = dsInsert then
+    QryPrincipal.Post;
+    QryPrincipal.Edit;
 end;
 
-procedure TdmCadVenda.FDQueryPrazoBeforePost(DataSet: TDataSet);
+procedure TdmCadVenda.QryPrazoBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -96,11 +96,11 @@ begin
       dmConexao.ProximoCodigo('DOCUMENTO_PRAZO')
 end;
 
-procedure TdmCadVenda.FDQueryPrazoNewRecord(DataSet: TDataSet);
+procedure TdmCadVenda.QryPrazoNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('DOCUMENTO_DOC_PRAZO').AsInteger :=
-    FDQueryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsInteger;
+    QryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsInteger;
 end;
 
 procedure TdmCadVenda.FDQueryPrincipalBeforePost(DataSet: TDataSet);
@@ -123,33 +123,33 @@ procedure TdmCadVenda.FDQueryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('MODALIDADE_DOCUMENTO').AsString :='S';
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
-procedure TdmCadVenda.FDQueryVendaItemAfterDelete(DataSet: TDataSet);
+procedure TdmCadVenda.QryVendaItemAfterDelete(DataSet: TDataSet);
 begin
   inherited;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
-procedure TdmCadVenda.FDQueryVendaItemBeforeEdit(DataSet: TDataSet);
+procedure TdmCadVenda.QryVendaItemBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  with FDQueryPrincipal do
+  with QryPrincipal do
   Begin
     Edit;
   End;
 end;
 
-procedure TdmCadVenda.FDQueryVendaItemBeforeInsert(DataSet: TDataSet);
+procedure TdmCadVenda.QryVendaItemBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if FDQueryPrincipal.State = dsInsert then
-    FDQueryPrincipal.Post;
-    FDQueryPrincipal.Edit;
+  if QryPrincipal.State = dsInsert then
+    QryPrincipal.Post;
+    QryPrincipal.Edit;
 end;
 
-procedure TdmCadVenda.FDQueryVendaItemBeforePost(DataSet: TDataSet);
+procedure TdmCadVenda.QryVendaItemBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -158,128 +158,128 @@ begin
       dmConexao.ProximoCodigo('DOCUMENTO_ITEM')
 end;
 
-procedure TdmCadVenda.FDQueryVendaItemNewRecord(DataSet: TDataSet);
+procedure TdmCadVenda.QryVendaItemNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('DOCUMENTO_DOC_ITEM').AsInteger :=
-    FDQueryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsInteger;
+    QryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsInteger;
 end;
 
 procedure TdmCadVenda.Validate_Cliente(Sender: TField);
 begin
 //preencher o campo descrição cliente
-  FDQueryValidaCliente.Close();
-  FDQueryValidaCliente.SQL.Text := 'select PESSOA.NOME_PESSOA from pessoa ' +
+  QryValidaCliente.Close();
+  QryValidaCliente.SQL.Text := 'select PESSOA.NOME_PESSOA from pessoa ' +
                   'where PESSOA.CODIGO_PESSOA = ' + IntToStr(Sender.AsInteger);
   try
-    FDQueryValidaCliente.Open();
+    QryValidaCliente.Open();
   Except
     On E:Exception do
     ShowMessage('Erro Cliente: ' + E.Message);
   end;
-  if FDQueryValidaCliente.IsEmpty then
+  if QryValidaCliente.IsEmpty then
   begin
     MessageDlg('Código do cliente precisa ser preenchido!', mtError, [mbOK],0);
     Abort;
   end
   else
-  FDQueryPrincipal.FieldByName('NOME_PESSOA').AsString := FDQueryValidaCliente.FieldByName('NOME_PESSOA').AsString;
+  QryPrincipal.FieldByName('NOME_PESSOA').AsString := QryValidaCliente.FieldByName('NOME_PESSOA').AsString;
 end;
 
 procedure TdmCadVenda.Validate_Cor(Sender: TField);
 begin
-  FDQueryValidaCor.Close();
-  FDQueryValidaCor.SQL.Text := 'select COR.DESCRICAO_COR from COR ' +
+  QryValidaCor.Close();
+  QryValidaCor.SQL.Text := 'select COR.DESCRICAO_COR from COR ' +
                   'where COR.CODIGO_COR = ' + IntToStr(Sender.AsInteger);
   try
-    FDQueryValidaCor.Open();
+    QryValidaCor.Open();
   Except
     On E:Exception do
     ShowMessage('Erro Cor: ' + E.Message);
   end;
-  if FDQueryValidaCor.IsEmpty then
+  if QryValidaCor.IsEmpty then
   begin
     MessageDlg('Código da cor está incorreto!', mtError, [mbOK],0);
     Abort;
   end
   else
-  FDQueryVendaItem.FieldByName('DESCRICAO_COR').AsString := FDQueryValidaCor.FieldByName('DESCRICAO_COR').AsString;
+  QryVendaItem.FieldByName('DESCRICAO_COR').AsString := QryValidaCor.FieldByName('DESCRICAO_COR').AsString;
 
-  if (FDQueryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'S') and
-         (FDQueryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'N') then
+  if (QryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'S') and
+         (QryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'N') then
   Begin
-    Validate_Preco(FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger,
-        FDQueryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger,0);
+    Validate_Preco(QryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger,
+        QryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger,0);
   End;
-  if (FDQueryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'S') and
-          (FDQueryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'S') and
-          (FDQueryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger > 0)then
+  if (QryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'S') and
+          (QryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'S') and
+          (QryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger > 0)then
   Begin
-    Validate_Preco(FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger,
-        FDQueryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger,
-        FDQueryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger);
+    Validate_Preco(QryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger,
+        QryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger,
+        QryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger);
   End;
 end;
 
 procedure TdmCadVenda.Validate_Grade(Sender: TField);
 begin
-  FDQueryValidaGrade.Close();
-  FDQueryValidaGrade.SQL.Text := 'select GRADE.DESCRICAO_GRADE from GRADE ' +
+  QryValidaGrade.Close();
+  QryValidaGrade.SQL.Text := 'select GRADE.DESCRICAO_GRADE from GRADE ' +
                   'where GRADE.CODIGO_GRADE = ' + IntToStr(Sender.AsInteger);
   try
-    FDQueryValidaGrade.Open();
+    QryValidaGrade.Open();
   Except
     On E:Exception do
     ShowMessage('Erro Grade: ' + E.Message);
   end;
-  if FDQueryValidaItem.IsEmpty then
+  if QryValidaItem.IsEmpty then
   begin
     MessageDlg('Código da grade está incorreto!', mtError, [mbOK],0);
     Abort;
   end
   else
-  FDQueryVendaItem.FieldByName('DESCRICAO_GRADE').AsString := FDQueryValidaGrade.FieldByName('DESCRICAO_GRADE').AsString;
+  QryVendaItem.FieldByName('DESCRICAO_GRADE').AsString := QryValidaGrade.FieldByName('DESCRICAO_GRADE').AsString;
 
-  if (FDQueryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'S') and
-          (FDQueryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'S') and
-          (FDQueryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger > 0) then
+  if (QryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'S') and
+          (QryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'S') and
+          (QryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger > 0) then
   Begin
-    Validate_Preco(FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger,
-        FDQueryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger,
-        FDQueryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger);
+    Validate_Preco(QryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger,
+        QryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger,
+        QryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger);
   End;
 
-  if (FDQueryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'N') and
-          (FDQueryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'S') then
+  if (QryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'N') and
+          (QryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'S') then
   Begin
-    Validate_Preco(FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger, 0,
-        FDQueryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger);
+    Validate_Preco(QryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger, 0,
+        QryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger);
   End;
 end;
 
 procedure TdmCadVenda.Validate_Item(Sender: TField);
 begin
-  FDQueryValidaItem.Close();
-  FDQueryValidaItem.SQL.Text := 'select ITEM.DESCRICAO_ITEM from ITEM ' +
+  QryValidaItem.Close();
+  QryValidaItem.SQL.Text := 'select ITEM.DESCRICAO_ITEM from ITEM ' +
                   'where ITEM.CODIGO_ITEM = ' + IntToStr(Sender.AsInteger);
   try
-    FDQueryValidaItem.Open();
+    QryValidaItem.Open();
   Except
     On E:Exception do
     ShowMessage('Erro Item: ' + E.Message);
   end;
-  if FDQueryValidaItem.IsEmpty then
+  if QryValidaItem.IsEmpty then
   begin
     MessageDlg('Código do item está incorreto!', mtError, [mbOK],0);
     Abort;
   end
   else
-  FDQueryVendaItem.FieldByName('DESCRICAO_ITEM').AsString := FDQueryValidaItem.FieldByName('DESCRICAO_ITEM').AsString;
+  QryVendaItem.FieldByName('DESCRICAO_ITEM').AsString := QryValidaItem.FieldByName('DESCRICAO_ITEM').AsString;
 
-  if (FDQueryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'N') and
-         (FDQueryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'N') then
+  if (QryTabelaPreco.FieldByName('PRECOCOR_TABELA').AsString = 'N') and
+         (QryTabelaPreco.FieldByName('PRECOGRADE_TABELA').AsString = 'N') then
   Begin
-    Validate_Preco(FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger,0,0);
+    Validate_Preco(QryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger,0,0);
   End;
 end;
 
@@ -287,22 +287,22 @@ end;
 
 procedure TdmCadVenda.Validate_Preco(Item, Cor, Grade: Integer);
 begin
-  if FDQueryPrincipal.FieldByName('TABELA_DOCUMENTO').AsInteger > 0 then
+  if QryPrincipal.FieldByName('TABELA_DOCUMENTO').AsInteger > 0 then
   Begin
-    FDQueryValidaPreco.Close();
-    FDQueryValidaPreco.SQL.Text := ('select TABELA_DETALHE.VALOR_TAB_DET from TABELA_DETALHE ' +
+    QryValidaPreco.Close();
+    QryValidaPreco.SQL.Text := ('select TABELA_DETALHE.VALOR_TAB_DET from TABELA_DETALHE ' +
         ' where TABELA_DETALHE.ITEM_TAB_DET = ' + IntToStr(Item) +
         ' and TABELA_DETALHE.COR_TAB_DET = ' + IntToStr(Cor) +
         ' and TABELA_DETALHE.GRADE_TAB_DET = ' + IntToStr(Grade) +
-        ' and TABELA_DETALHE.TABELA_TAB_DET = ' + FDQueryPrincipal.FieldByName('TABELA_DOCUMENTO').AsString);
+        ' and TABELA_DETALHE.TABELA_TAB_DET = ' + QryPrincipal.FieldByName('TABELA_DOCUMENTO').AsString);
     try
-      FDQueryValidaPreco.Open();
+      QryValidaPreco.Open();
     Except
       On E:Exception do
       ShowMessage('Erro no preço.');
     end;
-    FDQueryVendaItem.FieldByName('VALOR_DOC_ITEM').AsString :=
-        FDQueryValidaPreco.FieldByName('VALOR_TAB_DET').AsString;
+    QryVendaItem.FieldByName('VALOR_DOC_ITEM').AsString :=
+        QryValidaPreco.FieldByName('VALOR_TAB_DET').AsString;
   End;
 end;
 

@@ -1,6 +1,6 @@
 inherited dmCadCor: TdmCadCor
   OldCreateOrder = True
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     AfterInsert = FDQueryPrincipalAfterInsert
     BeforePost = FDQueryPrincipalBeforePost
     OnNewRecord = FDQueryPrincipalNewRecord

@@ -2,7 +2,7 @@ inherited dmCadConta: TdmCadConta
   OldCreateOrder = True
   Height = 260
   Width = 415
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     BeforePost = FDQueryPrincipalBeforePost
     OnNewRecord = FDQueryPrincipalNewRecord
     CachedUpdates = True
@@ -117,7 +117,7 @@ inherited dmCadConta: TdmCadConta
       ProviderFlags = []
     end
   end
-  object FDQueryValidaBanco: TFDQuery
+  object QryValidaBanco: TFDQuery
     Connection = dmConexao.FDConexao
     FetchOptions.AssignedValues = [evDetailCascade]
     Left = 56
@@ -128,7 +128,7 @@ inherited dmCadConta: TdmCadConta
     Top = 40
   end
   object FDTableAdapter1: TFDTableAdapter
-    Left = 384
-    Top = 232
+    Left = 192
+    Top = 136
   end
 end

@@ -86,7 +86,7 @@ begin
     try
       with dmCadProduto do
       Begin
-        FDQueryPrincipal.Delete;
+        QryPrincipal.Delete;
         FDSchemaAdapterProduto.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -111,7 +111,7 @@ begin
   with dmCadProduto do
     begin
       FDSchemaAdapterProduto.ApplyUpdates(0);
-      JvCalcEditCodigo.Text := FDQueryPrincipal.FieldByName('CODIGO_ITEM').AsString;
+      JvCalcEditCodigo.Text := QryPrincipal.FieldByName('CODIGO_ITEM').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -144,12 +144,12 @@ begin
 
   with dmCadProduto do
   begin
-    FDQueryPrincipal.Close;
-    FDQueryPrincipal.Open;
-    FDQueryItemDetalhe.Close;
-    FDQueryItemDetalhe.Open;
-    FDQueryUnidade.Close;
-    FDQueryUnidade.Open;
+    QryPrincipal.Close;
+    QryPrincipal.Open;
+    QryItemDetalhe.Close;
+    QryItemDetalhe.Open;
+    QryUnidade.Close;
+    QryUnidade.Open;
   end;
 
   with dmCadProduto do
@@ -164,9 +164,9 @@ begin
   inherited;
   with dmCadProduto do
   Begin
-    FDQueryPrincipal.FieldByName('GRUPO_ITEM').OnValidate := Validate_Grupo;
-    FDQueryPrincipal.FieldByName('SUBGRUPO_ITEM').OnValidate := Validate_SubGrupo;
-    FDQueryPrincipal.FieldByName('NCM_ITEM').OnValidate := Validate_Ncm;
+    QryPrincipal.FieldByName('GRUPO_ITEM').OnValidate := Validate_Grupo;
+    QryPrincipal.FieldByName('SUBGRUPO_ITEM').OnValidate := Validate_SubGrupo;
+    QryPrincipal.FieldByName('NCM_ITEM').OnValidate := Validate_Ncm;
 
   //  FDQueryItemDetalhe.FieldByName('COR_ITEM_DETALHE').OnValidate := Validate_Cor;
   //  FDQueryItemDetalhe.FieldByName('GRADE_ITEM_DETALHE').OnValidate := Validate_Grade;
@@ -177,8 +177,8 @@ procedure TfrmCadProduto.LimparCache(Sender: TObject);
 begin
   with dmCadProduto do
   Begin
-    FDQueryPrincipal.CommitUpdates();
-    FDQueryItemDetalhe.CommitUpdates();
+    QryPrincipal.CommitUpdates();
+    QryItemDetalhe.CommitUpdates();
   End;
 end;
 

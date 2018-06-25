@@ -82,7 +82,7 @@ begin
     try
       with dmCadVenda do
       Begin
-        FDQueryPrincipal.Delete;
+        QryPrincipal.Delete;
         FDSchemaAdapterVenda.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -100,7 +100,7 @@ procedure TfrmCadVenda.BitBtnIncluirClick(Sender: TObject);
 begin
   inherited;
   dbceCodPessoa.SetFocus;
-  dmCadVenda.FDQueryPrincipal.FieldByName('EMPRESA_DOCUMENTO').AsInteger := varpubCodEmpresa;
+  dmCadVenda.QryPrincipal.FieldByName('EMPRESA_DOCUMENTO').AsInteger := varpubCodEmpresa;
 end;
 
 procedure TfrmCadVenda.BitBtnSalvarClick(Sender: TObject);
@@ -109,7 +109,7 @@ begin
     with dmCadVenda do
     begin
       FDSchemaAdapterVenda.ApplyUpdates(0);
-      JvCalcEditCodigo.Text := FDQueryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsString;
+      JvCalcEditCodigo.Text := QryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -121,13 +121,13 @@ end;
 procedure TfrmCadVenda.dbceCodPessoaButtonClick(Sender: TObject);
 begin
   inherited;
-  if (JvCalcEditCodigo.Value <> 0) or (dmCadVenda.FDQueryPrincipal.State = dsInsert) then
+  if (JvCalcEditCodigo.Value <> 0) or (dmCadVenda.QryPrincipal.State = dsInsert) then
   Begin
     Application.CreateForm(TfrmConsultaCliente, frmConsultaCliente);
     frmConsultaCliente.ShowModal;
     if frmConsultaCliente.FDQueryConsulta.FieldByName('CODIGO_PESSOA').AsInteger > 0 then
     Begin
-      dmCadVenda.FDQueryPrincipal.FieldByName('CLIENTE_DOCUMENTO').AsInteger :=
+      dmCadVenda.QryPrincipal.FieldByName('CLIENTE_DOCUMENTO').AsInteger :=
           frmConsultaCliente.FDQueryConsulta.FieldByName('CODIGO_PESSOA').AsInteger;;
     End;
     FreeAndNil(frmConsultaCliente);
@@ -148,8 +148,8 @@ begin
   end;}
   if Key = 13 then // tecla ENTER
   Begin
-    dmCadVenda.FDQueryPrazo.Post;
-    dmCadVenda.FDQueryPrazo.Append;
+    dmCadVenda.QryPrazo.Post;
+    dmCadVenda.QryPrazo.Append;
     dbePrazo.SetFocus;
   End;
 end;
@@ -157,7 +157,7 @@ end;
 procedure TfrmCadVenda.DBComboBox1DropDown(Sender: TObject);
 begin
   inherited;
-//dmCadVenda.FDQueryPrincipal.Edit;
+//dmCadVenda.QryPrincipal.Edit;
 //dmCadVenda.FDQueryVendaItem.Edit;
 end;
 
@@ -179,14 +179,14 @@ begin
 
   with dmCadVenda do
   begin
-    FDQueryPrincipal.Close;
-    FDQueryPrincipal.Open;
-    FDQueryVendaItem.Close;
-    FDQueryVendaItem.Open;
-    FDQueryTabelaPreco.Close;
-    FDQueryTabelaPreco.Open;
-    FDQueryPrazo.Close;
-    FDQueryPrazo.Open;
+    QryPrincipal.Close;
+    QryPrincipal.Open;
+    QryVendaItem.Close;
+    QryVendaItem.Open;
+    QryTabelaPreco.Close;
+    QryTabelaPreco.Open;
+    QryPrazo.Close;
+    QryPrazo.Open;
   end;
 
 //  pcCadVenda.ActivePageIndex := 0;
@@ -200,19 +200,19 @@ end;
 procedure TfrmCadVenda.FormPaint(Sender: TObject);
 begin
   inherited;
-  JvCalcEditCodigo.AsInteger := fdmCadPai.FDQueryPrincipal.FieldByName(campochave).AsInteger
+  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger
 end;
 
 procedure TfrmCadVenda.FormShow(Sender: TObject);
 begin
   inherited;
   with dmCadVenda do
-//  if (JvCalcEditCodigo.Value <> 0) or (FDQueryPrincipal.State = dsEdit) then
+//  if (JvCalcEditCodigo.Value <> 0) or (QryPrincipal.State = dsEdit) then
   Begin
-    FDQueryPrincipal.FieldByName('CLIENTE_DOCUMENTO').OnValidate := Validate_Cliente;
-    FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').OnValidate := Validate_Item;
-    FDQueryVendaItem.FieldByName('COR_DOC_ITEM').OnValidate := Validate_Cor;
-    FDQueryVendaItem.FieldByName('GRADE_DOC_ITEM').OnValidate := Validate_Grade;
+    QryPrincipal.FieldByName('CLIENTE_DOCUMENTO').OnValidate := Validate_Cliente;
+    QryVendaItem.FieldByName('ITEM_DOC_ITEM').OnValidate := Validate_Item;
+    QryVendaItem.FieldByName('COR_DOC_ITEM').OnValidate := Validate_Cor;
+    QryVendaItem.FieldByName('GRADE_DOC_ITEM').OnValidate := Validate_Grade;
   End;
 end;
 
@@ -220,7 +220,7 @@ procedure TfrmCadVenda.dbgItensCanEditCell(Grid: TJvDBGrid; Field: TField;
   var AllowEdit: Boolean);
 begin
   inherited;
-  dmCadVenda.FDQueryPrincipal.Edit;
+  dmCadVenda.QryPrincipal.Edit;
 end;
 
 procedure TfrmCadVenda.dbgItensEditButtonClick(Sender: TObject);
@@ -235,7 +235,7 @@ begin
       frmConsultaItem.ShowModal;
       if frmConsultaItem.FDQueryConsulta.FieldByName('CODIGO_ITEM').AsInteger > 0 then
       Begin
-        dmCadVenda.FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger :=
+        dmCadVenda.QryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger :=
             frmConsultaItem.FDQueryConsulta.FieldByName('CODIGO_ITEM').AsInteger;;
       End;
       FreeAndNil(frmConsultaItem);
@@ -244,13 +244,13 @@ begin
   //Cor
     if dbgItens.SelectedField.FieldName = 'COR_DOC_ITEM' then
     Begin
-      if dmCadVenda.FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger > 0 then
+      if dmCadVenda.QryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger > 0 then
       Begin
         Application.CreateForm(TfrmConsultaCor, frmConsultaCor);
         frmConsultaCor.ShowModal;
         if frmConsultaCor.FDQueryConsulta.FieldByName('CODIGO_COR').AsInteger > 0 then
         Begin
-          dmCadVenda.FDQueryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger :=
+          dmCadVenda.QryVendaItem.FieldByName('COR_DOC_ITEM').AsInteger :=
               frmConsultaCor.FDQueryConsulta.FieldByName('CODIGO_COR').AsInteger;;
         End;
         FreeAndNil(frmConsultaCor);
@@ -264,14 +264,14 @@ begin
   //Grade
     if dbgItens.SelectedField.FieldName = 'GRADE_DOC_ITEM' then
     Begin
-    if dmCadVenda.FDQueryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger > 0 then
+    if dmCadVenda.QryVendaItem.FieldByName('ITEM_DOC_ITEM').AsInteger > 0 then
 
     Begin
       Application.CreateForm(TfrmConsultaGrade, frmConsultaGrade);
       frmConsultaGrade.ShowModal;
       if frmConsultaGrade.FDQueryConsulta.FieldByName('CODIGO_GRADE').AsInteger > 0 then
       Begin
-        dmCadVenda.FDQueryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger :=
+        dmCadVenda.QryVendaItem.FieldByName('GRADE_DOC_ITEM').AsInteger :=
             frmConsultaGrade.FDQueryConsulta.FieldByName('CODIGO_GRADE').AsInteger;;
       End;
       FreeAndNil(frmConsultaGrade);
@@ -301,8 +301,8 @@ procedure TfrmCadVenda.LimparCache(Sender: TObject);
 begin
   with dmCadVenda do
   Begin
-    FDQueryPrincipal.CommitUpdates();
-    FDQueryVendaItem.CommitUpdates();
+    QryPrincipal.CommitUpdates();
+    QryVendaItem.CommitUpdates();
   End;
 end;
 

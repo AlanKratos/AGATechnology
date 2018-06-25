@@ -1,7 +1,7 @@
 inherited dmCadGrade: TdmCadGrade
   OldCreateOrder = True
   Height = 240
-  inherited FDQueryPrincipal: TFDQuery
+  inherited QryPrincipal: TFDQuery
     AfterInsert = FDQueryPrincipalAfterInsert
     BeforePost = FDQueryPrincipalBeforePost
     OnNewRecord = FDQueryPrincipalNewRecord
@@ -22,7 +22,7 @@ inherited dmCadGrade: TdmCadGrade
         Value = Null
       end>
   end
-  object FDQueryGradeDetalhe: TFDQuery
+  object QryGradeDetalhe: TFDQuery
     SQL.Strings = (
       'select '
       '    GRADE_DETALHE.COD_GRADE_DETALHE,'

@@ -10,8 +10,8 @@ uses
 
 type
   TdmCadPai = class(TDataModule)
-    FDQueryPrincipal: TFDQuery;
-    procedure FDQueryPrincipalAfterPost(DataSet: TDataSet);
+    QryPrincipal: TFDQuery;
+    procedure QryPrincipalAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -27,9 +27,9 @@ implementation
 
 {$R *.dfm}
 
-procedure TdmCadPai.FDQueryPrincipalAfterPost(DataSet: TDataSet);
+procedure TdmCadPai.QryPrincipalAfterPost(DataSet: TDataSet);
 begin
-  FDQueryPrincipal.ApplyUpdates(0);
+  QryPrincipal.ApplyUpdates(0);
 end;
 
 end.

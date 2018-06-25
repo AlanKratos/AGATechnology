@@ -54,7 +54,7 @@ procedure TdmMovReceber.FDQueryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('TIPO_DUPLICATA').AsInteger := 1;
-  FDQueryPrincipal.Edit;
+  QryPrincipal.Edit;
 end;
 
 
