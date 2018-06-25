@@ -3,51 +3,50 @@ program ProjectADM;
 uses
   Vcl.Forms,
   Vcl.Controls,
-  unitValidaCnpjCpf in 'Class\unitValidaCnpjCpf.pas',
-  unitVarGlobal in 'Class\unitVarGlobal.pas',
-  udmCadBanco in 'Dm\udmCadBanco.pas',
-  udmCadCidade in 'Dm\udmCadCidade.pas',
-  udmCadCliente in 'Dm\udmCadCliente.pas',
-  udmCadConta in 'Dm\udmCadConta.pas',
-  udmCadCor in 'Dm\udmCadCor.pas',
-  udmCadEmpresa in 'Dm\udmCadEmpresa.pas',
-  udmCadFinanceiro in 'Dm\udmCadFinanceiro.pas',
-  udmCadGrade in 'Dm\udmCadGrade.pas',
-  udmCadPai in 'Dm\udmCadPai.pas' {dmCadPai: TDataModule},
-  udmCadProduto in 'Dm\udmCadProduto.pas' {dmCadProduto: TDataModule},
-  udmCadTabelaPreco in 'Dm\udmCadTabelaPreco.pas' {dmCadTabelaPreco: TDataModule},
-  udmCadVenda in 'Dm\udmCadVenda.pas' {dmCadVenda: TDataModule},
-  udmConexao in 'Dm\udmConexao.pas' {dmConexao: TDataModule},
-  udmDocEntrada in 'Dm\udmDocEntrada.pas' {dmDocEntrada: TDataModule},
-  udmDocSaida in 'Dm\udmDocSaida.pas' {dmDocSaida: TDataModule},
-  udmMovReceber in 'Dm\udmMovReceber.pas' {dmMovReceber: TDataModule},
-  uCadBanco in 'Form\uCadBanco.pas',
-  uCadCidade in 'Form\uCadCidade.pas',
-  uCadCliente in 'Form\uCadCliente.pas',
-  uCadCompra in 'Form\uCadCompra.pas',
-  uCadConta in 'Form\uCadConta.pas',
-  uCadCor in 'Form\uCadCor.pas',
-  uCadEmpresa in 'Form\uCadEmpresa.pas',
-  uCadGrade in 'Form\uCadGrade.pas',
-  uCadPai in 'Form\uCadPai.pas' {frmCadPai},
-  uCadProduto in 'Form\uCadProduto.pas' {frmCadProduto},
-  uCadTabelaPreco in 'Form\uCadTabelaPreco.pas' {frmCadTabelaPreco},
-  uCadVenda in 'Form\uCadVenda.pas' {frmCadVenda},
-  uCarregaXML in 'Form\uCarregaXML.pas' {frmCarregaXML},
-  uConsultaCliente in 'Form\uConsultaCliente.pas',
-  uConsultaCor in 'Form\uConsultaCor.pas',
-  uConsultaGrade in 'Form\uConsultaGrade.pas',
-  uConsultaItem in 'Form\uConsultaItem.pas',
-  uConsultaPai in 'Form\uConsultaPai.pas' {frmConsultaPai},
-  uDetalhamento in 'Form\uDetalhamento.pas' {frmDetalhamento},
-  uDocSaida in 'Form\uDocSaida.pas' {frmDocSaida},
-  uEmissaoNfe in 'Form\uEmissaoNfe.pas' {frmEmissaoNfe},
-  uLogin in 'Form\uLogin.pas' {frmLogin},
-  uMovFinanceiro in 'Form\uMovFinanceiro.pas' {frmMovFinanceiro},
-  uMovReceber in 'Form\uMovReceber.pas' {frmMovReceber},
-  uParametro in 'Form\uParametro.pas' {frmParametro},
-  uPrincipal in 'Form\uPrincipal.pas' {frmPrincipal},
-  relCliente in 'Report\relCliente.pas' {frmRelCliente};
+  unitValidaCnpjCpf in 'Fonte\Class\unitValidaCnpjCpf.pas',
+  unitVarGlobal in 'Fonte\Class\unitVarGlobal.pas',
+  udmCadBanco in 'Fonte\Dm\udmCadBanco.pas',
+  udmCadCidade in 'Fonte\Dm\udmCadCidade.pas',
+  udmCadCliente in 'Fonte\Dm\udmCadCliente.pas',
+  udmCadConta in 'Fonte\Dm\udmCadConta.pas',
+  udmCadCor in 'Fonte\Dm\udmCadCor.pas',
+  udmCadEmpresa in 'Fonte\Dm\udmCadEmpresa.pas',
+  udmCadFinanceiro in 'Fonte\Dm\udmCadFinanceiro.pas',
+  udmCadGrade in 'Fonte\Dm\udmCadGrade.pas',
+  udmCadPai in 'Fonte\Dm\udmCadPai.pas' {dmCadPai: TDataModule},
+  udmCadProduto in 'Fonte\Dm\udmCadProduto.pas' {dmCadProduto: TDataModule},
+  udmCadTabelaPreco in 'Fonte\Dm\udmCadTabelaPreco.pas' {dmCadTabelaPreco: TDataModule},
+  udmCadVenda in 'Fonte\Dm\udmCadVenda.pas' {dmCadVenda: TDataModule},
+  udmConexao in 'Fonte\Dm\udmConexao.pas' {dmConexao: TDataModule},
+  udmDocEntrada in 'Fonte\Dm\udmDocEntrada.pas' {dmDocEntrada: TDataModule},
+  udmDocSaida in 'Fonte\Dm\udmDocSaida.pas' {dmDocSaida: TDataModule},
+  udmMovReceber in 'Fonte\Dm\udmMovReceber.pas' {dmMovReceber: TDataModule},
+  uCadBanco in 'Fonte\Form\uCadBanco.pas',
+  uCadCidade in 'Fonte\Form\uCadCidade.pas',
+  uCadCliente in 'Fonte\Form\uCadCliente.pas',
+  uCadCompra in 'Fonte\Form\uCadCompra.pas',
+  uCadConta in 'Fonte\Form\uCadConta.pas',
+  uCadCor in 'Fonte\Form\uCadCor.pas',
+  uCadEmpresa in 'Fonte\Form\uCadEmpresa.pas',
+  uCadGrade in 'Fonte\Form\uCadGrade.pas',
+  uCadPai in 'Fonte\Form\uCadPai.pas' {frmCadPai},
+  uCadProduto in 'Fonte\Form\uCadProduto.pas' {frmCadProduto},
+  uCadTabelaPreco in 'Fonte\Form\uCadTabelaPreco.pas' {frmCadTabelaPreco},
+  uCadVenda in 'Fonte\Form\uCadVenda.pas' {frmCadVenda},
+  uConsultaCliente in 'Fonte\Form\uConsultaCliente.pas',
+  uConsultaCor in 'Fonte\Form\uConsultaCor.pas',
+  uConsultaGrade in 'Fonte\Form\uConsultaGrade.pas',
+  uConsultaItem in 'Fonte\Form\uConsultaItem.pas',
+  uConsultaPai in 'Fonte\Form\uConsultaPai.pas' {frmConsultaPai},
+  uDetalhamento in 'Fonte\Form\uDetalhamento.pas' {frmDetalhamento},
+  uDocSaida in 'Fonte\Form\uDocSaida.pas' {frmDocSaida},
+  uEmissaoNfe in 'Fonte\Form\uEmissaoNfe.pas' {frmEmissaoNfe},
+  uLogin in 'Fonte\Form\uLogin.pas' {frmLogin},
+  uMovFinanceiro in 'Fonte\Form\uMovFinanceiro.pas' {frmMovFinanceiro},
+  uMovReceber in 'Fonte\Form\uMovReceber.pas' {frmMovReceber},
+  uParametro in 'Fonte\Form\uParametro.pas' {frmParametro},
+  uPrincipal in 'Fonte\Form\uPrincipal.pas' {frmPrincipal},
+  relCliente in 'Fonte\Report\relCliente.pas' {frmRelCliente};
 
 {$R *.res}
 
@@ -57,29 +56,8 @@ var
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TdmCadPai, dmCadPai);
-  Application.CreateForm(TdmCadProduto, dmCadProduto);
-  Application.CreateForm(TdmCadTabelaPreco, dmCadTabelaPreco);
-  Application.CreateForm(TdmCadVenda, dmCadVenda);
   Application.CreateForm(TdmConexao, dmConexao);
-  Application.CreateForm(TdmDocEntrada, dmDocEntrada);
-  Application.CreateForm(TdmDocSaida, dmDocSaida);
-  Application.CreateForm(TdmMovReceber, dmMovReceber);
-  Application.CreateForm(TfrmCadPai, frmCadPai);
-  Application.CreateForm(TfrmCadProduto, frmCadProduto);
-  Application.CreateForm(TfrmCadTabelaPreco, frmCadTabelaPreco);
-  Application.CreateForm(TfrmCadVenda, frmCadVenda);
-  Application.CreateForm(TfrmCarregaXML, frmCarregaXML);
-  Application.CreateForm(TfrmConsultaPai, frmConsultaPai);
-  Application.CreateForm(TfrmDetalhamento, frmDetalhamento);
-  Application.CreateForm(TfrmDocSaida, frmDocSaida);
-  Application.CreateForm(TfrmEmissaoNfe, frmEmissaoNfe);
-  Application.CreateForm(TfrmLogin, frmLogin);
-  Application.CreateForm(TfrmMovFinanceiro, frmMovFinanceiro);
-  Application.CreateForm(TfrmMovReceber, frmMovReceber);
-  Application.CreateForm(TfrmParametro, frmParametro);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmRelCliente, frmRelCliente);
   Application.Run;
 
 

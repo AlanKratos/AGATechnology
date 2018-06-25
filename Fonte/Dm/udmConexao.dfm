@@ -4,7 +4,7 @@ object dmConexao: TdmConexao
   Width = 384
   object FDConexao: TFDConnection
     Params.Strings = (
-      'Database=D:\Sistema\Banco\SISTEMA.FDB'
+      'Database=D:\Sistema\AGATechnology\Banco\SISTEMA.FDB'
       'User_Name=sysdba'
       'Password=masterkey'
       'Protocol=TCPIP'
@@ -14,7 +14,6 @@ object dmConexao: TdmConexao
       'DriverID=FB')
     FetchOptions.AssignedValues = [evDetailCascade]
     FetchOptions.DetailCascade = True
-    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 24

@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{BDF5F272-1F65-438B-89D8-502F22E4C548}</ProjectGuid>
-        <ProjectVersion>18.0</ProjectVersion>
+        <ProjectVersion>18.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <MainSource>ProjectADM.dpr</MainSource>
         <Base>True</Base>
@@ -98,125 +98,121 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Class\unitValidaCnpjCpf.pas"/>
-        <DCCReference Include="Class\unitVarGlobal.pas"/>
-        <DCCReference Include="Dm\udmCadBanco.pas"/>
-        <DCCReference Include="Dm\udmCadCidade.pas"/>
-        <DCCReference Include="Dm\udmCadCliente.pas"/>
-        <DCCReference Include="Dm\udmCadConta.pas"/>
-        <DCCReference Include="Dm\udmCadCor.pas"/>
-        <DCCReference Include="Dm\udmCadEmpresa.pas"/>
-        <DCCReference Include="Dm\udmCadFinanceiro.pas"/>
-        <DCCReference Include="Dm\udmCadGrade.pas"/>
-        <DCCReference Include="Dm\udmCadPai.pas">
+        <DCCReference Include="Fonte\Class\unitValidaCnpjCpf.pas"/>
+        <DCCReference Include="Fonte\Class\unitVarGlobal.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadBanco.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadCidade.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadCliente.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadConta.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadCor.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadEmpresa.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadFinanceiro.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadGrade.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadPai.pas">
             <Form>dmCadPai</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Dm\udmCadProduto.pas">
+        <DCCReference Include="Fonte\Dm\udmCadProduto.pas">
             <Form>dmCadProduto</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Dm\udmCadTabelaPreco.pas">
+        <DCCReference Include="Fonte\Dm\udmCadTabelaPreco.pas">
             <Form>dmCadTabelaPreco</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Dm\udmCadVenda.pas">
+        <DCCReference Include="Fonte\Dm\udmCadVenda.pas">
             <Form>dmCadVenda</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Dm\udmConexao.pas">
+        <DCCReference Include="Fonte\Dm\udmConexao.pas">
             <Form>dmConexao</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Dm\udmDocEntrada.pas">
+        <DCCReference Include="Fonte\Dm\udmDocEntrada.pas">
             <Form>dmDocEntrada</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Dm\udmDocSaida.pas">
+        <DCCReference Include="Fonte\Dm\udmDocSaida.pas">
             <Form>dmDocSaida</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Dm\udmMovReceber.pas">
+        <DCCReference Include="Fonte\Dm\udmMovReceber.pas">
             <Form>dmMovReceber</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Form\uCadBanco.pas"/>
-        <DCCReference Include="Form\uCadCidade.pas"/>
-        <DCCReference Include="Form\uCadCliente.pas"/>
-        <DCCReference Include="Form\uCadCompra.pas"/>
-        <DCCReference Include="Form\uCadConta.pas"/>
-        <DCCReference Include="Form\uCadCor.pas"/>
-        <DCCReference Include="Form\uCadEmpresa.pas"/>
-        <DCCReference Include="Form\uCadGrade.pas"/>
-        <DCCReference Include="Form\uCadPai.pas">
+        <DCCReference Include="Fonte\Form\uCadBanco.pas"/>
+        <DCCReference Include="Fonte\Form\uCadCidade.pas"/>
+        <DCCReference Include="Fonte\Form\uCadCliente.pas"/>
+        <DCCReference Include="Fonte\Form\uCadCompra.pas"/>
+        <DCCReference Include="Fonte\Form\uCadConta.pas"/>
+        <DCCReference Include="Fonte\Form\uCadCor.pas"/>
+        <DCCReference Include="Fonte\Form\uCadEmpresa.pas"/>
+        <DCCReference Include="Fonte\Form\uCadGrade.pas"/>
+        <DCCReference Include="Fonte\Form\uCadPai.pas">
             <Form>frmCadPai</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uCadProduto.pas">
+        <DCCReference Include="Fonte\Form\uCadProduto.pas">
             <Form>frmCadProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uCadTabelaPreco.pas">
+        <DCCReference Include="Fonte\Form\uCadTabelaPreco.pas">
             <Form>frmCadTabelaPreco</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uCadVenda.pas">
+        <DCCReference Include="Fonte\Form\uCadVenda.pas">
             <Form>frmCadVenda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uCarregaXML.pas">
-            <Form>frmCarregaXML</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Form\uConsultaCliente.pas"/>
-        <DCCReference Include="Form\uConsultaCor.pas"/>
-        <DCCReference Include="Form\uConsultaGrade.pas"/>
-        <DCCReference Include="Form\uConsultaItem.pas"/>
-        <DCCReference Include="Form\uConsultaPai.pas">
+        <DCCReference Include="Fonte\Form\uConsultaCliente.pas"/>
+        <DCCReference Include="Fonte\Form\uConsultaCor.pas"/>
+        <DCCReference Include="Fonte\Form\uConsultaGrade.pas"/>
+        <DCCReference Include="Fonte\Form\uConsultaItem.pas"/>
+        <DCCReference Include="Fonte\Form\uConsultaPai.pas">
             <Form>frmConsultaPai</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uDetalhamento.pas">
+        <DCCReference Include="Fonte\Form\uDetalhamento.pas">
             <Form>frmDetalhamento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uDocSaida.pas">
+        <DCCReference Include="Fonte\Form\uDocSaida.pas">
             <Form>frmDocSaida</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uEmissaoNfe.pas">
+        <DCCReference Include="Fonte\Form\uEmissaoNfe.pas">
             <Form>frmEmissaoNfe</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uLogin.pas">
+        <DCCReference Include="Fonte\Form\uLogin.pas">
             <Form>frmLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uMovFinanceiro.pas">
+        <DCCReference Include="Fonte\Form\uMovFinanceiro.pas">
             <Form>frmMovFinanceiro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uMovReceber.pas">
+        <DCCReference Include="Fonte\Form\uMovReceber.pas">
             <Form>frmMovReceber</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uParametro.pas">
+        <DCCReference Include="Fonte\Form\uParametro.pas">
             <Form>frmParametro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Form\uPrincipal.pas">
+        <DCCReference Include="Fonte\Form\uPrincipal.pas">
             <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Report\relCliente.pas">
+        <DCCReference Include="Fonte\Report\relCliente.pas">
             <Form>frmRelCliente</Form>
             <FormType>dfm</FormType>
         </DCCReference>
@@ -241,8 +237,10 @@
                     <Source Name="MainSource">ProjectADM.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k240.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp240.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp240.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
                 <Language>
                     <Language Name="ProjectLang">$00000416</Language>
@@ -260,19 +258,34 @@
                     <RDP_Source_Files Name="Item6">Win32\Debug\ProjectADM.drc</RDP_Source_Files>
                 </RDP_Source_Files>
             </Delphi.Personality>
-            <Deployment Version="2">
+            <Deployment Version="3">
                 <DeployFile LocalName="Win32\Debug\ProjectADM.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ProjectADM.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -324,17 +337,20 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Win32">
                         <Operation>0</Operation>
                     </Platform>
-                    <Platform Name="iOSDevice64">
+                    <Platform Name="Linux64">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Android">
@@ -387,12 +403,7 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidLibnativeX86File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\x86</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="AndroidLibnativeX86File"/>
                 <DeployClass Name="iPhone_Launch320">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
@@ -475,11 +486,11 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice64">
-                        <RemoteDir>../</RemoteDir>
+                        <RemoteDir>..\</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice32">
-                        <RemoteDir>../</RemoteDir>
+                        <RemoteDir>..\</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -503,7 +514,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>../</RemoteDir>
+                        <RemoteDir>..\</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -626,33 +637,19 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
