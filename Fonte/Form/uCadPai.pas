@@ -31,28 +31,27 @@ type
     BitBtnIncluir: TSpeedButton;
     dsCadastro: TDataSource;
     JvEnterAsTab1: TJvEnterAsTab;
-    QryNavegar: TFDQuery;
     procedure BitBtnCancelarClick(Sender: TObject);
     procedure BitBtnIncluirClick(Sender: TObject);
     procedure PanelTopExit(Sender: TObject);
     procedure dsCadastroStateChange(Sender: TObject);
-    procedure SpeedButtonPrimeiroClick(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure BitBtnSalvarClick(Sender: TObject);
+    procedure SpeedButtonPrimeiroClick(Sender: TObject);
   private
     { Private declarations }
-    varTabela: string; //tabela chamada
+{    varTabela: string; //tabela chamada
     varCampochave: string; //chave primaria
     varModalidade: string; //Cliente,Fornecedor...
-    procedure FDQueryCadastroBeforePost (DataSet: TDataSet);
+}    procedure FDQueryCadastroBeforePost (DataSet: TDataSet);
 
 public
     { Public declarations }
     fdmCadPai: TdmCadPai;   // Variavel : Classe -- vinculando ao DM
-    property tabela:string read varTabela write varTabela;
+{    property tabela:string read varTabela write varTabela;
     property modalidade:string read varModalidade write varModalidade;
     property campochave:string read varCampochave write varCampochave;
-  end;
+}  end;
 
 var
   frmCadPai: TfrmCadPai;
@@ -99,16 +98,16 @@ end;
 
 procedure TfrmCadPai.FDQueryCadastroBeforePost(DataSet: TDataSet);
 begin
-  if (DataSet.State = dsInsert) and (fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger = 0) then
+  if (DataSet.State = dsInsert) and (fdmCadPai.QryPrincipal.FieldByName(dmCadPai.Campochave).AsInteger = 0) then
     begin
-      JvCalcEditCodigo.AsInteger := dmConexao.ProximoCodigo(tabela);
-      fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger := JvCalcEditCodigo.AsInteger;
+      JvCalcEditCodigo.AsInteger := dmConexao.ProximoCodigo(dmCadPai.tabela);
+      fdmCadPai.QryPrincipal.FieldByName(dmCadPai.campochave).AsInteger := JvCalcEditCodigo.AsInteger;
     end;
 end;
 
 procedure TfrmCadPai.FormPaint(Sender: TObject);
 begin
-  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger
+//  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(dmCadPai.campochave).AsInteger
 end;
 
 procedure TfrmCadPai.PanelTopExit(Sender: TObject);
@@ -123,37 +122,17 @@ end;
 
 procedure TfrmCadPai.SpeedButtonPrimeiroClick(Sender: TObject);
 begin
-  fdmCadPai.QryPrincipal.Open();
-  QryNavegar.Close;
   if sender = SpeedButtonPrimeiro then
-    QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+ ' CODIGO' +
-    ' from '+tabela+' where '+tabela+'.'+modalidade+ ' order by '+tabela+'.'+campochave
-
+    fdmCadPai.Navegar(0)
   else if sender = SpeedButtonUltimo then
-    QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where '+tabela+'.'+modalidade +' order by '+tabela+'.'+campochave+' desc'
-
+    fdmCadPai.Navegar(1)
   else if sender = SpeedButtonAnterior then
-    QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where (('+tabela+'.'+campochave+' < '+IntToStr(JvCalcEditCodigo.AsInteger) + ')' +
-    'and '+tabela+'.'+modalidade+
-    '  or ('+tabela+'.'+campochave+' = '+ '(select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where '+tabela+'.'+modalidade+'order by '+tabela+'.'+campochave+' )))'+
-    ' order by '+tabela+'.'+campochave+' desc'
-
+    fdmCadPai.Navegar(2)
   else if sender = SpeedButtonProximo then
-    QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where (('+tabela+'.'+campochave+' > '+IntToStr(JvCalcEditCodigo.AsInteger) + ')' +
-    'and '+tabela+'.'+modalidade+
-    '  or ('+tabela+'.'+campochave+' = '+ '(select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where '+tabela+'.'+modalidade+'order by '+tabela+'.'+campochave+' desc'+' )))'+
-    ' order by '+tabela+'.'+campochave;
+    fdmCadPai.Navegar(3);
 
-  QryNavegar.Open();
-  JvCalcEditCodigo.AsInteger := QryNavegar.FieldByName('CODIGO').AsInteger;
-  QryNavegar.Close;
+  JvCalcEditCodigo.AsInteger := fdmCadPai.Codigo;
   PanelTopExit(PanelTop);
 end;
-
 
 end.

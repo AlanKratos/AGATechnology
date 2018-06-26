@@ -1,11 +1,9 @@
 inherited dmCadEmpresa: TdmCadEmpresa
   OldCreateOrder = True
+  OnCreate = DataModuleCreate
   Height = 203
   Width = 329
   inherited QryPrincipal: TFDQuery
-    AfterInsert = FDQueryPrincipalAfterInsert
-    BeforePost = FDQueryPrincipalBeforePost
-    OnNewRecord = FDQueryPrincipalNewRecord
     CachedUpdates = True
     SchemaAdapter = FDSchemaAdapterEmpresa
     SQL.Strings = (

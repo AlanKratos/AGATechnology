@@ -1,5 +1,6 @@
 inherited dmCadCor: TdmCadCor
   OldCreateOrder = True
+  OnCreate = DataModuleCreate
   inherited QryPrincipal: TFDQuery
     AfterInsert = FDQueryPrincipalAfterInsert
     BeforePost = FDQueryPrincipalBeforePost

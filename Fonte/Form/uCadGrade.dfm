@@ -2,6 +2,8 @@ inherited frmCadGrade: TfrmCadGrade
   Caption = 'Cadastro de Grade'
   OnClose = FormClose
   OnCreate = FormCreate
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelLeft: TPanel

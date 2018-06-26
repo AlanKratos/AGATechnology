@@ -68,6 +68,7 @@ type
       E: EFDException; UpdateKind: TFDDatSRowState;
       var Action: TFDDAptReconcileAction);
     procedure QryPrincipalAfterInsert(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
 
   private
     { Private declarations }
@@ -85,18 +86,26 @@ implementation
 
 {$R *.dfm}
 
+procedure TdmCadCliente.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'PESSOA';
+  self.campochave := 'CODIGO_PESSOA';
+  self.TipoCadastro := 'CLIENTE_PESSOA = ' + QuotedStr('S');
+end;
+
 procedure TdmCadCliente.QryEmailBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryEmailBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryEmailBeforePost(DataSet: TDataSet);

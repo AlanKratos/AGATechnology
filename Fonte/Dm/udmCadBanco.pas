@@ -10,18 +10,19 @@ uses
 
 type
   TdmCadBanco = class(TdmCadPai)
-    QryPrincipalCODIGO_BANCO: TIntegerField;
-    QryPrincipalDESCRICAO_BANCO: TStringField;
-    QryPrincipalCAMARACOMPENSACAO_BANCO: TIntegerField;
-    QryPrincipalLOGO_BANCO: TBlobField;
-    QryPrincipalSTATUS_BANCO: TIntegerField;
-    QryPrincipalINCLUSAO_BANCO: TSQLTimeStampField;
-    QryPrincipalALTERACAO_BANCO: TSQLTimeStampField;
-    QryPrincipalUSUARIOINCLUSAO_BANCO: TStringField;
-    QryPrincipalUSUARIOALTERACAO_BANCO: TStringField;
+    QryCadastroCODIGO_BANCO: TIntegerField;
+    QryCadastroDESCRICAO_BANCO: TStringField;
+    QryCadastroCAMARACOMPENSACAO_BANCO: TIntegerField;
+    QryCadastroLOGO_BANCO: TBlobField;
+    QryCadastroSTATUS_BANCO: TIntegerField;
+    QryCadastroINCLUSAO_BANCO: TSQLTimeStampField;
+    QryCadastroALTERACAO_BANCO: TSQLTimeStampField;
+    QryCadastroUSUARIOINCLUSAO_BANCO: TStringField;
+    QryCadastroUSUARIOALTERACAO_BANCO: TStringField;
     FDSchemaAdapterBanco: TFDSchemaAdapter;
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,6 +38,14 @@ implementation
 
 {$R *.dfm}
 
+procedure TdmCadBanco.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'BANCO';
+  self.campochave := 'CODIGO_BANCO';
+  self.TipoCadastro := '1 = 1'; //usar quando nao precisar utilizar
+end;
+
 procedure TdmCadBanco.QryPrincipalBeforePost(DataSet: TDataSet);
 begin
   inherited;
@@ -50,7 +59,7 @@ end;
 procedure TdmCadBanco.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 end.

@@ -96,9 +96,6 @@ procedure TfrmCadGrade.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadGrade := TdmCadGrade.Create(self); // Instanciar DM
-  self.tabela := 'GRADE';
-  self.campochave := 'CODIGO_GRADE';
-  self.modalidade := 'CODIGO_GRADE > 0';
   self.fdmCadPai := dmCadGrade;
 
   with dmCadGrade do

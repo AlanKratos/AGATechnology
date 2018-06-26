@@ -48,6 +48,7 @@ type
     dbgDiferenciacao: TJvDBGrid;
     Label11: TLabel;
     sbGerarCombinacao: TSpeedButton;
+    dbcbTecido: TJvDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure BitBtnIncluirClick(Sender: TObject);
@@ -137,9 +138,6 @@ procedure TfrmCadProduto.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadProduto := TdmCadProduto.Create(self); // Instanciar DM
-  self.tabela := 'ITEM';
-  self.campochave := 'CODIGO_ITEM';
-  self.modalidade := 'PRODUTO_ITEM = 1';
   self.fdmCadPai := dmCadProduto;
 
   with dmCadProduto do

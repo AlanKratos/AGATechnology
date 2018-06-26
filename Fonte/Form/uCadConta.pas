@@ -114,9 +114,6 @@ procedure TfrmCadConta.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadConta := TdmCadConta.Create(self); // Instanciar DM
-  self.tabela := 'CONTA';
-  self.campochave := 'CODIGO_CONTA';
-  self.modalidade := 'CODIGO_CONTA > 0 ';
   self.fdmCadPai := dmCadConta;
 
   with dmCadConta do

@@ -525,9 +525,6 @@ inherited frmCadCliente: TfrmCadCliente
   inherited JvEnterAsTab1: TJvEnterAsTab
     Left = 160
   end
-  inherited QryNavegar: TFDQuery
-    Left = 224
-  end
   object dsTelefone: TDataSource
     DataSet = dmCadCliente.QryTelefone
     Left = 552

@@ -14,6 +14,7 @@ type
     procedure FDQueryPrincipalAfterInsert(DataSet: TDataSet);
     procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
     procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,6 +29,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdmCadGrade.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'GRADE';
+  self.campochave := 'CODIGO_GRADE';
+  self.TipoCadastro := '1 = 1';
+end;
 
 procedure TdmCadGrade.FDQueryPrincipalAfterInsert(DataSet: TDataSet);
 begin

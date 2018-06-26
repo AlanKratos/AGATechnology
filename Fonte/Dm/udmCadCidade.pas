@@ -21,6 +21,7 @@ type
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
     procedure Validate_UF(Sender:TField);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,6 +37,14 @@ implementation
 
 {$R *.dfm}
 
+procedure TdmCadCidade.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'CIDADE';
+  self.campochave := 'CODIGO_CIDADE';
+  self.TipoCadastro := '1 = 1'; //usar quando nao precisar utilizar
+end;
+
 procedure TdmCadCidade.QryPrincipalBeforePost(DataSet: TDataSet);
 begin
   inherited;
@@ -48,7 +57,7 @@ end;
 procedure TdmCadCidade.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 
@@ -69,8 +78,8 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('DESCRICAO_UF').AsString := QryValidaUF.FieldByName('DESCRICAO_UF').AsString;
-  QryPrincipal.FieldByName('SIGLA_UF').AsString := QryValidaUF.FieldByName('SIGLA_UF').AsString;
+  QryCadastro.FieldByName('DESCRICAO_UF').AsString := QryValidaUF.FieldByName('DESCRICAO_UF').AsString;
+  QryCadastro.FieldByName('SIGLA_UF').AsString := QryValidaUF.FieldByName('SIGLA_UF').AsString;
   end;
 
 end.

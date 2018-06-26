@@ -55,6 +55,7 @@ type
     procedure QryPrazoBeforeInsert(DataSet: TDataSet);
     procedure QryPrazoBeforePost(DataSet: TDataSet);
     procedure QryPrazoNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,6 +102,14 @@ begin
   inherited;
   DataSet.FieldByName('DOCUMENTO_DOC_PRAZO').AsInteger :=
     QryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsInteger;
+end;
+
+procedure TdmCadVenda.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'DOCUMENTO';
+  self.campochave := 'CODIGO_DOCUMENTO';
+  self.TipoCadastro := 'MODALIDADE_DOCUMENTO = ''S''';
 end;
 
 procedure TdmCadVenda.FDQueryPrincipalBeforePost(DataSet: TDataSet);

@@ -92,10 +92,6 @@ procedure TfrmCadCidade.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadCidade := TdmCadCidade.Create(self); // Instanciar DM
-  self.tabela := 'CIDADE';
-  self.campochave := 'CODIGO_CIDADE';
-  self.modalidade := 'CODIGO_CIDADE > 0'; //usar quando nao precisar utilizar
-  //modalidade no where
   self.fdmCadPai := dmCadCidade;
 
   with dmCadCidade do

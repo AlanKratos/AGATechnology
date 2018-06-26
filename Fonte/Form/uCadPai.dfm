@@ -658,8 +658,4 @@ object frmCadPai: TfrmCadPai
   object JvEnterAsTab1: TJvEnterAsTab
     Left = 152
   end
-  object QryNavegar: TFDQuery
-    Connection = dmConexao.FDConexao
-    Left = 352
-  end
 end

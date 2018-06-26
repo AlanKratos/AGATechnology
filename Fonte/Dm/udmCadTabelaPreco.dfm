@@ -1,5 +1,6 @@
 inherited dmCadTabelaPreco: TdmCadTabelaPreco
   OldCreateOrder = True
+  OnCreate = DataModuleCreate
   Height = 329
   Width = 269
   inherited QryPrincipal: TFDQuery

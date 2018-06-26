@@ -32,6 +32,7 @@ type
     procedure Validate_Banco(Sender:TField);
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +47,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+procedure TdmCadConta.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'CONTA';
+  self.campochave := 'CODIGO_CONTA';
+  self.TipoCadastro := '1 = 1 ';
+end;
+
 procedure TdmCadConta.QryPrincipalBeforePost(DataSet: TDataSet);
 begin
   inherited;
