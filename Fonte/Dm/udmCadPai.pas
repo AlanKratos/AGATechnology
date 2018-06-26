@@ -13,17 +13,17 @@ type
     QryPrincipal: TFDQuery;
     QryNavegar: TFDQuery;
     procedure QryPrincipalAfterPost(DataSet: TDataSet);
-    procedure Navegar(Codigo:Integer);
+    procedure Navegar(Botao:Integer);
   private
     { Private declarations }
     varTabela: string; //tabela chamada
     varCampochave: string; //chave primaria
-    varModalidade: string; //Cliente,Fornecedor...
+    varTipoCadastro: string; //Cliente,Fornecedor...
     VarCodigo: Integer;
   public
     { Public declarations }
     property tabela:string read varTabela write varTabela;
-    property modalidade:string read varModalidade write varModalidade;
+    property TipoCadastro:string read varTipoCadastro write varTipoCadastro;
     property campochave:string read varCampochave write varCampochave;
     property codigo:integer read varCodigo write varCodigo;
   end;
@@ -37,33 +37,32 @@ implementation
 
 {$R *.dfm}
 
-procedure TdmCadPai.Navegar(Codigo: Integer);
+procedure TdmCadPai.Navegar(Botao: Integer);
 begin
   QryPrincipal.Open();
   QryNavegar.Close;
-  if codigo = 1 then
-    QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+ ' CODIGO' +
-    ' from '+tabela+' where '+tabela+'.'+modalidade+ ' order by '+tabela+'.'+campochave
+  case Botao of
+    0: QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+
+     ' CODIGO' + ' from '+tabela+' where '+TipoCadastro+
+     ' order by '+tabela+'.'+campochave;
 
-  else if codigo = 2 then
-    QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where (('+tabela+'.'+campochave+' < '+QryPrincipal.FieldByName('CODIGO').AsString + ')' +
-    'and '+tabela+'.'+modalidade+
+    1: QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
+    ' from '+tabela+' where '+TipoCadastro +' order by '+tabela+'.'+campochave+' desc';
+
+    2: QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
+    ' from '+tabela+' where (('+tabela+'.'+campochave+' < '+IntToStr(Codigo) + ')' +
+    'and '+TipoCadastro+
     '  or ('+tabela+'.'+campochave+' = '+ '(select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where '+tabela+'.'+modalidade+'order by '+tabela+'.'+campochave+' )))'+
-    ' order by '+tabela+'.'+campochave+' desc'
+    ' from '+tabela+' where '+TipoCadastro+' order by '+tabela+'.'+campochave+' )))'+
+    ' order by '+tabela+'.'+campochave+' desc';
 
-  else if codigo = 3 then
-    QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where (('+tabela+'.'+campochave+' > '+QryPrincipal.FieldByName('CODIGO').AsString + ')' +
-    'and '+tabela+'.'+modalidade+
+    3: QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
+    ' from '+tabela+' where (('+tabela+'.'+campochave+' > '+IntToStr(Codigo) + ')' +
+    'and '+TipoCadastro+
     '  or ('+tabela+'.'+campochave+' = '+ '(select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where '+tabela+'.'+modalidade+'order by '+tabela+'.'+campochave+' desc'+' )))'+
-    ' order by '+tabela+'.'+campochave
-
-  else if codigo = 4 then
-    QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+' CODIGO' +
-    ' from '+tabela+' where '+tabela+'.'+modalidade +' order by '+tabela+'.'+campochave+' desc';
+    ' from '+tabela+' where '+TipoCadastro+' order by '+tabela+'.'+campochave+' desc'+' )))'+
+    ' order by '+tabela+'.'+campochave;
+  End;
 
   QryNavegar.Open();
   Codigo := QryNavegar.FieldByName('CODIGO').AsInteger;

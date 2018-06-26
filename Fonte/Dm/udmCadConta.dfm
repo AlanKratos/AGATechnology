@@ -1,5 +1,6 @@
 inherited dmCadConta: TdmCadConta
   OldCreateOrder = True
+  OnCreate = DataModuleCreate
   Height = 260
   Width = 415
   inherited QryPrincipal: TFDQuery

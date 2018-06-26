@@ -115,7 +115,6 @@ begin
   with fdmCadPai.QryPrincipal do
     Begin
       Close;
-      JvCalcEditCodigo.AsInteger := dmCadPai.codigo;
       ParamByName('CODIGO').AsInteger := JvCalcEditCodigo.AsInteger; //Declara o campo do panel que vai ser referenciado
       Open;
     End
@@ -123,15 +122,16 @@ end;
 
 procedure TfrmCadPai.SpeedButtonPrimeiroClick(Sender: TObject);
 begin
-  if Sender = SpeedButtonPrimeiro then
-    dmCadPai.QryNavegar(1)
-  else if Sender = SpeedButtonPrimeiro then
-    dmCadPai.QryNavegar(2)
-  else if Sender = SpeedButtonPrimeiro then
-    dmCadPai.QryNavegar(3)
-  else if Sender = SpeedButtonPrimeiro then
-    dmCadPai.QryNavegar(4);
+  if sender = SpeedButtonPrimeiro then
+    fdmCadPai.Navegar(0)
+  else if sender = SpeedButtonUltimo then
+    fdmCadPai.Navegar(1)
+  else if sender = SpeedButtonAnterior then
+    fdmCadPai.Navegar(2)
+  else if sender = SpeedButtonProximo then
+    fdmCadPai.Navegar(3);
 
+  JvCalcEditCodigo.AsInteger := fdmCadPai.Codigo;
   PanelTopExit(PanelTop);
 end;
 

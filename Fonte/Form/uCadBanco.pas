@@ -93,11 +93,7 @@ procedure TfrmCadBanco.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadBanco := TdmCadBanco.Create(self); // Instanciar DM
-  self.tabela := 'BANCO';
-  self.campochave := 'CODIGO_BANCO';
   self.fdmCadPai := dmCadBanco;
-  self.modalidade := 'CODIGO_BANCO > 0'; //usar quando nao precisar utilizar
-  //modalidade no where
 
   with dmCadBanco do
   begin

@@ -21,6 +21,7 @@ type
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
     procedure Validate_UF(Sender:TField);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,6 +36,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdmCadCidade.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'CIDADE';
+  self.campochave := 'CODIGO_CIDADE';
+  self.TipoCadastro := '1 = 1'; //usar quando nao precisar utilizar
+end;
 
 procedure TdmCadCidade.QryPrincipalBeforePost(DataSet: TDataSet);
 begin

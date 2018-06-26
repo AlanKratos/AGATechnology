@@ -1,5 +1,6 @@
 inherited dmCadCliente: TdmCadCliente
   OldCreateOrder = True
+  OnCreate = DataModuleCreate
   Height = 355
   Width = 330
   inherited QryPrincipal: TFDQuery
@@ -121,6 +122,10 @@ inherited dmCadCliente: TdmCadCliente
       ProviderFlags = []
       Size = 40
     end
+  end
+  inherited QryNavegar: TFDQuery
+    Left = 112
+    Top = 192
   end
   object QryEmail: TFDQuery
     BeforeInsert = QryEmailBeforeInsert

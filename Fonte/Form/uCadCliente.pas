@@ -259,13 +259,7 @@ procedure TfrmCadCliente.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadCliente := TdmCadCliente.Create(self); // Instanciar DM
-  self.tabela := 'PESSOA';
-  self.campochave := 'CODIGO_PESSOA';
-  self.modalidade := 'CLIENTE_PESSOA = ' + QuotedStr('S');
   self.fdmCadPai := dmCadCliente;
-  //JvDBCheckBoxCliente := ''
-  // self.modalidade := QuotedStr('1 = 1'); usar quando nao precisar utilizar
-  //modalidade no where
 
   with dmCadCliente do
   begin

@@ -145,10 +145,6 @@ procedure TfrmCadEmpresa.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadEmpresa := TdmCadEmpresa.Create(self); // Instanciar DM
-  self.tabela := 'EMPRESA';
-  self.campochave := 'CODIGO_EMPRESA';
-  self.modalidade := 'CODIGO_EMPRESA > 0'; //usar quando nao precisar utilizar
-  //modalidade no where
   self.fdmCadPai := dmCadEmpresa;
 
   with dmCadEmpresa do

@@ -13,6 +13,7 @@ type
     procedure FDQueryPrincipalAfterInsert(DataSet: TDataSet);
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,6 +28,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdmCadCor.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'COR';
+  self.campochave := 'CODIGO_COR';
+  self.TipoCadastro := '1 = ';
+end;
 
 procedure TdmCadCor.FDQueryPrincipalAfterInsert(DataSet: TDataSet);
 begin

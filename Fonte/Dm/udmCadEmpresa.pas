@@ -13,50 +13,12 @@ type
     QryValidaCidade: TFDQuery;
     QryValidaUf: TFDQuery;
     FDQueryPrincipalCODIGO_EMPRESA: TIntegerField;
-    QryPrincipalRAZAOSOCIAL_EMPRESA: TStringField;
-    QryPrincipalNOMEFANTASIA_EMPRESA: TStringField;
-    QryPrincipalALIQAPROVEITAMENTOICMS_EMPRESA: TCurrencyField;
-    QryPrincipalALIQCOFINS_EMPRESA: TCurrencyField;
-    QryPrincipalALIQCST_EMPRESA: TCurrencyField;
-    QryPrincipalALIQIR_EMPRESA: TCurrencyField;
-    QryPrincipalALIQISSQN_EMPRESA: TCurrencyField;
-    QryPrincipalALIQJUROSBOLETA_EMPRESA: TCurrencyField;
-    QryPrincipalALIQJUROSBORDERO_EMPRESA: TCurrencyField;
-    QryPrincipalALIQJUROSCHEQUE_EMPRESA: TCurrencyField;
-    QryPrincipalALIQPIS_EMPRESA: TCurrencyField;
-    QryPrincipalALIQSIMPLES_EMPRESA: TCurrencyField;
-    QryPrincipalCONTACAIXA_EMPRESA: TIntegerField;
-    QryPrincipalSUBSTITUICAO_EMPRESA: TStringField;
-    QryPrincipalCRT_EMPRESA: TIntegerField;
-    QryPrincipalCSOSN_EMPRESA: TIntegerField;
-    QryPrincipalDATAINCLUSAO_EMPRESA: TSQLTimeStampField;
-    QryPrincipalTIPOATIVIDADE_EMPRESA: TIntegerField;
-    QryPrincipalDATAINICIOCONTINGENCIA_EMPRESA: TSQLTimeStampField;
-    QryPrincipalMOTIVOCONTINGENCIA_EMPRESA: TStringField;
-    QryPrincipalDATAFIMCONTINGENCIA_EMPRESA: TSQLTimeStampField;
-    QryPrincipalLOGO_EMPRESA: TBlobField;
-    QryPrincipalEMPRESAMATRIZ_EMPRESA: TIntegerField;
-    QryPrincipalNATUREZAPESSOAJURIDICA_EMPRESA: TIntegerField;
-    QryPrincipalOBSERVACAO_EMPRESA: TStringField;
-    QryPrincipalSLOGAN_EMPRESA: TStringField;
-    QryPrincipalENDERECO_EMPRESA: TStringField;
-    QryPrincipalNUMERO_EMPRESA: TStringField;
-    QryPrincipalCOMPLEMENTO_EMPRESA: TStringField;
-    QryPrincipalCIDADE_EMPRESA: TIntegerField;
-    QryPrincipalCSTPIS_EMPRESA: TIntegerField;
-    QryPrincipalCSTCOFINS_EMPRESA: TIntegerField;
-    QryPrincipalDESCRICAO_CIDADE: TStringField;
-    QryPrincipalDESCRICAO_UF: TStringField;
-    QryPrincipalSTATUS_EMPRESA: TIntegerField;
-    strngfldQryPrincipalBAIRRO_EMPRESA: TStringField;
-    intgrfldQryPrincipalUF_CIDADE: TIntegerField;
     FDSchemaAdapterEmpresa: TFDSchemaAdapter;
-    strngfldQryPrincipalCNPJ_EMPRESA: TStringField;
-    strngfldQryPrincipalIE_EMPRESA: TStringField;
     procedure Validate_Cidade(Sender: TField);
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
     procedure QryPrincipalAfterInsert(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,6 +35,14 @@ implementation
 {$R *.dfm}
 
 { TdmCadEmpresa }
+
+procedure TdmCadEmpresa.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'EMPRESA';
+  self.campochave := 'CODIGO_EMPRESA';
+  self.TipoCadastro := '1 = 1'; //usar quando nao precisar utilizar
+end;
 
 procedure TdmCadEmpresa.QryPrincipalAfterInsert(DataSet: TDataSet);
 begin

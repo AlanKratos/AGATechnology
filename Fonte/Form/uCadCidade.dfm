@@ -29,8 +29,6 @@ inherited frmCadCidade: TfrmCadCidade
     Height = 203
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 511
-    ExplicitHeight = 288
     object Label2: TLabel
       Left = 6
       Top = 14

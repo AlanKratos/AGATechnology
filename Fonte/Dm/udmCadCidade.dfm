@@ -1,5 +1,6 @@
 inherited dmCadCidade: TdmCadCidade
   OldCreateOrder = True
+  OnCreate = DataModuleCreate
   Height = 275
   Width = 454
   inherited QryPrincipal: TFDQuery
@@ -17,8 +18,8 @@ inherited dmCadCidade: TdmCadCidade
       'from CIDADE'
       '   left join UF on (CIDADE.UF_CIDADE = UF.CODIGO_UF)'
       'where CIDADE.CODIGO_CIDADE = :CODIGO')
-    Left = 80
-    Top = 48
+    Left = 32
+    Top = 16
     ParamData = <
       item
         Name = 'CODIGO'
@@ -73,8 +74,8 @@ inherited dmCadCidade: TdmCadCidade
   object QryValidaUf: TFDQuery
     Connection = dmConexao.FDConexao
     FetchOptions.AssignedValues = [evDetailCascade]
-    Left = 80
-    Top = 120
+    Left = 64
+    Top = 160
   end
   object FDSchemaAdapterCidade: TFDSchemaAdapter
     Left = 208

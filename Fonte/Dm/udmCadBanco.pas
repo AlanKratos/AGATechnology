@@ -22,6 +22,7 @@ type
     FDSchemaAdapterBanco: TFDSchemaAdapter;
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,6 +37,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdmCadBanco.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'BANCO';
+  self.campochave := 'CODIGO_BANCO';
+  self.TipoCadastro := '1 = 1'; //usar quando nao precisar utilizar
+end;
 
 procedure TdmCadBanco.QryPrincipalBeforePost(DataSet: TDataSet);
 begin

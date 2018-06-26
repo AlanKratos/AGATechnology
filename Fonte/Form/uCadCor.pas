@@ -94,9 +94,6 @@ procedure TfrmCadCor.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadCor := TdmCadCor.Create(self); // Instanciar DM
-  self.tabela := 'COR';
-  self.campochave := 'CODIGO_COR';
-  self.modalidade := 'CODIGO_COR > 0';
   self.fdmCadPai := dmCadCor;
 
   with dmCadCor do
