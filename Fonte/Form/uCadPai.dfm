@@ -146,7 +146,6 @@ object frmCadPai: TfrmCadPai
           C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
           C3C3C3C3C3C3C3FFFFFFC3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
           C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3FFFFFF}
-        OnClick = SpeedButtonPrimeiroClick
       end
       object SpeedButtonProximo: TSpeedButton
         Left = 63
@@ -193,7 +192,6 @@ object frmCadPai: TfrmCadPai
           C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
           C3C3C3C3C3C3C3FFFFFFC3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
           C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3FFFFFF}
-        OnClick = SpeedButtonPrimeiroClick
       end
       object SpeedButtonUltimo: TSpeedButton
         Left = 93
@@ -258,7 +256,6 @@ object frmCadPai: TfrmCadPai
           C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
           C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
           C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3}
-        OnClick = SpeedButtonPrimeiroClick
       end
     end
     object JvCalcEditCodigo: TJvCalcEdit
@@ -657,9 +654,5 @@ object frmCadPai: TfrmCadPai
   end
   object JvEnterAsTab1: TJvEnterAsTab
     Left = 152
-  end
-  object QryNavegar: TFDQuery
-    Connection = dmConexao.FDConexao
-    Left = 352
   end
 end

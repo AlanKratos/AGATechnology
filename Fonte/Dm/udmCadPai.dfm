@@ -8,4 +8,8 @@ object dmCadPai: TdmCadPai
     Left = 64
     Top = 24
   end
+  object QryNavegar: TFDQuery
+    Left = 64
+    Top = 88
+  end
 end
