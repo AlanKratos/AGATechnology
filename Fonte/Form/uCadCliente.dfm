@@ -395,7 +395,6 @@ inherited frmCadCliente: TfrmCadCliente
             Expanded = False
             FieldName = 'NUMERO_PESSOA_ENDERECO'
             Title.Caption = 'N'#250'mero'
-            Width = 64
             Visible = True
           end
           item

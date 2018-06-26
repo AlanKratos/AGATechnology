@@ -40,15 +40,11 @@ inherited frmCadProduto: TfrmCadProduto
       Top = 72
       Width = 671
       Height = 326
-      ActivePage = tsDiferenciacao
+      ActivePage = tsPrincipal
       Align = alBottom
       TabOrder = 0
       object tsPrincipal: TTabSheet
         Caption = 'Principal'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Panel3: TPanel
           Left = 0
           Top = 0
@@ -251,10 +247,6 @@ inherited frmCadProduto: TfrmCadProduto
       object tsDiferenciacao: TTabSheet
         Caption = 'Diferencia'#231#227'o'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label11: TLabel
           Left = 3
           Top = 14

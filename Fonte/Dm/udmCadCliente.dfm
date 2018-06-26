@@ -303,8 +303,8 @@ inherited dmCadCliente: TdmCadCliente
   end
   object QryValidaUf: TFDQuery
     Connection = dmConexao.FDConexao
-    Left = 200
-    Top = 216
+    Left = 208
+    Top = 224
   end
   object QryValidaGrupo: TFDQuery
     Connection = dmConexao.FDConexao

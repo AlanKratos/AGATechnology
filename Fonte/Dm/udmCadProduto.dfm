@@ -19,7 +19,6 @@ inherited dmCadProduto: TdmCadProduto
       '    ITEM.VALIDADE_ITEM,'
       '    ITEM.VARIATECIDO_ITEM,'
       '    ITEM.VARIAGRADE_ITEM,'
-      '    ITEM.VARIAACABAMENTO_ITEM,'
       '    ITEM.GRUPO_ITEM,'
       '    ITEM.SUBGRUPO_ITEM,'
       '    ITEM.NCM_ITEM,'
