@@ -3,8 +3,6 @@ inherited frmCadVenda: TfrmCadVenda
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelLeft: TPanel
@@ -30,10 +28,6 @@ inherited frmCadVenda: TfrmCadVenda
       TabOrder = 0
       object tsPrincipal: TTabSheet
         Caption = 'Principal'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label2: TLabel
           Left = 6
           Top = 10
@@ -208,10 +202,6 @@ inherited frmCadVenda: TfrmCadVenda
   inherited JvEnterAsTab1: TJvEnterAsTab
     Left = 616
     Top = 64
-  end
-  inherited QryNavegar: TFDQuery
-    Left = 456
-    Top = 32
   end
   object dsItens: TDataSource
     Left = 169

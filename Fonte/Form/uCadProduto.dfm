@@ -83,22 +83,26 @@ inherited frmCadProduto: TfrmCadProduto
           object dbcbCor: TJvDBCheckBox
             Left = 8
             Top = 22
-            Width = 97
+            Width = 72
             Height = 17
             Caption = 'Cor'
             DataField = 'VARIACOR_ITEM'
             DataSource = dsCadastro
             TabOrder = 0
+            ValueChecked = 'S'
+            ValueUnchecked = 'N'
           end
           object dbcbGrade: TJvDBCheckBox
             Left = 8
             Top = 45
-            Width = 97
+            Width = 72
             Height = 17
             Caption = 'Grade'
             DataField = 'VARIAGRADE_ITEM'
             DataSource = dsCadastro
             TabOrder = 1
+            ValueChecked = 'S'
+            ValueUnchecked = 'N'
           end
           object dbeGrupo: TDBEdit
             Left = 86
@@ -151,6 +155,18 @@ inherited frmCadProduto: TfrmCadProduto
             DataField = 'SUBGRUPO_ITEM'
             DataSource = dsCadastro
             TabOrder = 6
+          end
+          object dbcbTecido: TJvDBCheckBox
+            Left = 86
+            Top = 22
+            Width = 97
+            Height = 17
+            Caption = 'Tecido'
+            DataField = 'VARIATECIDO_ITEM'
+            DataSource = dsCadastro
+            TabOrder = 7
+            ValueChecked = 'S'
+            ValueUnchecked = 'N'
           end
         end
         object Panel4: TPanel
@@ -318,10 +334,14 @@ inherited frmCadProduto: TfrmCadProduto
       TabOrder = 1
     end
   end
+  inherited dsCadastro: TDataSource
+    DataSet = dmCadProduto.QryPrincipal
+  end
   object dsItemDetalhe: TDataSource
     Left = 568
   end
   object dsUnidade: TDataSource
+    DataSet = dmCadProduto.QryUnidade
     Left = 208
   end
 end

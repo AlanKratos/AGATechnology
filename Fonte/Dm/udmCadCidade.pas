@@ -57,7 +57,7 @@ end;
 procedure TdmCadCidade.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 
@@ -78,8 +78,8 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('DESCRICAO_UF').AsString := QryValidaUF.FieldByName('DESCRICAO_UF').AsString;
-  QryPrincipal.FieldByName('SIGLA_UF').AsString := QryValidaUF.FieldByName('SIGLA_UF').AsString;
+  QryCadastro.FieldByName('DESCRICAO_UF').AsString := QryValidaUF.FieldByName('DESCRICAO_UF').AsString;
+  QryCadastro.FieldByName('SIGLA_UF').AsString := QryValidaUF.FieldByName('SIGLA_UF').AsString;
   end;
 
 end.

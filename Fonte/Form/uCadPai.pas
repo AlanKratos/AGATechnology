@@ -107,7 +107,7 @@ end;
 
 procedure TfrmCadPai.FormPaint(Sender: TObject);
 begin
-  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(dmCadPai.campochave).AsInteger
+//  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(dmCadPai.campochave).AsInteger
 end;
 
 procedure TfrmCadPai.PanelTopExit(Sender: TObject);

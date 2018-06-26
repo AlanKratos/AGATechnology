@@ -242,9 +242,6 @@ procedure TfrmCadTabelaPreco.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadTabelaPreco := TdmCadTabelaPreco.Create(self); // Instanciar DM
-  self.tabela := 'TABELA';
-  self.campochave := 'CODIGO_TABELA';
-  self.modalidade := ' CODIGO_TABELA > 0';
   self.fdmCadPai := dmCadTabelaPreco;
 
   with dmCadTabelaPreco do
@@ -264,7 +261,7 @@ end;
 procedure TfrmCadTabelaPreco.FormPaint(Sender: TObject);
 begin
   inherited;
-  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger
+//  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger
 end;
 
 procedure TfrmCadTabelaPreco.FormShow(Sender: TObject);

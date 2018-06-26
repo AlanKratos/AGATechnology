@@ -3,7 +3,7 @@ inherited dmCadCliente: TdmCadCliente
   OnCreate = DataModuleCreate
   Height = 355
   Width = 330
-  inherited QryPrincipal: TFDQuery
+  inherited QryCadastro: TFDQuery
     AfterInsert = QryPrincipalAfterInsert
     BeforePost = QryPrincipalBeforePost
     AfterPost = nil
@@ -43,79 +43,79 @@ inherited dmCadCliente: TdmCadCliente
         ParamType = ptInput
         Value = Null
       end>
-    object QryPrincipalCODIGO_PESSOA: TIntegerField
+    object QryCadastroCODIGO_PESSOA: TIntegerField
       FieldName = 'CODIGO_PESSOA'
       Origin = 'CODIGO_PESSOA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QryPrincipalNOME_PESSOA: TStringField
+    object QryCadastroNOME_PESSOA: TStringField
       FieldName = 'NOME_PESSOA'
       Origin = 'NOME_PESSOA'
       Size = 100
     end
-    object QryPrincipalFANTASIA_PESSOA: TStringField
+    object QryCadastroFANTASIA_PESSOA: TStringField
       FieldName = 'FANTASIA_PESSOA'
       Origin = 'FANTASIA_PESSOA'
       Size = 100
     end
-    object QryPrincipalTIPO_PESSOA: TIntegerField
+    object QryCadastroTIPO_PESSOA: TIntegerField
       FieldName = 'TIPO_PESSOA'
       Origin = 'TIPO_PESSOA'
       Required = True
     end
-    object QryPrincipalOBSERVACAO_PESSOA: TStringField
+    object QryCadastroOBSERVACAO_PESSOA: TStringField
       FieldName = 'OBSERVACAO_PESSOA'
       Origin = 'OBSERVACAO_PESSOA'
       Size = 500
     end
-    object QryPrincipalSTATUS_PESSOA: TIntegerField
+    object QryCadastroSTATUS_PESSOA: TIntegerField
       FieldName = 'STATUS_PESSOA'
       Origin = 'STATUS_PESSOA'
       Required = True
     end
-    object QryPrincipalCLIENTE_PESSOA: TStringField
+    object QryCadastroCLIENTE_PESSOA: TStringField
       FieldName = 'CLIENTE_PESSOA'
       Origin = 'CLIENTE_PESSOA'
       Required = True
       Size = 1
     end
-    object QryPrincipalCNPJ_PESSOA: TStringField
+    object QryCadastroCNPJ_PESSOA: TStringField
       FieldName = 'CNPJ_PESSOA'
       Origin = 'CNPJ_PESSOA'
       Size = 18
     end
-    object QryPrincipalIE_PESSOA: TStringField
+    object QryCadastroIE_PESSOA: TStringField
       FieldName = 'IE_PESSOA'
       Origin = 'IE_PESSOA'
       Size = 18
     end
-    object QryPrincipalCPF_PESSOA: TStringField
+    object QryCadastroCPF_PESSOA: TStringField
       FieldName = 'CPF_PESSOA'
       Origin = 'CPF_PESSOA'
       Size = 14
     end
-    object QryPrincipalRG_PESSOA: TStringField
+    object QryCadastroRG_PESSOA: TStringField
       FieldName = 'RG_PESSOA'
       Origin = 'RG_PESSOA'
     end
-    object QryPrincipalFORNECEDOR_PESSOA: TStringField
+    object QryCadastroFORNECEDOR_PESSOA: TStringField
       FieldName = 'FORNECEDOR_PESSOA'
       Origin = 'FORNECEDOR_PESSOA'
       Required = True
       Size = 1
     end
-    object QryPrincipalFUNCIONARIO_PESSOA: TStringField
+    object QryCadastroFUNCIONARIO_PESSOA: TStringField
       FieldName = 'FUNCIONARIO_PESSOA'
       Origin = 'FUNCIONARIO_PESSOA'
       Required = True
       Size = 1
     end
-    object QryPrincipalGRUPO_PESSOA: TIntegerField
+    object QryCadastroGRUPO_PESSOA: TIntegerField
       FieldName = 'GRUPO_PESSOA'
       Origin = 'GRUPO_PESSOA'
     end
-    object QryPrincipalDESCRICAO_GRUPO: TStringField
+    object QryCadastroDESCRICAO_GRUPO: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_GRUPO'
       Origin = 'DESCRICAO_GRUPO'
@@ -293,7 +293,7 @@ inherited dmCadCliente: TdmCadCliente
       end>
   end
   object dsMaster: TDataSource
-    DataSet = QryPrincipal
+    DataSet = QryCadastro
     Left = 152
     Top = 16
   end

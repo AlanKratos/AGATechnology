@@ -16,29 +16,6 @@ type
     QryUnidade: TFDQuery;
     QryValidaGrupo: TFDQuery;
     QryValidaSubGrupo: TFDQuery;
-    FDQueryPrincipalCODIGO_ITEM: TIntegerField;
-    FDQueryPrincipalTIPO_ITEM: TIntegerField;
-    FDQueryPrincipalDESCRICAO_ITEM: TStringField;
-    FDQueryPrincipalCODIGOBARRAS_ITEM: TStringField;
-    FDQueryPrincipalCOLECAO_ITEM: TIntegerField;
-    FDQueryPrincipalVARIACOR_ITEM: TBooleanField;
-    FDQueryPrincipalVALIDADE_ITEM: TIntegerField;
-    FDQueryPrincipalVARIATECIDO_ITEM: TStringField;
-    FDQueryPrincipalVARIAGRADE_ITEM: TBooleanField;
-    FDQueryPrincipalVARIAACABAMENTO_ITEM: TStringField;
-    FDQueryPrincipalGRUPO_ITEM: TIntegerField;
-    FDQueryPrincipalSUBGRUPO_ITEM: TIntegerField;
-    FDQueryPrincipalNCM_ITEM: TIntegerField;
-    FDQueryPrincipalPESOBRUTO_ITEM: TBCDField;
-    FDQueryPrincipalPESOLIQUIDO_ITEM: TBCDField;
-    FDQueryPrincipalSTATUS_ITEM: TIntegerField;
-    FDQueryPrincipalUNIDADE_ITEM: TIntegerField;
-    FDQueryPrincipalPRODUTO_ITEM: TIntegerField;
-    FDQueryPrincipalDESCRICAO_GRUPO: TStringField;
-    FDQueryPrincipalDESCRICAO_SUBGRUPO: TStringField;
-    FDQueryPrincipalOBSERVACAO_ITEM: TMemoField;
-    FDQueryPrincipalTRIBUTACAO_ITEM: TIntegerField;
-    FDQueryPrincipalCOD_NCM: TStringField;
     QryValida_Ncm: TFDQuery;
     QryItemCor: TFDQuery;
     QryItemGrade: TFDQuery;
@@ -56,6 +33,28 @@ type
     QryItemDetalheCOD_ITEM_DETALHE: TIntegerField;
     QryItemDetalheDESCRICAO_COR: TStringField;
     QryItemDetalheDESCRICAO_GRADE: TStringField;
+    QryPrincipalCODIGO_ITEM: TIntegerField;
+    QryPrincipalTIPO_ITEM: TIntegerField;
+    QryPrincipalDESCRICAO_ITEM: TStringField;
+    QryPrincipalCODIGOBARRAS_ITEM: TStringField;
+    QryPrincipalCOLECAO_ITEM: TIntegerField;
+    QryPrincipalVALIDADE_ITEM: TIntegerField;
+    QryPrincipalVARIACOR_ITEM: TStringField;
+    QryPrincipalVARIATECIDO_ITEM: TStringField;
+    QryPrincipalVARIAGRADE_ITEM: TStringField;
+    QryPrincipalGRUPO_ITEM: TIntegerField;
+    QryPrincipalSUBGRUPO_ITEM: TIntegerField;
+    QryPrincipalNCM_ITEM: TIntegerField;
+    QryPrincipalPESOBRUTO_ITEM: TBCDField;
+    QryPrincipalPESOLIQUIDO_ITEM: TBCDField;
+    QryPrincipalSTATUS_ITEM: TIntegerField;
+    QryPrincipalUNIDADE_ITEM: TIntegerField;
+    QryPrincipalPRODUTO_ITEM: TIntegerField;
+    QryPrincipalOBSERVACAO_ITEM: TMemoField;
+    QryPrincipalTRIBUTACAO_ITEM: TIntegerField;
+    QryPrincipalDESCRICAO_GRUPO: TStringField;
+    QryPrincipalDESCRICAO_SUBGRUPO: TStringField;
+    QryPrincipalCOD_NCM: TStringField;
     procedure QryPrincipalAfterInsert(DataSet: TDataSet);
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
@@ -74,6 +73,7 @@ type
     procedure QryItemGradeBeforeEdit(DataSet: TDataSet);
     procedure Validate_Cor(Sender: TField);
     procedure Validate_Grade(Sender: TField);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -88,6 +88,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdmCadProduto.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'ITEM';
+  self.campochave := 'CODIGO_ITEM';
+  self.TipoCadastro := '1 = 1';
+end;
 
 procedure TdmCadProduto.QryItemCorBeforeEdit(DataSet: TDataSet);
 begin

@@ -3,7 +3,7 @@ inherited dmCadCidade: TdmCadCidade
   OnCreate = DataModuleCreate
   Height = 275
   Width = 454
-  inherited QryPrincipal: TFDQuery
+  inherited QryCadastro: TFDQuery
     CachedUpdates = True
     SchemaAdapter = FDSchemaAdapterCidade
     SQL.Strings = (

@@ -172,9 +172,6 @@ procedure TfrmCadVenda.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCadVenda := TdmCadVenda.Create(self); // Instanciar DM
-  self.tabela := 'DOCUMENTO';
-  self.campochave := 'CODIGO_DOCUMENTO';
-  self.modalidade := 'MODALIDADE_DOCUMENTO = ''S''';
   self.fdmCadPai := dmCadVenda;
 
   with dmCadVenda do
@@ -200,7 +197,7 @@ end;
 procedure TfrmCadVenda.FormPaint(Sender: TObject);
 begin
   inherited;
-  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger
+//  JvCalcEditCodigo.AsInteger := fdmCadPai.QryPrincipal.FieldByName(campochave).AsInteger
 end;
 
 procedure TfrmCadVenda.FormShow(Sender: TObject);

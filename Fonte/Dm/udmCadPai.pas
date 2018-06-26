@@ -10,9 +10,9 @@ uses
 
 type
   TdmCadPai = class(TDataModule)
-    QryPrincipal: TFDQuery;
+    QryCadastro: TFDQuery;
     QryNavegar: TFDQuery;
-    procedure QryPrincipalAfterPost(DataSet: TDataSet);
+    procedure QryCadastroAfterPost(DataSet: TDataSet);
     procedure Navegar(Botao:Integer);
   private
     { Private declarations }
@@ -39,7 +39,7 @@ implementation
 
 procedure TdmCadPai.Navegar(Botao: Integer);
 begin
-  QryPrincipal.Open();
+  QryCadastro.Open();
   QryNavegar.Close;
   case Botao of
     0: QryNavegar.SQL.Text := 'select first 1 '+tabela+'.'+campochave+
@@ -69,9 +69,9 @@ begin
   QryNavegar.Close;
 end;
 
-procedure TdmCadPai.QryPrincipalAfterPost(DataSet: TDataSet);
+procedure TdmCadPai.QryCadastroAfterPost(DataSet: TDataSet);
 begin
-  QryPrincipal.ApplyUpdates(0);
+  QryCadastro.ApplyUpdates(0);
 end;
 
 end.

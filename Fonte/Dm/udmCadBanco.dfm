@@ -3,7 +3,7 @@ inherited dmCadBanco: TdmCadBanco
   OnCreate = DataModuleCreate
   Height = 222
   Width = 330
-  inherited QryPrincipal: TFDQuery
+  inherited QryCadastro: TFDQuery
     SQL.Strings = (
       'select * from banco')
   end

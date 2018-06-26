@@ -77,10 +77,6 @@ inherited frmCadCliente: TfrmCadCliente
     TabOrder = 4
     object tsPrincipal: TTabSheet
       Caption = 'Principal'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object lCNPJ: TLabel
         Left = 99
         Top = 1
@@ -254,10 +250,6 @@ inherited frmCadCliente: TfrmCadCliente
     object TabSheet1: TTabSheet
       Caption = 'Endere'#231'o'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label9: TLabel
         Left = 3
         Top = 2
@@ -403,7 +395,6 @@ inherited frmCadCliente: TfrmCadCliente
             Expanded = False
             FieldName = 'NUMERO_PESSOA_ENDERECO'
             Title.Caption = 'N'#250'mero'
-            Width = 64
             Visible = True
           end
           item
@@ -446,10 +437,6 @@ inherited frmCadCliente: TfrmCadCliente
     object tsEmails: TTabSheet
       Caption = 'E-mails'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object jvdbgrdEmails: TJvDBGrid
         Left = 3
         Top = 3
@@ -489,10 +476,6 @@ inherited frmCadCliente: TfrmCadCliente
     object tsTelefones: TTabSheet
       Caption = 'Telefones'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object jvdbgrdTelefones: TJvDBGrid
         Left = 3
         Top = 3
@@ -536,6 +519,7 @@ inherited frmCadCliente: TfrmCadCliente
     end
   end
   inherited dsCadastro: TDataSource
+    DataSet = dmCadCliente.QryPrincipal
     Left = 352
   end
   inherited JvEnterAsTab1: TJvEnterAsTab

@@ -47,6 +47,7 @@ type
     procedure FDQueryPrincipalReconcileError(DataSet: TFDDataSet;
       E: EFDException; UpdateKind: TFDDatSRowState;
       var Action: TFDDAptReconcileAction);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,6 +62,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdmCadTabelaPreco.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  self.tabela := 'TABELA';
+  self.campochave := 'CODIGO_TABELA';
+  self.TipoCadastro := '1 = 1';
+end;
 
 procedure TdmCadTabelaPreco.FDQueryPrincipalBeforePost(DataSet: TDataSet);
 begin

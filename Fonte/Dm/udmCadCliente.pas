@@ -97,15 +97,15 @@ end;
 procedure TdmCadCliente.QryEmailBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryEmailBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryEmailBeforePost(DataSet: TDataSet);

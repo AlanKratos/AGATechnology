@@ -1,5 +1,6 @@
 inherited dmCadGrade: TdmCadGrade
   OldCreateOrder = True
+  OnCreate = DataModuleCreate
   Height = 240
   inherited QryPrincipal: TFDQuery
     AfterInsert = FDQueryPrincipalAfterInsert

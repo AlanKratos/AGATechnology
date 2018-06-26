@@ -100,14 +100,46 @@
         </DelphiCompile>
         <DCCReference Include="Fonte\Class\unitValidaCnpjCpf.pas"/>
         <DCCReference Include="Fonte\Class\unitVarGlobal.pas"/>
-        <DCCReference Include="Fonte\Dm\udmCadBanco.pas"/>
-        <DCCReference Include="Fonte\Dm\udmCadCidade.pas"/>
-        <DCCReference Include="Fonte\Dm\udmCadCliente.pas"/>
-        <DCCReference Include="Fonte\Dm\udmCadConta.pas"/>
-        <DCCReference Include="Fonte\Dm\udmCadCor.pas"/>
-        <DCCReference Include="Fonte\Dm\udmCadEmpresa.pas"/>
-        <DCCReference Include="Fonte\Dm\udmCadFinanceiro.pas"/>
-        <DCCReference Include="Fonte\Dm\udmCadGrade.pas"/>
+        <DCCReference Include="Fonte\Dm\udmCadBanco.pas">
+			<Form>dmCadBanco</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Fonte\Dm\udmCadCidade.pas">
+			<Form>dmCadCidade</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Fonte\Dm\udmCadCliente.pas">
+			<Form>dmCadCliente</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Fonte\Dm\udmCadConta.pas">
+			<Form>dmCadConta</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Fonte\Dm\udmCadCor.pas">
+			<Form>dmCadCor</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Fonte\Dm\udmCadEmpresa.pas">
+			<Form>dmCadEmpresa</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Fonte\Dm\udmCadFinanceiro.pas">
+			<Form>dmCadFinanceiro</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Fonte\Dm\udmCadGrade.pas">
+			<Form>dmCadGrade</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <DCCReference Include="Fonte\Dm\udmCadPai.pas">
             <Form>dmCadPai</Form>
             <FormType>dfm</FormType>
@@ -133,23 +165,39 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Fonte\Dm\udmDocSaida.pas">
-            <Form>dmDocSaida</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Fonte\Dm\udmMovReceber.pas">
             <Form>dmMovReceber</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Fonte\Form\uCadBanco.pas"/>
-        <DCCReference Include="Fonte\Form\uCadCidade.pas"/>
-        <DCCReference Include="Fonte\Form\uCadCliente.pas"/>
-        <DCCReference Include="Fonte\Form\uCadConta.pas"/>
-        <DCCReference Include="Fonte\Form\uCadCor.pas"/>
-        <DCCReference Include="Fonte\Form\uCadEmpresa.pas"/>
-        <DCCReference Include="Fonte\Form\uCadGrade.pas"/>
+        <DCCReference Include="Fonte\Form\uCadBanco.pas">
+		    <Form>frmCadBanco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uCadCidade.pas">
+		    <Form>frmCadCidade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uCadCliente.pas">
+		    <Form>frmCadCliente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uCadConta.pas">
+		    <Form>frmCadConta</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uCadCor.pas">
+		    <Form>frmCadCor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uCadEmpresa.pas">
+		    <Form>frmCadEmpresa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uCadGrade.pas">
+		    <Form>frmCadGrade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="Fonte\Form\uCadPai.pas">
             <Form>frmCadPai</Form>
             <FormType>dfm</FormType>
@@ -166,20 +214,28 @@
             <Form>frmCadVenda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Fonte\Form\uConsultaCliente.pas"/>
-        <DCCReference Include="Fonte\Form\uConsultaCor.pas"/>
-        <DCCReference Include="Fonte\Form\uConsultaGrade.pas"/>
-        <DCCReference Include="Fonte\Form\uConsultaItem.pas"/>
+        <DCCReference Include="Fonte\Form\uConsultaCliente.pas">
+		    <Form>frmConsultaCliente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uConsultaCor.pas">
+		    <Form>frmConsultaCor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uConsultaGrade.pas">
+		    <Form>frmConsultaGrade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Fonte\Form\uConsultaItem.pas">
+		    <Form>frmConsultaItem</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="Fonte\Form\uConsultaPai.pas">
             <Form>frmConsultaPai</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Fonte\Form\uDetalhamento.pas">
             <Form>frmDetalhamento</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fonte\Form\uDocSaida.pas">
-            <Form>frmDocSaida</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Fonte\Form\uEmissaoNfe.pas">
