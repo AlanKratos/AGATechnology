@@ -50,7 +50,7 @@ begin
     try
       with dmCadCidade do
       Begin
-        QryPrincipal.Delete;
+        QryCadastro.Delete;
         FDSchemaAdapterCidade.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
 
@@ -73,7 +73,7 @@ procedure TfrmCadCidade.BitBtnSalvarClick(Sender: TObject);
 begin
   try
     dsCadastro.DataSet.Post;
-    JvCalcEditCodigo.Text := dmCadCidade.QryPrincipal.FieldByName('CODIGO_CIDADE').AsString;
+    JvCalcEditCodigo.Text := dmCadCidade.QryCadastro.FieldByName('CODIGO_CIDADE').AsString;
 
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -96,8 +96,8 @@ begin
 
   with dmCadCidade do
   begin
-    QryPrincipal.Close;
-    QryPrincipal.Open;
+    QryCadastro.Close;
+    QryCadastro.Open;
   end;
 end;
 
@@ -106,7 +106,7 @@ begin
   inherited;
 with dmCadCidade do
   Begin
-    QryPrincipal.FieldByName('UF_CIDADE').OnValidate := Validate_UF;
+    QryCadastro.FieldByName('UF_CIDADE').OnValidate := Validate_UF;
   End;
 end;
 

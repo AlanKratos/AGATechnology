@@ -3,10 +3,10 @@ inherited dmCadProduto: TdmCadProduto
   OnCreate = DataModuleCreate
   Height = 443
   Width = 454
-  inherited QryPrincipal: TFDQuery
-    AfterInsert = QryPrincipalAfterInsert
-    BeforePost = QryPrincipalBeforePost
-    OnNewRecord = QryPrincipalNewRecord
+  inherited QryCadastro: TFDQuery
+    AfterInsert = QryCadastroAfterInsert
+    BeforePost = QryCadastroBeforePost
+    OnNewRecord = QryCadastroNewRecord
     CachedUpdates = True
     SchemaAdapter = FDSchemaAdapterProduto
     FetchOptions.AssignedValues = [evDetailCascade]
@@ -267,7 +267,6 @@ inherited dmCadProduto: TdmCadProduto
     Top = 72
   end
   object dsMaster: TDataSource
-    DataSet = QryPrincipal
     Left = 184
     Top = 8
   end

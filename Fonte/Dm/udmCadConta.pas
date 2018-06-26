@@ -11,24 +11,24 @@ uses
 type
   TdmCadConta = class(TdmCadPai)
     QryValidaBanco: TFDQuery;
-    FDQueryPrincipalCODIGO_CONTA: TIntegerField;
-    FDQueryPrincipalDESCRICAO_CONTA: TStringField;
-    FDQueryPrincipalCLASSIFICACAO_CONTA: TIntegerField;
-    FDQueryPrincipalSTATUS_CONTA: TIntegerField;
-    FDQueryPrincipalBANCO_CONTA: TIntegerField;
+    QryCadastroCODIGO_CONTA: TIntegerField;
+    QryCadastroDESCRICAO_CONTA: TStringField;
+    QryCadastroCLASSIFICACAO_CONTA: TIntegerField;
+    QryCadastroSTATUS_CONTA: TIntegerField;
+    QryCadastroBANCO_CONTA: TIntegerField;
     FDQueryPrincipalAGENCIA_CONTA: TStringField;
-    FDQueryPrincipalNUMEROCONTA_CONTA: TStringField;
+    QryCadastroNUMEROCONTA_CONTA: TStringField;
     FDQueryPrincipalDIGITOCONTA_CONTA: TStringField;
-    FDQueryPrincipalDIGITOAGENCIA_CONTA: TStringField;
-    FDQueryPrincipalTITULAR_CONTA: TStringField;
-    FDQueryPrincipalCNPJ_CONTA: TStringField;
-    FDQueryPrincipalCPF_CONTA: TStringField;
-    FDQueryPrincipalSLIP_CONTA: TLargeintField;
-    FDQueryPrincipalDATAFECHAMENTO_CONTA: TSQLTimeStampField;
+    QryCadastroDIGITOAGENCIA_CONTA: TStringField;
+    QryCadastroTITULAR_CONTA: TStringField;
+    QryCadastroCNPJ_CONTA: TStringField;
+    QryCadastroCPF_CONTA: TStringField;
+    QryCadastroSLIP_CONTA: TLargeintField;
+    QryCadastroDATAFECHAMENTO_CONTA: TSQLTimeStampField;
     FDSchemaAdapterConta: TFDSchemaAdapter;
     FDTableAdapter1: TFDTableAdapter;
-    FDQueryPrincipalDESCRICAO_BANCO: TStringField;
-    intgrfldFDQueryPrincipalCAMARACOMPENSACAO_BANCO: TIntegerField;
+    QryCadastroDESCRICAO_BANCO: TStringField;
+    QryCadastroCAMARACOMPENSACAO_BANCO: TIntegerField;
     procedure Validate_Banco(Sender:TField);
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
@@ -67,7 +67,7 @@ end;
 procedure TdmCadConta.QryPrincipalNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadConta.Validate_Banco(Sender: TField);
@@ -87,8 +87,8 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('DESCRICAO_BANCO').AsString := QryValidaBanco.FieldByName('DESCRICAO_BANCO').AsString;
-  QryPrincipal.FieldByName('CAMARACOMPENSACAO_BANCO').AsString := QryValidaBanco.FieldByName('CAMARACOMPENSACAO_BANCO').AsString;
+  QryCadastro.FieldByName('DESCRICAO_BANCO').AsString := QryValidaBanco.FieldByName('DESCRICAO_BANCO').AsString;
+  QryCadastro.FieldByName('CAMARACOMPENSACAO_BANCO').AsString := QryValidaBanco.FieldByName('CAMARACOMPENSACAO_BANCO').AsString;
 end;
 
 end.

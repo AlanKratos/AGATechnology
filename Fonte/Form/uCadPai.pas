@@ -62,8 +62,8 @@ implementation
 
 procedure TfrmCadPai.BitBtnCancelarClick(Sender: TObject);
 begin
-  if (fdmCadPai.QryPrincipal.State in [dsInsert, dsedit]) then
-    fdmCadPai.QryPrincipal.Cancel;
+  if (fdmCadPai.QryCadastro.State in [dsInsert, dsedit]) then
+    fdmCadPai.QryCadastro.Cancel;
 end;
 
 procedure TfrmCadPai.BitBtnIncluirClick(Sender: TObject);
@@ -71,7 +71,7 @@ begin
   PanelTop.OnExit := nil;
   try
   JvCalcEditCodigo.AsInteger := 0;
-  fdmCadPai.QryPrincipal.Insert;
+  fdmCadPai.QryCadastro.Insert;
   finally
    PanelTop.OnExit := PanelTopExit;
   end;
@@ -98,10 +98,10 @@ end;
 
 procedure TfrmCadPai.FDQueryCadastroBeforePost(DataSet: TDataSet);
 begin
-  if (DataSet.State = dsInsert) and (fdmCadPai.QryPrincipal.FieldByName(dmCadPai.Campochave).AsInteger = 0) then
+  if (DataSet.State = dsInsert) and (fdmCadPai.QryCadastro.FieldByName(dmCadPai.Campochave).AsInteger = 0) then
     begin
       JvCalcEditCodigo.AsInteger := dmConexao.ProximoCodigo(dmCadPai.tabela);
-      fdmCadPai.QryPrincipal.FieldByName(dmCadPai.campochave).AsInteger := JvCalcEditCodigo.AsInteger;
+      fdmCadPai.QryCadastro.FieldByName(dmCadPai.campochave).AsInteger := JvCalcEditCodigo.AsInteger;
     end;
 end;
 
@@ -112,7 +112,7 @@ end;
 
 procedure TfrmCadPai.PanelTopExit(Sender: TObject);
 begin
-  with fdmCadPai.QryPrincipal do
+  with fdmCadPai.QryCadastro do
     Begin
       Close;
       ParamByName('CODIGO').AsInteger := JvCalcEditCodigo.AsInteger; //Declara o campo do panel que vai ser referenciado

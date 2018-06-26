@@ -22,8 +22,8 @@ type
     FDQueryPrincipalVALORPAGO_DUPLICATA: TBCDField;
     FDQueryPrincipalDATAPAGAMENTO_DUPLICATA: TSQLTimeStampField;
     FDQueryPrincipalVALORABERTO_DUPLICATA: TBCDField;
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryCadastroBeforePost(DataSet: TDataSet);
+    procedure QryCadastroNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -41,7 +41,7 @@ implementation
 
 { TdmMovReceber }
 
-procedure TdmMovReceber.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmMovReceber.QryCadastroBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -50,11 +50,11 @@ begin
       dmConexao.ProximoCodigo('DUPLICATA')
 end;
 
-procedure TdmMovReceber.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmMovReceber.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('TIPO_DUPLICATA').AsInteger := 1;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 

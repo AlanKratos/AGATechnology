@@ -12,12 +12,12 @@ type
   TdmCadEmpresa = class(TdmCadPai)
     QryValidaCidade: TFDQuery;
     QryValidaUf: TFDQuery;
-    FDQueryPrincipalCODIGO_EMPRESA: TIntegerField;
+    QryCadastroCODIGO_EMPRESA: TIntegerField;
     FDSchemaAdapterEmpresa: TFDSchemaAdapter;
     procedure Validate_Cidade(Sender: TField);
-    procedure QryPrincipalBeforePost(DataSet: TDataSet);
-    procedure QryPrincipalNewRecord(DataSet: TDataSet);
-    procedure QryPrincipalAfterInsert(DataSet: TDataSet);
+    procedure QryCadastroBeforePost(DataSet: TDataSet);
+    procedure QryCadastroNewRecord(DataSet: TDataSet);
+    procedure QryCadastroAfterInsert(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -44,16 +44,16 @@ begin
   self.TipoCadastro := '1 = 1'; //usar quando nao precisar utilizar
 end;
 
-procedure TdmCadEmpresa.QryPrincipalAfterInsert(DataSet: TDataSet);
+procedure TdmCadEmpresa.QryCadastroAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     FieldByName('STATUS_EMPRESA').Value := 1;
   End;
 end;
 
-procedure TdmCadEmpresa.QryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadEmpresa.QryCadastroBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -62,10 +62,10 @@ begin
       dmConexao.ProximoCodigo('EMPRESA')
 end;
 
-procedure TdmCadEmpresa.QryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadEmpresa.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadEmpresa.Validate_Cidade(Sender: TField);
@@ -85,7 +85,7 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('DESCRICAO_CIDADE').AsString := QryValidaCidade.FieldByName('DESCRICAO_CIDADE').AsString;
+  QryCadastro.FieldByName('DESCRICAO_CIDADE').AsString := QryValidaCidade.FieldByName('DESCRICAO_CIDADE').AsString;
 
   QryValidaUf.Close();
   QryValidaUf.SQL.Text := 'select DESCRICAO_UF from UF' +
@@ -102,7 +102,7 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('DESCRICAO_UF').AsString := QryValidaUf.FieldByName('DESCRICAO_UF').AsString
+  QryCadastro.FieldByName('DESCRICAO_UF').AsString := QryValidaUf.FieldByName('DESCRICAO_UF').AsString
 end;
 
 end.

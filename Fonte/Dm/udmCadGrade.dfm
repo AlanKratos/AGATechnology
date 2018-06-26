@@ -2,10 +2,10 @@ inherited dmCadGrade: TdmCadGrade
   OldCreateOrder = True
   OnCreate = DataModuleCreate
   Height = 240
-  inherited QryPrincipal: TFDQuery
-    AfterInsert = FDQueryPrincipalAfterInsert
-    BeforePost = FDQueryPrincipalBeforePost
-    OnNewRecord = FDQueryPrincipalNewRecord
+  inherited QryCadastro: TFDQuery
+    AfterInsert = QryCadastroAfterInsert
+    BeforePost = QryCadastroBeforePost
+    OnNewRecord = QryCadastroNewRecord
     CachedUpdates = True
     SQL.Strings = (
       'select '
@@ -22,6 +22,10 @@ inherited dmCadGrade: TdmCadGrade
         ParamType = ptInput
         Value = Null
       end>
+  end
+  inherited QryNavegar: TFDQuery
+    Left = 136
+    Top = 56
   end
   object QryGradeDetalhe: TFDQuery
     SQL.Strings = (

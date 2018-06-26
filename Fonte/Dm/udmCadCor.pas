@@ -10,9 +10,9 @@ uses
 
 type
   TdmCadCor = class(TdmCadPai)
-    procedure FDQueryPrincipalAfterInsert(DataSet: TDataSet);
-    procedure QryPrincipalBeforePost(DataSet: TDataSet);
-    procedure QryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryCadastroAfterInsert(DataSet: TDataSet);
+    procedure QryCadastroBeforePost(DataSet: TDataSet);
+    procedure QryCadastroNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -37,16 +37,16 @@ begin
   self.TipoCadastro := '1 = ';
 end;
 
-procedure TdmCadCor.FDQueryPrincipalAfterInsert(DataSet: TDataSet);
+procedure TdmCadCor.QryCadastroAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     FieldByName('STATUS_COR').Value := 1;
   End;
 end;
 
-procedure TdmCadCor.QryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadCor.QryCadastroBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -55,10 +55,10 @@ begin
       dmConexao.ProximoCodigo('COR')
 end;
 
-procedure TdmCadCor.QryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadCor.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 end.

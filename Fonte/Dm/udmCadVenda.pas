@@ -39,9 +39,9 @@ type
     QryValidaCor: TFDQuery;
     QryValidaGrade: TFDQuery;
     QryPrazo: TFDQuery;
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
+    procedure QryCadastroBeforePost(DataSet: TDataSet);
     procedure QryVendaItemBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryCadastroNewRecord(DataSet: TDataSet);
     procedure QryVendaItemBeforeInsert(DataSet: TDataSet);
     procedure QryVendaItemNewRecord(DataSet: TDataSet);
     procedure Validate_Cliente(Sender: TField);
@@ -74,7 +74,7 @@ implementation
 procedure TdmCadVenda.QryPrazoBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     Edit;
   End;
@@ -83,9 +83,9 @@ end;
 procedure TdmCadVenda.QryPrazoBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadVenda.QryPrazoBeforePost(DataSet: TDataSet);
@@ -101,7 +101,7 @@ procedure TdmCadVenda.QryPrazoNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('DOCUMENTO_DOC_PRAZO').AsInteger :=
-    QryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsInteger;
+    QryCadastro.FieldByName('CODIGO_DOCUMENTO').AsInteger;
 end;
 
 procedure TdmCadVenda.DataModuleCreate(Sender: TObject);
@@ -112,7 +112,7 @@ begin
   self.TipoCadastro := 'MODALIDADE_DOCUMENTO = ''S''';
 end;
 
-procedure TdmCadVenda.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadVenda.QryCadastroBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -128,23 +128,23 @@ begin
 
 end;
 
-procedure TdmCadVenda.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadVenda.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('MODALIDADE_DOCUMENTO').AsString :='S';
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadVenda.QryVendaItemAfterDelete(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadVenda.QryVendaItemBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     Edit;
   End;
@@ -153,9 +153,9 @@ end;
 procedure TdmCadVenda.QryVendaItemBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadVenda.QryVendaItemBeforePost(DataSet: TDataSet);
@@ -171,7 +171,7 @@ procedure TdmCadVenda.QryVendaItemNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('DOCUMENTO_DOC_ITEM').AsInteger :=
-    QryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsInteger;
+    QryCadastro.FieldByName('CODIGO_DOCUMENTO').AsInteger;
 end;
 
 procedure TdmCadVenda.Validate_Cliente(Sender: TField);
@@ -192,7 +192,7 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('NOME_PESSOA').AsString := QryValidaCliente.FieldByName('NOME_PESSOA').AsString;
+  QryCadastro.FieldByName('NOME_PESSOA').AsString := QryValidaCliente.FieldByName('NOME_PESSOA').AsString;
 end;
 
 procedure TdmCadVenda.Validate_Cor(Sender: TField);
@@ -296,14 +296,14 @@ end;
 
 procedure TdmCadVenda.Validate_Preco(Item, Cor, Grade: Integer);
 begin
-  if QryPrincipal.FieldByName('TABELA_DOCUMENTO').AsInteger > 0 then
+  if QryCadastro.FieldByName('TABELA_DOCUMENTO').AsInteger > 0 then
   Begin
     QryValidaPreco.Close();
     QryValidaPreco.SQL.Text := ('select TABELA_DETALHE.VALOR_TAB_DET from TABELA_DETALHE ' +
         ' where TABELA_DETALHE.ITEM_TAB_DET = ' + IntToStr(Item) +
         ' and TABELA_DETALHE.COR_TAB_DET = ' + IntToStr(Cor) +
         ' and TABELA_DETALHE.GRADE_TAB_DET = ' + IntToStr(Grade) +
-        ' and TABELA_DETALHE.TABELA_TAB_DET = ' + QryPrincipal.FieldByName('TABELA_DOCUMENTO').AsString);
+        ' and TABELA_DETALHE.TABELA_TAB_DET = ' + QryCadastro.FieldByName('TABELA_DOCUMENTO').AsString);
     try
       QryValidaPreco.Open();
     Except

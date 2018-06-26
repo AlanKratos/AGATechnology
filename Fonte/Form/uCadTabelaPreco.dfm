@@ -4,7 +4,6 @@ inherited frmCadTabelaPreco: TfrmCadTabelaPreco
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  ExplicitWidth = 320
   ExplicitHeight = 446
   PixelsPerInch = 96
   TextHeight = 13
