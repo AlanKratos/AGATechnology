@@ -45,10 +45,6 @@ inherited frmCadProduto: TfrmCadProduto
       TabOrder = 0
       object tsPrincipal: TTabSheet
         Caption = 'Principal'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Panel3: TPanel
           Left = 0
           Top = 0
@@ -163,7 +159,7 @@ inherited frmCadProduto: TfrmCadProduto
           object dbcbTecido: TJvDBCheckBox
             Left = 86
             Top = 22
-            Width = 97
+            Width = 75
             Height = 17
             Caption = 'Tecido'
             DataField = 'VARIATECIDO_ITEM'
@@ -267,10 +263,6 @@ inherited frmCadProduto: TfrmCadProduto
       object tsDiferenciacao: TTabSheet
         Caption = 'Diferencia'#231#227'o'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label11: TLabel
           Left = 3
           Top = 14
@@ -320,6 +312,7 @@ inherited frmCadProduto: TfrmCadProduto
             item
               Expanded = False
               FieldName = 'GRADE_ITEM_DETALHE'
+              Width = 64
               Visible = True
             end
             item
@@ -342,7 +335,11 @@ inherited frmCadProduto: TfrmCadProduto
       TabOrder = 1
     end
   end
+  inherited dsCadastro: TDataSource
+    DataSet = dmCadProduto.QryCadastro
+  end
   object dsItemDetalhe: TDataSource
+    DataSet = dmCadProduto.QryItemDetalhe
     Left = 568
   end
   object dsUnidade: TDataSource

@@ -33,10 +33,10 @@ type
     QryItemDetalheCOD_ITEM_DETALHE: TIntegerField;
     QryItemDetalheDESCRICAO_COR: TStringField;
     QryItemDetalheDESCRICAO_GRADE: TStringField;
-    QryPrincipalCODIGO_ITEM: TIntegerField;
+    QryCadastroCODIGO_ITEM: TIntegerField;
     QryCadastroTIPO_ITEM: TIntegerField;
     QryCadastroDESCRICAO_ITEM: TStringField;
-    QryPrincipalCODIGOBARRAS_ITEM: TStringField;
+    QryCadastroCODIGOBARRAS_ITEM: TStringField;
     QryCadastroCOLECAO_ITEM: TIntegerField;
     QryCadastroVALIDADE_ITEM: TIntegerField;
     QryCadastroVARIACOR_ITEM: TStringField;
@@ -196,11 +196,10 @@ end;
 
 procedure TdmCadProduto.QryCadastroBeforePost(DataSet: TDataSet);
 begin
+  if (DataSet.State = dsInsert) and (DataSet.FieldByName('CODIGO_ITEM').AsInteger = 0) then
+    DataSet.FieldByName('CODIGO_ITEM').AsInteger := dmConexao.ProximoCodigo('ITEM');
+
   inherited;
-  if (DataSet.State = dsInsert) and
-    (DataSet.FieldByName('CODIGO_ITEM').AsInteger = 0) then
-    DataSet.FieldByName('CODIGO_ITEM').AsInteger :=
-      dmConexao.ProximoCodigo('ITEM')
 end;
 
 procedure TdmCadProduto.QryCadastroNewRecord(DataSet: TDataSet);
