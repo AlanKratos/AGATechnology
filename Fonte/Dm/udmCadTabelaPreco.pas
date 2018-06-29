@@ -31,8 +31,8 @@ type
     QryValidaGrade: TFDQuery;
     QryTabela_DetalheDESCRICAO_COR: TStringField;
     QryTabela_DetalheDESCRICAO_GRADE: TStringField;
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryCadastroBeforePost(DataSet: TDataSet);
+    procedure QryCadastroNewRecord(DataSet: TDataSet);
     procedure QryTabela_DetalheBeforeInsert(DataSet: TDataSet);
     procedure QryTabela_DetalheBeforePost(DataSet: TDataSet);
     procedure QryTabela_DetalheNewRecord(DataSet: TDataSet);
@@ -44,7 +44,7 @@ type
     procedure QryTabela_DetalheReconcileError(DataSet: TFDDataSet;
       E: EFDException; UpdateKind: TFDDatSRowState;
       var Action: TFDDAptReconcileAction);
-    procedure FDQueryPrincipalReconcileError(DataSet: TFDDataSet;
+    procedure QryCadastroReconcileError(DataSet: TFDDataSet;
       E: EFDException; UpdateKind: TFDDatSRowState;
       var Action: TFDDAptReconcileAction);
     procedure DataModuleCreate(Sender: TObject);
@@ -71,7 +71,7 @@ begin
   self.TipoCadastro := '1 = 1';
 end;
 
-procedure TdmCadTabelaPreco.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadTabelaPreco.QryCadastroBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -80,13 +80,13 @@ begin
       dmConexao.ProximoCodigo('TABELA')
 end;
 
-procedure TdmCadTabelaPreco.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadTabelaPreco.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
-procedure TdmCadTabelaPreco.FDQueryPrincipalReconcileError(DataSet: TFDDataSet;
+procedure TdmCadTabelaPreco.QryCadastroReconcileError(DataSet: TFDDataSet;
   E: EFDException; UpdateKind: TFDDatSRowState;
   var Action: TFDDAptReconcileAction);
 begin
@@ -98,13 +98,13 @@ procedure TdmCadTabelaPreco.QryTabela_DetalheBeforeDelete(
   DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadTabelaPreco.QryTabela_DetalheBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     Edit;
   End;
@@ -114,9 +114,9 @@ procedure TdmCadTabelaPreco.QryTabela_DetalheBeforeInsert(
   DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadTabelaPreco.QryTabela_DetalheBeforePost(DataSet: TDataSet);
@@ -132,7 +132,7 @@ procedure TdmCadTabelaPreco.QryTabela_DetalheNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('TABELA_TAB_DET').AsInteger :=
-    QryPrincipal.FieldByName('CODIGO_TABELA').AsInteger;
+    QryCadastro.FieldByName('CODIGO_TABELA').AsInteger;
 end;
 
 procedure TdmCadTabelaPreco.QryTabela_DetalheReconcileError(

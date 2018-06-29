@@ -4,8 +4,6 @@ inherited frmCadEmpresa: TfrmCadEmpresa
   OnCreate = FormCreate
   OnPaint = nil
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelLeft: TPanel

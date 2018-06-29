@@ -68,7 +68,7 @@ begin
     try
       with dmCadConta do
       Begin
-        QryPrincipal.Delete;
+        QryCadastro.Delete;
         FDSchemaAdapterConta.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
 
@@ -95,7 +95,7 @@ procedure TfrmCadConta.BitBtnSalvarClick(Sender: TObject);
 begin
   try
     dsCadastro.DataSet.Post;
-    JvCalcEditCodigo.Text := dmCadConta.QryPrincipal.FieldByName('CODIGO_CONTA').AsString;
+    JvCalcEditCodigo.Text := dmCadConta.QryCadastro.FieldByName('CODIGO_CONTA').AsString;
 
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -118,8 +118,8 @@ begin
 
   with dmCadConta do
   begin
-    QryPrincipal.Close;
-    QryPrincipal.Open;
+    QryCadastro.Close;
+    QryCadastro.Open;
   end;
 end;
 
@@ -128,7 +128,7 @@ begin
   inherited;
 with dmCadConta do
   Begin
-    QryPrincipal.FieldByName('BANCO_CONTA').OnValidate := Validate_Banco;
+    QryCadastro.FieldByName('BANCO_CONTA').OnValidate := Validate_Banco;
   End;
 
 end;

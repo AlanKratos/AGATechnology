@@ -159,7 +159,7 @@ inherited frmCadProduto: TfrmCadProduto
           object dbcbTecido: TJvDBCheckBox
             Left = 86
             Top = 22
-            Width = 97
+            Width = 75
             Height = 17
             Caption = 'Tecido'
             DataField = 'VARIATECIDO_ITEM'
@@ -312,6 +312,7 @@ inherited frmCadProduto: TfrmCadProduto
             item
               Expanded = False
               FieldName = 'GRADE_ITEM_DETALHE'
+              Width = 64
               Visible = True
             end
             item
@@ -335,9 +336,10 @@ inherited frmCadProduto: TfrmCadProduto
     end
   end
   inherited dsCadastro: TDataSource
-    DataSet = dmCadProduto.QryPrincipal
+    DataSet = dmCadProduto.QryCadastro
   end
   object dsItemDetalhe: TDataSource
+    DataSet = dmCadProduto.QryItemDetalhe
     Left = 568
   end
   object dsUnidade: TDataSource

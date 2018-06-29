@@ -3,7 +3,7 @@ inherited dmCadConta: TdmCadConta
   OnCreate = DataModuleCreate
   Height = 260
   Width = 415
-  inherited QryPrincipal: TFDQuery
+  inherited QryCadastro: TFDQuery
     BeforePost = FDQueryPrincipalBeforePost
     OnNewRecord = FDQueryPrincipalNewRecord
     CachedUpdates = True

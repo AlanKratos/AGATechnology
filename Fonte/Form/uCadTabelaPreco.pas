@@ -69,7 +69,7 @@ begin
     try
       with dmCadTabelaPreco do
       Begin
-        QryPrincipal.Delete;
+        QryCadastro.Delete;
         FDSchemaAdapterTabelaPreco.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -113,7 +113,7 @@ begin
     with dmCadTabelaPreco do
     begin
       FDSchemaAdapterTabelaPreco.ApplyUpdates(0);
-      JvCalcEditCodigo.Text := QryPrincipal.FieldByName('CODIGO_TABELA').AsString;
+      JvCalcEditCodigo.Text := QryCadastro.FieldByName('CODIGO_TABELA').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -246,8 +246,8 @@ begin
 
   with dmCadTabelaPreco do
   begin
-    QryPrincipal.Close;
-    QryPrincipal.Open;
+    QryCadastro.Close;
+    QryCadastro.Open;
     QryTabela_Detalhe.Close;
     QryTabela_Detalhe.Open;
   end;
@@ -279,7 +279,7 @@ procedure TfrmCadTabelaPreco.LimparCache(Sender: TObject);
 begin
   with dmCadTabelaPreco do
   Begin
-    QryPrincipal.CommitUpdates();
+    QryCadastro.CommitUpdates();
     QryTabela_Detalhe.CommitUpdates();
   End;
 end;

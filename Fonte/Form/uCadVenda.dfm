@@ -28,6 +28,10 @@ inherited frmCadVenda: TfrmCadVenda
       TabOrder = 0
       object tsPrincipal: TTabSheet
         Caption = 'Principal'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label2: TLabel
           Left = 6
           Top = 10

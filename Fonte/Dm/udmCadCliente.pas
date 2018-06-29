@@ -29,22 +29,22 @@ type
     QryEnderecoCIDADE_PESSOA_ENDERECO: TIntegerField;
     QryValidaUf: TFDQuery;
     QryEnderecoUF_CIDADE: TIntegerField;
-    QryPrincipalCODIGO_PESSOA: TIntegerField;
-    QryPrincipalNOME_PESSOA: TStringField;
-    QryPrincipalFANTASIA_PESSOA: TStringField;
-    QryPrincipalTIPO_PESSOA: TIntegerField;
-    QryPrincipalOBSERVACAO_PESSOA: TStringField;
-    QryPrincipalSTATUS_PESSOA: TIntegerField;
-    QryPrincipalCLIENTE_PESSOA: TStringField;
-    QryPrincipalCNPJ_PESSOA: TStringField;
-    QryPrincipalIE_PESSOA: TStringField;
-    QryPrincipalCPF_PESSOA: TStringField;
-    QryPrincipalRG_PESSOA: TStringField;
-    QryPrincipalFORNECEDOR_PESSOA: TStringField;
-    QryPrincipalFUNCIONARIO_PESSOA: TStringField;
+    QryCadastroCODIGO_PESSOA: TIntegerField;
+    QryCadastroNOME_PESSOA: TStringField;
+    QryCadastroFANTASIA_PESSOA: TStringField;
+    QryCadastroTIPO_PESSOA: TIntegerField;
+    QryCadastroOBSERVACAO_PESSOA: TStringField;
+    QryCadastroSTATUS_PESSOA: TIntegerField;
+    QryCadastroCLIENTE_PESSOA: TStringField;
+    QryCadastroCNPJ_PESSOA: TStringField;
+    QryCadastroIE_PESSOA: TStringField;
+    QryCadastroCPF_PESSOA: TStringField;
+    QryCadastroRG_PESSOA: TStringField;
+    QryCadastroFORNECEDOR_PESSOA: TStringField;
+    QryCadastroFUNCIONARIO_PESSOA: TStringField;
     QryValidaGrupo: TFDQuery;
-    QryPrincipalGRUPO_PESSOA: TIntegerField;
-    QryPrincipalDESCRICAO_GRUPO: TStringField;
+    QryCadastroGRUPO_PESSOA: TIntegerField;
+    QryCadastroDESCRICAO_GRUPO: TStringField;
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
     procedure QryEnderecoNewRecord(DataSet: TDataSet);
     procedure QryEnderecoBeforeEdit(DataSet: TDataSet);
@@ -121,21 +121,21 @@ procedure TdmCadCliente.QryEmailNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('COD_PESSOA_EMAIL').AsInteger :=
-    QryPrincipal.FieldByName('CODIGO_PESSOA').AsInteger;
+    QryCadastro.FieldByName('CODIGO_PESSOA').AsInteger;
 end;
 
 procedure TdmCadCliente.QryEnderecoBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-    QryPrincipal.Edit;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryEnderecoBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryEnderecoBeforePost(DataSet: TDataSet);
@@ -151,7 +151,7 @@ procedure TdmCadCliente.QryEnderecoNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('COD_PESSOA_ENDERECO').AsInteger :=
-    QryPrincipal.FieldByName('CODIGO_PESSOA').AsInteger;
+    QryCadastro.FieldByName('CODIGO_PESSOA').AsInteger;
 end;
 
 procedure TdmCadCliente.QryEnderecoReconcileError(DataSet: TFDDataSet;
@@ -165,7 +165,7 @@ end;
 procedure TdmCadCliente.QryPrincipalAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     FieldByName('STATUS_PESSOA').Value := 1;
   End;
@@ -186,7 +186,7 @@ begin
   DataSet.FieldByName('CLIENTE_PESSOA').AsString :='S';
   DataSet.FieldByName('FORNECEDOR_PESSOA').AsString :='N';
   DataSet.FieldByName('FUNCIONARIO_PESSOA').AsString :='N';
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryPrincipalReconcileError(DataSet: TFDDataSet;
@@ -202,15 +202,15 @@ end;
 procedure TdmCadCliente.QryTelefoneBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryTelefoneBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadCliente.QryTelefoneBeforePost(DataSet: TDataSet);
@@ -226,7 +226,7 @@ procedure TdmCadCliente.QryTelefoneNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('COD_PESSOA_TELEFONE').AsInteger :=
-    QryPrincipal.FieldByName('CODIGO_PESSOA').AsInteger;
+    QryCadastro.FieldByName('CODIGO_PESSOA').AsInteger;
 end;
 
 procedure TdmCadCliente.Validate_Cidade(Sender: TField);
@@ -283,7 +283,7 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('DESCRICAO_GRUPO').AsString := QryValidaGrupo.FieldByName('DESCRICAO_GRUPO').AsString;
+  QryCadastro.FieldByName('DESCRICAO_GRUPO').AsString := QryValidaGrupo.FieldByName('DESCRICAO_GRUPO').AsString;
 end;
 
 end.

@@ -1,7 +1,7 @@
 object dmCadPai: TdmCadPai
   OldCreateOrder = False
-  Height = 150
-  Width = 215
+  Height = 329
+  Width = 383
   object QryCadastro: TFDQuery
     AfterPost = QryCadastroAfterPost
     Connection = dmConexao.FDConexao
@@ -10,7 +10,7 @@ object dmCadPai: TdmCadPai
   end
   object QryNavegar: TFDQuery
     Connection = dmConexao.FDConexao
-    Left = 64
-    Top = 88
+    Left = 200
+    Top = 201
   end
 end

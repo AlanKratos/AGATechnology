@@ -37,7 +37,7 @@ implementation
 
 procedure TfrmCadCor.BitBtnCancelarClick(Sender: TObject);
 begin
-  dmCadCor.QryPrincipal.CancelUpdates;
+  dmCadCor.QryCadastro.CancelUpdates;
   inherited;
 end;
 
@@ -48,8 +48,8 @@ begin
     try
       with dmCadCor do
       Begin
-        QryPrincipal.Delete;
-        QryPrincipal.ApplyUpdates(0);
+        QryCadastro.Delete;
+        QryCadastro.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
     Except on E: Exception do
@@ -74,7 +74,7 @@ begin
   try
     begin
       dsCadastro.DataSet.Post;
-      JvCalcEditCodigo.Text := dmCadCor.QryPrincipal.FieldByName('CODIGO_COR').AsString;
+      JvCalcEditCodigo.Text := dmCadCor.QryCadastro.FieldByName('CODIGO_COR').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -98,8 +98,8 @@ begin
 
   with dmCadCor do
   begin
-    QryPrincipal.Close;
-    QryPrincipal.Open;
+    QryCadastro.Close;
+    QryCadastro.Open;
   end;
 
 end;

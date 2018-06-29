@@ -2,9 +2,9 @@ inherited dmMovReceber: TdmMovReceber
   OldCreateOrder = True
   Height = 204
   Width = 275
-  inherited QryPrincipal: TFDQuery
-    BeforePost = FDQueryPrincipalBeforePost
-    OnNewRecord = FDQueryPrincipalNewRecord
+  inherited QryCadastro: TFDQuery
+    BeforePost = QryCadastroBeforePost
+    OnNewRecord = QryCadastroNewRecord
     SQL.Strings = (
       'select '
       '    PESSOA.NOME_PESSOA,'

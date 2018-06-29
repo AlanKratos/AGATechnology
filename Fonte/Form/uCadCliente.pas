@@ -108,7 +108,7 @@ begin
     try
       with dmCadCliente do
       Begin
-        QryPrincipal.Delete;
+        QryCadastro.Delete;
         FDSchemaAdapterCliente.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -206,7 +206,7 @@ begin
     with dmCadCliente do
     begin
       FDSchemaAdapterCliente.ApplyUpdates(0);
-      JvCalcEditCodigo.Text := QryPrincipal.FieldByName('CODIGO_PESSOA').AsString;
+      JvCalcEditCodigo.Text := QryCadastro.FieldByName('CODIGO_PESSOA').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -263,8 +263,8 @@ begin
 
   with dmCadCliente do
   begin
-    QryPrincipal.Close;
-    QryPrincipal.Open;
+    QryCadastro.Close;
+    QryCadastro.Open;
     QryEndereco.Close;
     QryEndereco.Open;
     QryTelefone.Close;
@@ -299,7 +299,7 @@ begin
   with dmCadCliente do
   Begin
     QryEndereco.FieldByName('CIDADE_PESSOA_ENDERECO').OnValidate := Validate_Cidade;
-    QryPrincipal.FieldByName('GRUPO_PESSOA').OnValidate := Validate_Grupo;
+    QryCadastro.FieldByName('GRUPO_PESSOA').OnValidate := Validate_Grupo;
   End;
 end;
 
@@ -313,7 +313,7 @@ procedure TfrmCadCliente.LimparCache(Sender: TObject);
 begin
   with dmCadCliente do
   Begin
-    QryPrincipal.CommitUpdates();
+    QryCadastro.CommitUpdates();
     QryEmail.CommitUpdates();
     QryEndereco.CommitUpdates();
     QryTelefone.CommitUpdates();

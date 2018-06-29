@@ -1,10 +1,12 @@
 inherited dmCadCor: TdmCadCor
   OldCreateOrder = True
   OnCreate = DataModuleCreate
-  inherited QryPrincipal: TFDQuery
-    AfterInsert = FDQueryPrincipalAfterInsert
-    BeforePost = FDQueryPrincipalBeforePost
-    OnNewRecord = FDQueryPrincipalNewRecord
+  Height = 150
+  Width = 215
+  inherited QryCadastro: TFDQuery
+    AfterInsert = QryCadastroAfterInsert
+    BeforePost = QryCadastroBeforePost
+    OnNewRecord = QryCadastroNewRecord
     CachedUpdates = True
     SQL.Strings = (
       'select COR.CODIGO_COR,'

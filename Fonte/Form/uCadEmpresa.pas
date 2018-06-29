@@ -96,7 +96,7 @@ begin
     try
       with dmCadEmpresa do
       Begin
-        QryPrincipal.Delete;
+        QryCadastro.Delete;
         FDSchemaAdapterEmpresa.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -126,7 +126,7 @@ begin
 
   try
     dsCadastro.DataSet.Post;
-    JvCalcEditCodigo.Text := dmCadEmpresa.QryPrincipal.FieldByName('CODIGO_EMPRESA').AsString;
+    JvCalcEditCodigo.Text := dmCadEmpresa.QryCadastro.FieldByName('CODIGO_EMPRESA').AsString;
 
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -149,8 +149,8 @@ begin
 
   with dmCadEmpresa do
   begin
-    QryPrincipal.Close;
-    QryPrincipal.Open;
+    QryCadastro.Close;
+    QryCadastro.Open;
   end;
 
 end;
@@ -160,7 +160,7 @@ begin
   inherited;
 with dmCadEmpresa do
   Begin
-    QryPrincipal.FieldByName('CIDADE_EMPRESA').OnValidate := Validate_Cidade;
+    QryCadastro.FieldByName('CIDADE_EMPRESA').OnValidate := Validate_Cidade;
   End;
 end;
 
@@ -170,7 +170,7 @@ begin
   if (Application.MessageBox('Deseja realmente excluir a imagem?', 'Confirmação', MB_ICONQUESTION + MB_YESNO) = IDYES) then
   try
     Begin
-      dmCadEmpresa.QryPrincipal.Edit;
+      dmCadEmpresa.QryCadastro.Edit;
       dsCadastro.DataSet.Edit;
       dbiLogo.Picture:= nil;
     End;
@@ -186,7 +186,7 @@ begin
   if OpenPictureDialog1.Execute then
   try
     Begin
-      dmCadEmpresa.QryPrincipal.Edit;
+      dmCadEmpresa.QryCadastro.Edit;
       dsCadastro.DataSet.Edit;
       dbiLogo.Picture.LoadFromFile(OpenPictureDialog1.FileName);
     End;

@@ -82,7 +82,7 @@ begin
     try
       with dmCadVenda do
       Begin
-        QryPrincipal.Delete;
+        QryCadastro.Delete;
         FDSchemaAdapterVenda.ApplyUpdates(0);
         JvCalcEditCodigo.Value := 0;
       End;
@@ -100,7 +100,7 @@ procedure TfrmCadVenda.BitBtnIncluirClick(Sender: TObject);
 begin
   inherited;
   dbceCodPessoa.SetFocus;
-  dmCadVenda.QryPrincipal.FieldByName('EMPRESA_DOCUMENTO').AsInteger := varpubCodEmpresa;
+  dmCadVenda.QryCadastro.FieldByName('EMPRESA_DOCUMENTO').AsInteger := varpubCodEmpresa;
 end;
 
 procedure TfrmCadVenda.BitBtnSalvarClick(Sender: TObject);
@@ -109,7 +109,7 @@ begin
     with dmCadVenda do
     begin
       FDSchemaAdapterVenda.ApplyUpdates(0);
-      JvCalcEditCodigo.Text := QryPrincipal.FieldByName('CODIGO_DOCUMENTO').AsString;
+      JvCalcEditCodigo.Text := QryCadastro.FieldByName('CODIGO_DOCUMENTO').AsString;
     end;
   Except on E: Exception do
     ShowMessage(E.Message);
@@ -121,13 +121,13 @@ end;
 procedure TfrmCadVenda.dbceCodPessoaButtonClick(Sender: TObject);
 begin
   inherited;
-  if (JvCalcEditCodigo.Value <> 0) or (dmCadVenda.QryPrincipal.State = dsInsert) then
+  if (JvCalcEditCodigo.Value <> 0) or (dmCadVenda.QryCadastro.State = dsInsert) then
   Begin
     Application.CreateForm(TfrmConsultaCliente, frmConsultaCliente);
     frmConsultaCliente.ShowModal;
     if frmConsultaCliente.FDQueryConsulta.FieldByName('CODIGO_PESSOA').AsInteger > 0 then
     Begin
-      dmCadVenda.QryPrincipal.FieldByName('CLIENTE_DOCUMENTO').AsInteger :=
+      dmCadVenda.QryCadastro.FieldByName('CLIENTE_DOCUMENTO').AsInteger :=
           frmConsultaCliente.FDQueryConsulta.FieldByName('CODIGO_PESSOA').AsInteger;;
     End;
     FreeAndNil(frmConsultaCliente);
@@ -176,8 +176,8 @@ begin
 
   with dmCadVenda do
   begin
-    QryPrincipal.Close;
-    QryPrincipal.Open;
+    QryCadastro.Close;
+    QryCadastro.Open;
     QryVendaItem.Close;
     QryVendaItem.Open;
     QryTabelaPreco.Close;
@@ -206,7 +206,7 @@ begin
   with dmCadVenda do
 //  if (JvCalcEditCodigo.Value <> 0) or (QryPrincipal.State = dsEdit) then
   Begin
-    QryPrincipal.FieldByName('CLIENTE_DOCUMENTO').OnValidate := Validate_Cliente;
+    QryCadastro.FieldByName('CLIENTE_DOCUMENTO').OnValidate := Validate_Cliente;
     QryVendaItem.FieldByName('ITEM_DOC_ITEM').OnValidate := Validate_Item;
     QryVendaItem.FieldByName('COR_DOC_ITEM').OnValidate := Validate_Cor;
     QryVendaItem.FieldByName('GRADE_DOC_ITEM').OnValidate := Validate_Grade;
@@ -217,7 +217,7 @@ procedure TfrmCadVenda.dbgItensCanEditCell(Grid: TJvDBGrid; Field: TField;
   var AllowEdit: Boolean);
 begin
   inherited;
-  dmCadVenda.QryPrincipal.Edit;
+  dmCadVenda.QryCadastro.Edit;
 end;
 
 procedure TfrmCadVenda.dbgItensEditButtonClick(Sender: TObject);
@@ -298,7 +298,7 @@ procedure TfrmCadVenda.LimparCache(Sender: TObject);
 begin
   with dmCadVenda do
   Begin
-    QryPrincipal.CommitUpdates();
+    QryCadastro.CommitUpdates();
     QryVendaItem.CommitUpdates();
   End;
 end;

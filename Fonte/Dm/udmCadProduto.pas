@@ -33,31 +33,31 @@ type
     QryItemDetalheCOD_ITEM_DETALHE: TIntegerField;
     QryItemDetalheDESCRICAO_COR: TStringField;
     QryItemDetalheDESCRICAO_GRADE: TStringField;
-    QryPrincipalCODIGO_ITEM: TIntegerField;
-    QryPrincipalTIPO_ITEM: TIntegerField;
-    QryPrincipalDESCRICAO_ITEM: TStringField;
-    QryPrincipalCODIGOBARRAS_ITEM: TStringField;
-    QryPrincipalCOLECAO_ITEM: TIntegerField;
-    QryPrincipalVALIDADE_ITEM: TIntegerField;
-    QryPrincipalVARIACOR_ITEM: TStringField;
-    QryPrincipalVARIATECIDO_ITEM: TStringField;
-    QryPrincipalVARIAGRADE_ITEM: TStringField;
-    QryPrincipalGRUPO_ITEM: TIntegerField;
-    QryPrincipalSUBGRUPO_ITEM: TIntegerField;
-    QryPrincipalNCM_ITEM: TIntegerField;
-    QryPrincipalPESOBRUTO_ITEM: TBCDField;
-    QryPrincipalPESOLIQUIDO_ITEM: TBCDField;
-    QryPrincipalSTATUS_ITEM: TIntegerField;
-    QryPrincipalUNIDADE_ITEM: TIntegerField;
-    QryPrincipalPRODUTO_ITEM: TIntegerField;
-    QryPrincipalOBSERVACAO_ITEM: TMemoField;
-    QryPrincipalTRIBUTACAO_ITEM: TIntegerField;
-    QryPrincipalDESCRICAO_GRUPO: TStringField;
-    QryPrincipalDESCRICAO_SUBGRUPO: TStringField;
-    QryPrincipalCOD_NCM: TStringField;
-    procedure QryPrincipalAfterInsert(DataSet: TDataSet);
-    procedure QryPrincipalBeforePost(DataSet: TDataSet);
-    procedure QryPrincipalNewRecord(DataSet: TDataSet);
+    QryCadastroCODIGO_ITEM: TIntegerField;
+    QryCadastroTIPO_ITEM: TIntegerField;
+    QryCadastroDESCRICAO_ITEM: TStringField;
+    QryCadastroCODIGOBARRAS_ITEM: TStringField;
+    QryCadastroCOLECAO_ITEM: TIntegerField;
+    QryCadastroVALIDADE_ITEM: TIntegerField;
+    QryCadastroVARIACOR_ITEM: TStringField;
+    QryCadastroVARIATECIDO_ITEM: TStringField;
+    QryCadastroVARIAGRADE_ITEM: TStringField;
+    QryCadastroGRUPO_ITEM: TIntegerField;
+    QryCadastroSUBGRUPO_ITEM: TIntegerField;
+    QryCadastroNCM_ITEM: TIntegerField;
+    QryCadastroPESOBRUTO_ITEM: TBCDField;
+    QryCadastroPESOLIQUIDO_ITEM: TBCDField;
+    QryCadastroSTATUS_ITEM: TIntegerField;
+    QryCadastroUNIDADE_ITEM: TIntegerField;
+    QryCadastroPRODUTO_ITEM: TIntegerField;
+    QryCadastroOBSERVACAO_ITEM: TMemoField;
+    QryCadastroTRIBUTACAO_ITEM: TIntegerField;
+    QryCadastroDESCRICAO_GRUPO: TStringField;
+    QryCadastroDESCRICAO_SUBGRUPO: TStringField;
+    QryCadastroCOD_NCM: TStringField;
+    procedure QryCadastroAfterInsert(DataSet: TDataSet);
+    procedure QryCadastroBeforePost(DataSet: TDataSet);
+    procedure QryCadastroNewRecord(DataSet: TDataSet);
     procedure QryItemDetalheBeforeEdit(DataSet: TDataSet);
     procedure QryItemDetalheBeforeInsert(DataSet: TDataSet);
     procedure QryItemDetalheBeforePost(DataSet: TDataSet);
@@ -100,7 +100,7 @@ end;
 procedure TdmCadProduto.QryItemCorBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     Edit;
   End;
@@ -109,9 +109,9 @@ end;
 procedure TdmCadProduto.QryItemCorBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadProduto.QryItemCorBeforePost(DataSet: TDataSet);
@@ -126,7 +126,7 @@ end;
 procedure TdmCadProduto.QryItemDetalheBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     Edit;
 //    FieldByName('ENDERECO_PESSOA').AsInteger := 0;
@@ -136,9 +136,9 @@ end;
 procedure TdmCadProduto.QryItemDetalheBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-  if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+  if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadProduto.QryItemDetalheBeforePost(DataSet: TDataSet);
@@ -154,13 +154,13 @@ procedure TdmCadProduto.QryItemDetalheNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('COD_ITEM_DETALHE').AsInteger :=
-    QryPrincipal.FieldByName('CODIGO_ITEM').AsInteger;
+    QryCadastro.FieldByName('CODIGO_ITEM').AsInteger;
 end;
 
 procedure TdmCadProduto.QryItemGradeBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     Edit;
   End;
@@ -169,9 +169,9 @@ end;
 procedure TdmCadProduto.QryItemGradeBeforeInsert(DataSet: TDataSet);
 begin
   inherited;
-   if QryPrincipal.State = dsInsert then
-    QryPrincipal.Post;
-    QryPrincipal.Edit;
+   if QryCadastro.State = dsInsert then
+    QryCadastro.Post;
+    QryCadastro.Edit;
 end;
 
 procedure TdmCadProduto.QryItemGradeBeforePost(DataSet: TDataSet);
@@ -183,10 +183,10 @@ begin
       dmConexao.ProximoCodigo('ITEM_GRADE');
 end;
 
-procedure TdmCadProduto.QryPrincipalAfterInsert(DataSet: TDataSet);
+procedure TdmCadProduto.QryCadastroAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     FieldByName('STATUS_ITEM').Value := 1;
     FieldByName('VARIACOR_ITEM').Value := False;
@@ -194,20 +194,19 @@ begin
   End;
 end;
 
-procedure TdmCadProduto.QryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadProduto.QryCadastroBeforePost(DataSet: TDataSet);
 begin
+  if (DataSet.State = dsInsert) and (DataSet.FieldByName('CODIGO_ITEM').AsInteger = 0) then
+    DataSet.FieldByName('CODIGO_ITEM').AsInteger := dmConexao.ProximoCodigo('ITEM');
+
   inherited;
-  if (DataSet.State = dsInsert) and
-    (DataSet.FieldByName('CODIGO_ITEM').AsInteger = 0) then
-    DataSet.FieldByName('CODIGO_ITEM').AsInteger :=
-      dmConexao.ProximoCodigo('ITEM')
 end;
 
-procedure TdmCadProduto.QryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadProduto.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
   DataSet.FieldByName('PRODUTO_ITEM').AsInteger := 1;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 
 end;
 
@@ -268,7 +267,7 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('DESCRICAO_GRUPO').AsString := QryValidaGrupo.FieldByName('DESCRICAO_GRUPO').AsString;
+  QryCadastro.FieldByName('DESCRICAO_GRUPO').AsString := QryValidaGrupo.FieldByName('DESCRICAO_GRUPO').AsString;
 end;
 
 procedure TdmCadProduto.Validate_Ncm(Sender: TField);
@@ -288,7 +287,7 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('COD_NCM').AsString := QryValida_Ncm.FieldByName('COD_NCM').AsString;
+  QryCadastro.FieldByName('COD_NCM').AsString := QryValida_Ncm.FieldByName('COD_NCM').AsString;
 end;
 
 procedure TdmCadProduto.Validate_SubGrupo(Sender: TField);
@@ -308,7 +307,7 @@ begin
     Abort;
   end
   else
-  QryPrincipal.FieldByName('DESCRICAO_SUBGRUPO').AsString := QryValidaSubGrupo.FieldByName('DESCRICAO_SUBGRUPO').AsString;
+  QryCadastro.FieldByName('DESCRICAO_SUBGRUPO').AsString := QryValidaSubGrupo.FieldByName('DESCRICAO_SUBGRUPO').AsString;
 end;
 
 end.

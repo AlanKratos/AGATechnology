@@ -3,10 +3,10 @@ inherited dmCadVenda: TdmCadVenda
   OnCreate = DataModuleCreate
   Height = 404
   Width = 357
-  inherited QryPrincipal: TFDQuery
-    BeforePost = FDQueryPrincipalBeforePost
+  inherited QryCadastro: TFDQuery
+    BeforePost = QryCadastroBeforePost
     AfterPost = nil
-    OnNewRecord = FDQueryPrincipalNewRecord
+    OnNewRecord = QryCadastroNewRecord
     CachedUpdates = True
     SchemaAdapter = FDSchemaAdapterVenda
     FetchOptions.AssignedValues = [evDetailCascade]
@@ -77,6 +77,9 @@ inherited dmCadVenda: TdmCadVenda
       Origin = 'EMPRESA_DOCUMENTO'
       Required = True
     end
+  end
+  inherited QryNavegar: TFDQuery
+    Left = 280
   end
   object FDSchemaAdapterVenda: TFDSchemaAdapter
     Left = 152

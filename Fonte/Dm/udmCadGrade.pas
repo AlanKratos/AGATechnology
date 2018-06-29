@@ -11,9 +11,9 @@ uses
 type
   TdmCadGrade = class(TdmCadPai)
     QryGradeDetalhe: TFDQuery;
-    procedure FDQueryPrincipalAfterInsert(DataSet: TDataSet);
-    procedure FDQueryPrincipalBeforePost(DataSet: TDataSet);
-    procedure FDQueryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryCadastroAfterInsert(DataSet: TDataSet);
+    procedure QryCadastroBeforePost(DataSet: TDataSet);
+    procedure QryCadastroNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -38,16 +38,16 @@ begin
   self.TipoCadastro := '1 = 1';
 end;
 
-procedure TdmCadGrade.FDQueryPrincipalAfterInsert(DataSet: TDataSet);
+procedure TdmCadGrade.QryCadastroAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  with QryPrincipal do
+  with QryCadastro do
   Begin
     FieldByName('STATUS_GRADE').Value := 1;
   End;
 end;
 
-procedure TdmCadGrade.FDQueryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadGrade.QryCadastroBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -56,10 +56,10 @@ begin
       dmConexao.ProximoCodigo('GRADE')
 end;
 
-procedure TdmCadGrade.FDQueryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadGrade.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  QryPrincipal.Edit;
+  QryCadastro.Edit;
 end;
 
 end.

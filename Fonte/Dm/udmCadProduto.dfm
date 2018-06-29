@@ -3,10 +3,10 @@ inherited dmCadProduto: TdmCadProduto
   OnCreate = DataModuleCreate
   Height = 443
   Width = 454
-  inherited QryPrincipal: TFDQuery
-    AfterInsert = QryPrincipalAfterInsert
-    BeforePost = QryPrincipalBeforePost
-    OnNewRecord = QryPrincipalNewRecord
+  inherited QryCadastro: TFDQuery
+    AfterInsert = QryCadastroAfterInsert
+    BeforePost = QryCadastroBeforePost
+    OnNewRecord = QryCadastroNewRecord
     CachedUpdates = True
     SchemaAdapter = FDSchemaAdapterProduto
     FetchOptions.AssignedValues = [evDetailCascade]
@@ -51,99 +51,99 @@ inherited dmCadProduto: TdmCadProduto
         ParamType = ptInput
         Value = Null
       end>
-    object QryPrincipalCODIGO_ITEM: TIntegerField
+    object QryCadastroCODIGO_ITEM: TIntegerField
       FieldName = 'CODIGO_ITEM'
       Origin = 'CODIGO_ITEM'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QryPrincipalTIPO_ITEM: TIntegerField
+    object QryCadastroTIPO_ITEM: TIntegerField
       FieldName = 'TIPO_ITEM'
       Origin = 'TIPO_ITEM'
     end
-    object QryPrincipalDESCRICAO_ITEM: TStringField
+    object QryCadastroDESCRICAO_ITEM: TStringField
       FieldName = 'DESCRICAO_ITEM'
       Origin = 'DESCRICAO_ITEM'
       Required = True
       Size = 100
     end
-    object QryPrincipalCODIGOBARRAS_ITEM: TStringField
+    object QryCadastroCODIGOBARRAS_ITEM: TStringField
       FieldName = 'CODIGOBARRAS_ITEM'
       Origin = 'CODIGOBARRAS_ITEM'
     end
-    object QryPrincipalCOLECAO_ITEM: TIntegerField
+    object QryCadastroCOLECAO_ITEM: TIntegerField
       FieldName = 'COLECAO_ITEM'
       Origin = 'COLECAO_ITEM'
     end
-    object QryPrincipalVALIDADE_ITEM: TIntegerField
+    object QryCadastroVALIDADE_ITEM: TIntegerField
       FieldName = 'VALIDADE_ITEM'
       Origin = 'VALIDADE_ITEM'
     end
-    object QryPrincipalVARIACOR_ITEM: TStringField
+    object QryCadastroVARIACOR_ITEM: TStringField
       FieldName = 'VARIACOR_ITEM'
       Origin = 'VARIACOR_ITEM'
       Size = 1
     end
-    object QryPrincipalVARIATECIDO_ITEM: TStringField
+    object QryCadastroVARIATECIDO_ITEM: TStringField
       FieldName = 'VARIATECIDO_ITEM'
       Origin = 'VARIATECIDO_ITEM'
       Size = 1
     end
-    object QryPrincipalVARIAGRADE_ITEM: TStringField
+    object QryCadastroVARIAGRADE_ITEM: TStringField
       FieldName = 'VARIAGRADE_ITEM'
       Origin = 'VARIAGRADE_ITEM'
       Size = 1
     end
-    object QryPrincipalGRUPO_ITEM: TIntegerField
+    object QryCadastroGRUPO_ITEM: TIntegerField
       FieldName = 'GRUPO_ITEM'
       Origin = 'GRUPO_ITEM'
     end
-    object QryPrincipalSUBGRUPO_ITEM: TIntegerField
+    object QryCadastroSUBGRUPO_ITEM: TIntegerField
       FieldName = 'SUBGRUPO_ITEM'
       Origin = 'SUBGRUPO_ITEM'
     end
-    object QryPrincipalNCM_ITEM: TIntegerField
+    object QryCadastroNCM_ITEM: TIntegerField
       FieldName = 'NCM_ITEM'
       Origin = 'NCM_ITEM'
     end
-    object QryPrincipalPESOBRUTO_ITEM: TBCDField
+    object QryCadastroPESOBRUTO_ITEM: TBCDField
       FieldName = 'PESOBRUTO_ITEM'
       Origin = 'PESOBRUTO_ITEM'
       Precision = 18
       Size = 3
     end
-    object QryPrincipalPESOLIQUIDO_ITEM: TBCDField
+    object QryCadastroPESOLIQUIDO_ITEM: TBCDField
       FieldName = 'PESOLIQUIDO_ITEM'
       Origin = 'PESOLIQUIDO_ITEM'
       Precision = 18
       Size = 3
     end
-    object QryPrincipalSTATUS_ITEM: TIntegerField
+    object QryCadastroSTATUS_ITEM: TIntegerField
       FieldName = 'STATUS_ITEM'
       Origin = 'STATUS_ITEM'
       Required = True
     end
-    object QryPrincipalUNIDADE_ITEM: TIntegerField
+    object QryCadastroUNIDADE_ITEM: TIntegerField
       FieldName = 'UNIDADE_ITEM'
       Origin = 'UNIDADE_ITEM'
       Required = True
     end
-    object QryPrincipalPRODUTO_ITEM: TIntegerField
+    object QryCadastroPRODUTO_ITEM: TIntegerField
       FieldName = 'PRODUTO_ITEM'
       Origin = 'PRODUTO_ITEM'
       Required = True
     end
-    object QryPrincipalOBSERVACAO_ITEM: TMemoField
+    object QryCadastroOBSERVACAO_ITEM: TMemoField
       FieldName = 'OBSERVACAO_ITEM'
       Origin = 'OBSERVACAO_ITEM'
       BlobType = ftMemo
     end
-    object QryPrincipalTRIBUTACAO_ITEM: TIntegerField
+    object QryCadastroTRIBUTACAO_ITEM: TIntegerField
       FieldName = 'TRIBUTACAO_ITEM'
       Origin = 'TRIBUTACAO_ITEM'
       Required = True
     end
-    object QryPrincipalDESCRICAO_GRUPO: TStringField
+    object QryCadastroDESCRICAO_GRUPO: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_GRUPO'
       Origin = 'DESCRICAO_GRUPO'
@@ -151,7 +151,7 @@ inherited dmCadProduto: TdmCadProduto
       ReadOnly = True
       Size = 40
     end
-    object QryPrincipalDESCRICAO_SUBGRUPO: TStringField
+    object QryCadastroDESCRICAO_SUBGRUPO: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'DESCRICAO_SUBGRUPO'
       Origin = 'DESCRICAO_SUBGRUPO'
@@ -159,7 +159,7 @@ inherited dmCadProduto: TdmCadProduto
       ReadOnly = True
       Size = 40
     end
-    object QryPrincipalCOD_NCM: TStringField
+    object QryCadastroCOD_NCM: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'COD_NCM'
       Origin = 'COD_NCM'
@@ -267,7 +267,6 @@ inherited dmCadProduto: TdmCadProduto
     Top = 72
   end
   object dsMaster: TDataSource
-    DataSet = QryPrincipal
     Left = 184
     Top = 8
   end

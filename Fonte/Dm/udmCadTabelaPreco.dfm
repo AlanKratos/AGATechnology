@@ -1,13 +1,12 @@
 inherited dmCadTabelaPreco: TdmCadTabelaPreco
   OldCreateOrder = True
   OnCreate = DataModuleCreate
-  Height = 329
   Width = 269
-  inherited QryPrincipal: TFDQuery
-    BeforePost = FDQueryPrincipalBeforePost
-    OnNewRecord = FDQueryPrincipalNewRecord
+  inherited QryCadastro: TFDQuery
+    BeforePost = QryCadastroBeforePost
+    OnNewRecord = QryCadastroNewRecord
     CachedUpdates = True
-    OnReconcileError = FDQueryPrincipalReconcileError
+    OnReconcileError = QryCadastroReconcileError
     SchemaAdapter = FDSchemaAdapterTabelaPreco
     FetchOptions.AssignedValues = [evDetailCascade]
     FetchOptions.DetailCascade = False
