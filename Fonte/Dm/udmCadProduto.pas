@@ -39,9 +39,6 @@ type
     QryCadastroCODIGOBARRAS_ITEM: TStringField;
     QryCadastroCOLECAO_ITEM: TIntegerField;
     QryCadastroVALIDADE_ITEM: TIntegerField;
-    QryCadastroVARIACOR_ITEM: TStringField;
-    QryCadastroVARIATECIDO_ITEM: TStringField;
-    QryCadastroVARIAGRADE_ITEM: TStringField;
     QryCadastroGRUPO_ITEM: TIntegerField;
     QryCadastroSUBGRUPO_ITEM: TIntegerField;
     QryCadastroNCM_ITEM: TIntegerField;
@@ -55,6 +52,8 @@ type
     QryCadastroDESCRICAO_GRUPO: TStringField;
     QryCadastroDESCRICAO_SUBGRUPO: TStringField;
     QryCadastroCOD_NCM: TStringField;
+    QryCadastroCONTROLACOR_ITEM: TStringField;
+    QryCadastroCONTROLAGRADE_ITEM: TStringField;
     procedure QryCadastroAfterInsert(DataSet: TDataSet);
     procedure QryCadastroBeforePost(DataSet: TDataSet);
     procedure QryCadastroNewRecord(DataSet: TDataSet);
@@ -74,6 +73,10 @@ type
     procedure Validate_Cor(Sender: TField);
     procedure Validate_Grade(Sender: TField);
     procedure DataModuleCreate(Sender: TObject);
+    procedure QryCadastroAfterPost(DataSet: TDataSet);
+    procedure QryCadastroAfterApplyUpdates(DataSet: TFDDataSet;
+      AErrors: Integer);
+    procedure FDSchemaAdapterProdutoAfterApplyUpdate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -183,15 +186,34 @@ begin
       dmConexao.ProximoCodigo('ITEM_GRADE');
 end;
 
+procedure TdmCadProduto.FDSchemaAdapterProdutoAfterApplyUpdate(Sender: TObject);
+begin
+  inherited;
+  QryItemCor.ApplyUpdates;
+end;
+
+procedure TdmCadProduto.QryCadastroAfterApplyUpdates(DataSet: TFDDataSet;
+  AErrors: Integer);
+begin
+  inherited;
+  QryItemCor.ApplyUpdates;
+end;
+
 procedure TdmCadProduto.QryCadastroAfterInsert(DataSet: TDataSet);
 begin
   inherited;
   with QryCadastro do
   Begin
-    FieldByName('STATUS_ITEM').Value := 1;
-    FieldByName('VARIACOR_ITEM').Value := False;
-    FieldByName('VARIAGRADE_ITEM').Value := False;
+    FieldByName('STATUS_ITEM').AsInteger := 1;
+    FieldByName('CONTROLACOR_ITEM').AsString := 'N';
+    FieldByName('CONTROLAGRADE_ITEM').AsString := 'N';
   End;
+end;
+
+procedure TdmCadProduto.QryCadastroAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  QryItemCor.CommitUpdates;
 end;
 
 procedure TdmCadProduto.QryCadastroBeforePost(DataSet: TDataSet);
@@ -205,7 +227,7 @@ end;
 procedure TdmCadProduto.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  DataSet.FieldByName('PRODUTO_ITEM').AsInteger := 1;
+  DataSet.FieldByName('PRODUTO_ITEM').AsInteger := 1; //indica se é um produto
   QryCadastro.Edit;
 
 end;

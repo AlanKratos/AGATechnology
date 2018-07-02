@@ -8,6 +8,7 @@ inherited dmCadProduto: TdmCadProduto
     BeforePost = QryCadastroBeforePost
     OnNewRecord = QryCadastroNewRecord
     CachedUpdates = True
+    AfterApplyUpdates = QryCadastroAfterApplyUpdates
     SchemaAdapter = FDSchemaAdapterProduto
     FetchOptions.AssignedValues = [evDetailCascade]
     FetchOptions.DetailCascade = False
@@ -19,9 +20,8 @@ inherited dmCadProduto: TdmCadProduto
       '    ITEM.CODIGOBARRAS_ITEM,'
       '    ITEM.COLECAO_ITEM,'
       '    ITEM.VALIDADE_ITEM,'
-      '    ITEM.VARIACOR_ITEM,'
-      '    ITEM.VARIATECIDO_ITEM,'
-      '    ITEM.VARIAGRADE_ITEM,'
+      '    ITEM.CONTROLACOR_ITEM,'
+      '    ITEM.CONTROLAGRADE_ITEM,'
       '    ITEM.GRUPO_ITEM,'
       '    ITEM.SUBGRUPO_ITEM,'
       '    ITEM.NCM_ITEM,'
@@ -78,21 +78,6 @@ inherited dmCadProduto: TdmCadProduto
     object QryCadastroVALIDADE_ITEM: TIntegerField
       FieldName = 'VALIDADE_ITEM'
       Origin = 'VALIDADE_ITEM'
-    end
-    object QryCadastroVARIACOR_ITEM: TStringField
-      FieldName = 'VARIACOR_ITEM'
-      Origin = 'VARIACOR_ITEM'
-      Size = 1
-    end
-    object QryCadastroVARIATECIDO_ITEM: TStringField
-      FieldName = 'VARIATECIDO_ITEM'
-      Origin = 'VARIATECIDO_ITEM'
-      Size = 1
-    end
-    object QryCadastroVARIAGRADE_ITEM: TStringField
-      FieldName = 'VARIAGRADE_ITEM'
-      Origin = 'VARIAGRADE_ITEM'
-      Size = 1
     end
     object QryCadastroGRUPO_ITEM: TIntegerField
       FieldName = 'GRUPO_ITEM'
@@ -167,10 +152,20 @@ inherited dmCadProduto: TdmCadProduto
       ReadOnly = True
       Size = 11
     end
+    object QryCadastroCONTROLACOR_ITEM: TStringField
+      FieldName = 'CONTROLACOR_ITEM'
+      Origin = 'CONTROLACOR_ITEM'
+      Size = 1
+    end
+    object QryCadastroCONTROLAGRADE_ITEM: TStringField
+      FieldName = 'CONTROLAGRADE_ITEM'
+      Origin = 'CONTROLAGRADE_ITEM'
+      Size = 1
+    end
   end
   inherited QryNavegar: TFDQuery
-    Left = 176
-    Top = 368
+    Left = 184
+    Top = 392
   end
   object QryItemDetalhe: TFDQuery
     BeforeInsert = QryItemDetalheBeforeInsert
@@ -263,10 +258,12 @@ inherited dmCadProduto: TdmCadProduto
     end
   end
   object FDSchemaAdapterProduto: TFDSchemaAdapter
+    AfterApplyUpdate = FDSchemaAdapterProdutoAfterApplyUpdate
     Left = 184
     Top = 72
   end
   object dsMaster: TDataSource
+    DataSet = QryCadastro
     Left = 184
     Top = 8
   end
@@ -284,29 +281,26 @@ inherited dmCadProduto: TdmCadProduto
   end
   object QryValidaGrupo: TFDQuery
     Connection = dmConexao.FDConexao
-    Left = 168
-    Top = 160
+    Left = 312
+    Top = 272
   end
   object QryValidaSubGrupo: TFDQuery
     Connection = dmConexao.FDConexao
-    Left = 168
-    Top = 216
+    Left = 312
+    Top = 328
   end
   object QryValida_Ncm: TFDQuery
     Connection = dmConexao.FDConexao
-    Left = 168
-    Top = 280
+    Left = 312
+    Top = 392
   end
   object QryItemCor: TFDQuery
     BeforeInsert = QryItemCorBeforeInsert
     BeforeEdit = QryItemCorBeforeEdit
     BeforePost = QryItemCorBeforePost
     CachedUpdates = True
-    IndexFieldNames = 'ITEM_ITEM_COR'
-    MasterSource = dsMaster
-    MasterFields = 'CODIGO_ITEM'
     Connection = dmConexao.FDConexao
-    SchemaAdapter = FDSchemaAdapterProduto
+    FetchOptions.AssignedValues = [evDetailServerCascade]
     Left = 40
     Top = 328
   end
@@ -315,13 +309,8 @@ inherited dmCadProduto: TdmCadProduto
     BeforeEdit = QryItemGradeBeforeEdit
     BeforePost = QryItemGradeBeforePost
     CachedUpdates = True
-    IndexFieldNames = 'ITEM_ITEM_GRADE'
-    MasterSource = dsMaster
-    MasterFields = 'CODIGO_ITEM'
     Connection = dmConexao.FDConexao
-    SchemaAdapter = FDSchemaAdapterProduto
-    SQL.Strings = (
-      '')
+    FetchOptions.AssignedValues = [evDetailServerCascade]
     Left = 40
     Top = 384
   end
@@ -339,17 +328,17 @@ inherited dmCadProduto: TdmCadProduto
   end
   object dsDetalhe: TDataSource
     DataSet = QryItemDetalhe
-    Left = 296
-    Top = 8
+    Left = 368
+    Top = 16
   end
   object QryValidaCor: TFDQuery
     Connection = dmConexao.FDConexao
-    Left = 288
-    Top = 224
+    Left = 392
+    Top = 328
   end
   object QryValidaGrade: TFDQuery
     Connection = dmConexao.FDConexao
-    Left = 288
-    Top = 288
+    Left = 392
+    Top = 392
   end
 end

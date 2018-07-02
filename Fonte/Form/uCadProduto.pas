@@ -48,7 +48,6 @@ type
     dbgDiferenciacao: TJvDBGrid;
     Label11: TLabel;
     sbGerarCombinacao: TSpeedButton;
-    dbcbTecido: TJvDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure BitBtnIncluirClick(Sender: TObject);
@@ -202,7 +201,7 @@ procedure TfrmCadProduto.sbGerarCombinacaoClick(Sender: TObject);
 begin
   inherited;
   if frmDetalhamento = nil then
-    frmDetalhamento := TfrmDetalhamento.Create(self);
+    frmDetalhamento := TfrmDetalhamento.Criar(self, dmCadProduto);
   if frmDetalhamento.WindowState = wsMinimized then
     frmDetalhamento.WindowState := wsNormal
   else

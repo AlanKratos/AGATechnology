@@ -64,6 +64,7 @@ object frmDetalhamento: TfrmDetalhamento
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Visible = False
     OnDblClick = dbgCorDblClick
     SelectColumnsDialogStrings.Caption = 'Select columns'
     SelectColumnsDialogStrings.OK = '&OK'
@@ -90,6 +91,7 @@ object frmDetalhamento: TfrmDetalhamento
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Visible = False
     OnDblClick = dbgItemCorDblClick
     SelectColumnsDialogStrings.Caption = 'Select columns'
     SelectColumnsDialogStrings.OK = '&OK'
@@ -116,6 +118,7 @@ object frmDetalhamento: TfrmDetalhamento
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Visible = False
     OnDblClick = dbgGradeDblClick
     SelectColumnsDialogStrings.Caption = 'Select columns'
     SelectColumnsDialogStrings.OK = '&OK'
@@ -142,6 +145,7 @@ object frmDetalhamento: TfrmDetalhamento
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Visible = False
     OnDblClick = dbgItemGradeDblClick
     SelectColumnsDialogStrings.Caption = 'Select columns'
     SelectColumnsDialogStrings.OK = '&OK'
@@ -211,7 +215,7 @@ object frmDetalhamento: TfrmDetalhamento
     Top = 88
   end
   object dsItemCor: TJvDataSource
-    Left = 216
+    Left = 208
     Top = 104
   end
   object dsGrade: TJvDataSource
