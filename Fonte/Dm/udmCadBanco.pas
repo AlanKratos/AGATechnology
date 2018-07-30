@@ -23,6 +23,7 @@ type
     procedure QryPrincipalBeforePost(DataSet: TDataSet);
     procedure QryPrincipalNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
+    procedure QryCadastroAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public

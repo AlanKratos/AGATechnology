@@ -5,8 +5,8 @@ inherited frmCadBanco: TfrmCadBanco
   OnClose = FormClose
   OnCreate = FormCreate
   OnPaint = nil
-  ExplicitWidth = 579
-  ExplicitHeight = 315
+  ExplicitWidth = 571
+  ExplicitHeight = 303
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelTop: TPanel
