@@ -10,18 +10,9 @@ uses
 
 type
   TdmCadBanco = class(TdmCadPai)
-    QryCadastroCODIGO_BANCO: TIntegerField;
-    QryCadastroDESCRICAO_BANCO: TStringField;
-    QryCadastroCAMARACOMPENSACAO_BANCO: TIntegerField;
-    QryCadastroLOGO_BANCO: TBlobField;
-    QryCadastroSTATUS_BANCO: TIntegerField;
-    QryCadastroINCLUSAO_BANCO: TSQLTimeStampField;
-    QryCadastroALTERACAO_BANCO: TSQLTimeStampField;
-    QryCadastroUSUARIOINCLUSAO_BANCO: TStringField;
-    QryCadastroUSUARIOALTERACAO_BANCO: TStringField;
     FDSchemaAdapterBanco: TFDSchemaAdapter;
-    procedure QryPrincipalBeforePost(DataSet: TDataSet);
-    procedure QryPrincipalNewRecord(DataSet: TDataSet);
+    procedure QryCadastroBeforePost(DataSet: TDataSet);
+    procedure QryCadastroNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -46,7 +37,7 @@ begin
   self.TipoCadastro := '1 = 1'; //usar quando nao precisar utilizar
 end;
 
-procedure TdmCadBanco.QryPrincipalBeforePost(DataSet: TDataSet);
+procedure TdmCadBanco.QryCadastroBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if (DataSet.State = dsInsert) and
@@ -56,7 +47,7 @@ begin
 
 end;
 
-procedure TdmCadBanco.QryPrincipalNewRecord(DataSet: TDataSet);
+procedure TdmCadBanco.QryCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
   QryCadastro.Edit;

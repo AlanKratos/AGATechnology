@@ -40,7 +40,7 @@ inherited frmCadProduto: TfrmCadProduto
       Top = 72
       Width = 671
       Height = 326
-      ActivePage = tsPrincipal
+      ActivePage = tsDiferenciacao
       Align = alBottom
       TabOrder = 0
       object tsPrincipal: TTabSheet
@@ -86,7 +86,7 @@ inherited frmCadProduto: TfrmCadProduto
             Width = 72
             Height = 17
             Caption = 'Cor'
-            DataField = 'VARIACOR_ITEM'
+            DataField = 'CONTROLACOR_ITEM'
             DataSource = dsCadastro
             TabOrder = 0
             ValueChecked = 'S'
@@ -98,7 +98,7 @@ inherited frmCadProduto: TfrmCadProduto
             Width = 72
             Height = 17
             Caption = 'Grade'
-            DataField = 'VARIAGRADE_ITEM'
+            DataField = 'CONTROLAGRADE_ITEM'
             DataSource = dsCadastro
             TabOrder = 1
             ValueChecked = 'S'
@@ -155,18 +155,6 @@ inherited frmCadProduto: TfrmCadProduto
             DataField = 'SUBGRUPO_ITEM'
             DataSource = dsCadastro
             TabOrder = 6
-          end
-          object dbcbTecido: TJvDBCheckBox
-            Left = 86
-            Top = 22
-            Width = 75
-            Height = 17
-            Caption = 'Tecido'
-            DataField = 'VARIATECIDO_ITEM'
-            DataSource = dsCadastro
-            TabOrder = 7
-            ValueChecked = 'S'
-            ValueUnchecked = 'N'
           end
         end
         object Panel4: TPanel
